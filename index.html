@@ -107,7 +107,7 @@
         <li><strong>Rabbia, colpa e conflitti</strong></li>
       </ul>
 
-      <p>Ti invito a rispondere in modo spontaneo e diretto, pensando a <strong>come ti sei sentito e comportato nelle ultime due settimane</strong>.</p>
+      <p>Rispondi in modo spontaneo e diretto, pensando a <strong>come ti sei sentito e comportato nelle ultime due settimane</strong>.</p>
 
       <p>La compilazione richiede in media <strong>8–10 minuti</strong>.</p>
 
@@ -193,11 +193,13 @@
   const year = document.getElementById('year');
   if (year) year.textContent = new Date().getFullYear();
 
-  // ENDPOINT APPS SCRIPT
-  const GAS_ENDPOINT = 'https://script.google.com/macros/s/AKfycbyCfiYrX1eM-Ck2Pm2WunHZtG9xwyL08CmX4klqAG9PKnP9MwncpB6zLveWexHd4Y0xNA/exec';
+  // ENDPOINT APPS SCRIPT (nuovo)
+  const GAS_ENDPOINT = "https://script.google.com/macros/s/AKfycby_Y7hCm0JK_R0-FvsbrmAC3fgxiLLgwQQje0DLx6zXuKuI5TWd8L4jftX0PHM3JJrvRQ/exec";
 
-  const ITEMS = [{text:'Passo rapidamente dal desiderare molta vicinanza al prendere le distanze nella stessa relazione.', reverse:false}, {text:'Quando provo rabbia, dolore o vuoto, tendo a cercare sensazioni piacevoli e immediate per non sentire il disagio, come cibo, sesso, acquisti o altri comportamenti impulsivi.', reverse:false}, {text:'Riesco a fermarmi un attimo prima di reagire quando qualcosa mi fa arrabbiare.', reverse:true}, {text:'Le mie emozioni cambiano rapidamente e sono molto intense.', reverse:false}, {text:'Ho pensieri di farmi del male o metto in atto comportamenti autolesivi.', reverse:false}, {text:'Sento un senso di vuoto o di mancanza di significato nella mia vita.', reverse:false}, {text:'Anche quando cambio idea o umore, so chi sono e cosa voglio davvero.', reverse:true}, {text:'Quando sono stressato/a mi sento distaccato/a da me stesso/a o dalla realtà.', reverse:false}, {text:'Sotto stress riesco comunque a restare lucido e concentrato su quello che sto facendo.', reverse:true}, {text:'Mi capita di interpretare segnali ambigui (silenzio, tono, sguardi) come se gli altri mi stessero giudicando o ce l’avessero con me.', reverse:false}, {text:'Oscillo tra desiderio di vicinanza e bisogno improvviso di allontanarmi.', reverse:false}, {text:'Riesco a rimanere sereno se una persona importante non si fa sentire per un po’, senza pensare subito al rifiuto.', reverse:true}, {text:'Dopo un conflitto rischio di fare qualcosa che mi danneggia o peggiora la situazione.', reverse:false}, {text:'In mezzo agli altri mi perdo in pensieri come “mi giudicano” o “mi rifiuteranno”.', reverse:false}, {text:'Durante una discussione riesco a esprimere cosa penso senza perdere il controllo.', reverse:true}, {text:'Nella stessa relazione passo facilmente dall’idealizzare una persona al ritenerla molto deludente.', reverse:false}, {text:'Controllo messaggi, social o spostamenti degli altri per ridurre ansia o gelosia.', reverse:false}, {text:'Provo vergogna o mi sento inadeguato/a in modo rapido e intenso.', reverse:false}, {text:'Quando provo emozioni forti, riesco a capire cosa sto sentendo.', reverse:true}, {text:'Il modo in cui mi vedo o ciò che voglio cambia facilmente a seconda del contesto.', reverse:false}, {text:'Dopo momenti di vicinanza temo di essere stato/a “troppo” o di aver dato fastidio.', reverse:false}, {text:'Se qualcuno non risponde o si allontana entro in allarme (paura, rabbia, gelosia).', reverse:false}, {text:'Uso cibo, sostanze o attività per spegnere emozioni che mi sembrano insopportabili.', reverse:false}, {text:'Dopo periodi di forte autocontrollo finisco per perderlo all’improvviso.', reverse:false}, {text:'Metto alla prova la relazione per capire se l’altra persona ci tiene davvero a me.', reverse:false}, {text:'Dopo forte stress ho ricordi confusi o vuoti di memoria.', reverse:false}, {text:'Durante i litigi alzo il tono o divento improvvisamente freddo/a e distante.', reverse:false}, {text:'Mi è difficile trovare equilibrio tra farmi rispettare e andare incontro agli altri.', reverse:false}, {text:'Piccoli cambiamenti nel comportamento degli altri (un tono diverso, un messaggio mancato) influenzano molto come mi sento verso di loro.', reverse:false}, {text:'Dopo una crisi o una lite provo molta colpa o paura di aver rovinato tutto.', reverse:false}, {text:'Quando non mi sento capito/a mi chiudo o interrompo i rapporti.', reverse:false}, {text:'Mi è difficile restare nel presente: rimugino sul passato o sul futuro.', reverse:false}, {text:'Non so davvero cosa voglio o cosa mi rappresenta: ciò che sento di volere cambia spesso e in modo marcato.', reverse:false}, {text:'Mi capita di interrompere o non portare a termine attività o progetti perché temo di fallire o di non essere all’altezza.', reverse:false}, {text:'Quando mi sento annoiato o vuoto cerco subito qualcosa di intenso per riempire quel senso di mancanza.', reverse:false}, {text:'Mi vergogno di me stesso.', reverse:false}, {text:'Dopo aver mostrato emozioni o fragilità, mi sento in imbarazzo o temo di aver sbagliato.', reverse:false}];
+  // ITEMS (37) con flag reverse per scoring
+  const ITEMS = [{text:'Passo rapidamente dal desiderare molta vicinanza al prendere le distanze nella stessa relazione.', reverse:false}, {text:'Quando provo rabbia, dolore o vuoto, tendo a cercare sensazioni piacevoli e immediate per non sentire il disagio (per esempio: cibo, acquisti, messaggi, sesso, altri comportamenti impulsivi).', reverse:false}, {text:'Riesco a fermarmi un attimo prima di reagire quando qualcosa mi fa arrabbiare.', reverse:true}, {text:'Le mie emozioni cambiano rapidamente e sono molto intense.', reverse:false}, {text:'Ho pensieri di farmi del male o metto in atto comportamenti autolesivi.', reverse:false}, {text:'Sento un senso di vuoto o di mancanza di significato nella mia vita.', reverse:false}, {text:'Anche quando cambio idea o umore, so chi sono e cosa voglio davvero.', reverse:true}, {text:'Quando sono stressato/a mi sento distaccato/a da me stesso/a o dalla realtà.', reverse:false}, {text:'Sotto stress riesco comunque a restare lucido e concentrato su quello che sto facendo.', reverse:true}, {text:'Mi capita di interpretare segnali ambigui (silenzio, tono, sguardi) come se gli altri mi stessero giudicando o ce l’avessero con me.', reverse:false}, {text:'Oscillo tra desiderio di vicinanza e bisogno improvviso di allontanarmi.', reverse:false}, {text:'Riesco a rimanere sereno se una persona importante non si fa sentire per un po’, senza pensare subito al rifiuto.', reverse:true}, {text:'Dopo un conflitto rischio di fare qualcosa che mi danneggia o peggiora la situazione.', reverse:false}, {text:'In mezzo agli altri mi perdo in pensieri come “mi giudicano” o “mi rifiuteranno”.', reverse:false}, {text:'Durante una discussione riesco a esprimere cosa penso senza perdere il controllo.', reverse:true}, {text:'Posso passare rapidamente dal sentirmi molto legato a qualcuno al provare rabbia o delusione verso quella stessa persona.', reverse:false}, {text:'Controllo messaggi, social o spostamenti degli altri per ridurre ansia o gelosia.', reverse:false}, {text:'Provo vergogna o mi sento inadeguato/a in modo rapido e intenso.', reverse:false}, {text:'Quando provo emozioni forti, riesco a capire cosa sto sentendo.', reverse:true}, {text:'Mi accorgo che il modo in cui mi vedo cambia molto a seconda delle persone o delle situazioni, e questo a volte mi fa sentire confuso o a disagio.', reverse:false}, {text:'Dopo momenti di vicinanza temo di essere stato/a “troppo” o di aver dato fastidio.', reverse:false}, {text:'Se qualcuno non risponde o si allontana entro in allarme (paura, rabbia, gelosia).', reverse:false}, {text:'Uso cibo, sostanze o attività per spegnere emozioni che mi sembrano insopportabili.', reverse:false}, {text:'Dopo periodi di forte autocontrollo finisco per perderlo all’improvviso.', reverse:false}, {text:'Metto alla prova la relazione per capire se l’altra persona ci tiene davvero a me.', reverse:false}, {text:'Dopo forte stress ho ricordi confusi o vuoti di memoria.', reverse:false}, {text:'Durante i litigi alzo il tono o divento improvvisamente freddo/a e distante.', reverse:false}, {text:'Mi è difficile trovare equilibrio tra farmi rispettare e andare incontro agli altri.', reverse:false}, {text:'Piccoli cambiamenti nel comportamento degli altri (un tono diverso, un messaggio mancato) influenzano molto come mi sento verso di loro.', reverse:false}, {text:'Dopo una crisi o una lite provo molta colpa o paura di aver rovinato tutto.', reverse:false}, {text:'Quando non mi sento capito/a mi chiudo o interrompo i rapporti.', reverse:false}, {text:'Mi è difficile restare nel presente: rimugino sul passato o sul futuro.', reverse:false}, {text:'Non so davvero cosa voglio o cosa mi rappresenta: ciò che sento di volere cambia spesso e in modo marcato.', reverse:false}, {text:'Mi capita di interrompere o non portare a termine attività o progetti perché temo di fallire o di non essere all’altezza.', reverse:false}, {text:'Quando mi sento annoiato o vuoto cerco subito qualcosa di intenso per riempire quel senso di mancanza.', reverse:false}, {text:'Mi vergogno di me stesso.', reverse:false}, {text:'Dopo aver mostrato emozioni o fragilità, mi sento in imbarazzo o temo di aver sbagliato.', reverse:false}];
 
+  // Scala frequenza
   const SCALE = [
     {value:1,label:'1',desc:'Non succede mai'},
     {value:2,label:'2',desc:'Raramente'},
@@ -206,6 +208,7 @@
     {value:5,label:'5',desc:'Quasi sempre'}
   ];
 
+  // Aree (mappa posizioni 1‑based)
   const AREAS = [
     { key:'A', title:'Vicinanza e paura del rifiuto', items:[1,11,12,17,21,22,25,29]},
     { key:'B', title:'Identità e continuità del Sé', items:[6,7,20,33,34,36]},
@@ -215,7 +218,7 @@
     { key:'F', title:'Rabbia, colpa e conflitti', items:[10,14,15,16,27,28,31,37]}
   ];
 
-  const STORAGE_KEY = 'q_er_values_obblig_finale_v6';
+  const STORAGE_KEY = 'q_er_values_finale_dl_v1';
 
   function validateEmail(email){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email); }
   const norm = (value, item) => item.reverse ? (6 - value) : value;
@@ -329,12 +332,13 @@
     try{
       const formBody = new URLSearchParams({ data: JSON.stringify(payload) }).toString();
       const res = await fetch(GAS_ENDPOINT, { method:'POST', headers:{ 'Content-Type':'application/x-www-form-urlencoded;charset=UTF-8' }, body: formBody });
-      let data={}; try{ data = await res.json(); }catch(_){}
-      if(!res.ok || (data.status && data.status!=='ok')) throw new Error((data && data.error) || 'Invio non riuscito.');
+      const rawText = await res.text();
+      let data={}; try{ data = JSON.parse(rawText); }catch(_){}
+      if(!res.ok || (data.status && data.status!=='ok')) throw new Error((data && data.error) || `Invio non riuscito (HTTP ${res.status}).`);
       msg.style.color = '#22c55e';
       msg.textContent = 'Riepilogo inviato. Controlla anche la cartella spam.';
     }catch(err){
-      console.error(err);
+      console.error('FETCH ERROR', err);
       msg.style.color = '#fca5a5';
       msg.textContent = 'Invio non riuscito. Verifica la Web App di Apps Script e riprova.';
     }
@@ -377,11 +381,25 @@
           scale.querySelectorAll('.opt').forEach(o=>o.classList.remove('selected'));
           label.classList.add('selected');
           updateProgress();
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(getValues()));
         });
       });
       card.append(scale);
       form.appendChild(card);
     });
+
+    // restore persisted values
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if(raw) {
+        const vals = JSON.parse(raw);
+        vals.forEach((v,i)=>{
+          if(v==null) return;
+          const input = form.querySelector(`input[name=q${i+1}][value="${v}"]`);
+          if(input) { input.checked = true; input.dispatchEvent(new Event('change')); }
+        });
+      }
+    } catch(_){}
   }
 
   document.getElementById('emailBtn')?.addEventListener('click', sendEmailResults);
@@ -389,6 +407,7 @@
     form.reset(); updateProgress();
     document.querySelectorAll('.card').forEach(c=>c.classList.remove('missing'));
     document.querySelectorAll('.opt').forEach(o=>o.classList.remove('selected'));
+    localStorage.removeItem(STORAGE_KEY);
   });
   document.getElementById('printBtn')?.addEventListener('click', ()=> window.print());
 

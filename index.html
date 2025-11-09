@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Questionario sul funzionamento borderline</title>
-  <meta name="description" content="Questionario sul funzionamento borderline: riflessione (ultimi 6 mesi) su emozioni, relazioni e identità. Esito via e-mail, non diagnostico." />
+  <meta name="description" content="Questionario sul funzionamento borderline: riflessione (ultime due settimane) su emozioni, relazioni e identità. Esito via e-mail, non diagnostico." />
   <style>
     :root{
       --bg:#0f172a;--panel:#0b1220;--muted:#94a3b8;--text:#e5e7eb;
@@ -68,7 +68,9 @@
     .notice{margin-top:10px;padding:12px 14px;border-radius:12px;border:1px solid var(--border);display:none}
     .notice.success{background:rgba(34,197,94,.08);color:#bbf7d0;border-color:rgba(34,197,94,.35)}
     .notice.error{background:rgba(244,63,94,.08);color:#fecaca;border-color:rgba(244,63,94,.35)}
-    .wa-icon{width:20px;height:20px;vertical-align:middle;margin-left:4px}
+    .wa-icon{width:22px;height:22px;margin-left:6px;vertical-align:middle;filter:brightness(1.15);transition:transform .2s ease;}
+    .footer .wa-icon{opacity:.85;filter:brightness(1)}
+    a:hover .wa-icon{transform:scale(1.1)}
     @media print{
       .progress,.actions{display:none!important}
       body{background:#fff;color:#111}
@@ -78,11 +80,10 @@
   </style>
 </head>
 <body>
-  <!-- Barra progresso -->
   <div class="progress" aria-hidden="true">
     <div class="stats container">
-      <div><strong>Questionario</strong> · 36 affermazioni · Scala 1–5</div>
-      <div id="counter" class="pct">0 / 36 risposte · 0%</div>
+      <div><strong>Questionario</strong> · 37 affermazioni · Scala 1–5 (frequenza)</div>
+      <div id="counter" class="pct">0 / 37 risposte · 0%</div>
     </div>
     <div class="bar-wrap" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-label="Avanzamento">
       <div class="bar" id="bar"></div>
@@ -93,8 +94,7 @@
     <section class="hero">
       <h1>Questionario sul funzionamento borderline</h1>
 
-      <!-- Intro -->
-      <p>Questo questionario si focalizza su <strong>sei aree</strong>:</p>
+      <p>Questo questionario si focalizza su <strong>sei aree</strong> del funzionamento emotivo e relazionale e si riferisce alla <strong>situazione attuale</strong>, cioè a come ti sei sentito o comportato <strong>nelle ultime due settimane</strong>:</p>
       <ul style="margin:0 0 10px 18px; padding:0; line-height:1.6">
         <li><strong>Vicinanza e paura del rifiuto</strong></li>
         <li><strong>Identità e continuità del Sé</strong></li>
@@ -104,13 +104,15 @@
         <li><strong>Rabbia, colpa e conflitti</strong></li>
       </ul>
 
-      <p>La compilazione richiede in media <strong>8–10 minuti</strong> e fa riferimento a come ci si è sentiti <span style="font-size:1.05em; font-weight:600; color:#a5f3fc;">negli ultimi sei mesi</span>.</p>
+      <p><strong>Rispondi pensando a quanto spesso</strong> ti accade ciascuna affermazione nelle <strong>ultime due settimane</strong>.</p>
+
+      <p>La compilazione richiede in media <strong>8–10 minuti</strong>.</p>
 
       <p>L’obiettivo non è formulare una diagnosi, ma <strong>individuare le aree su cui può essere utile lavorare in terapia</strong>, per migliorare la stabilità emotiva, la qualità dei legami e la consapevolezza di sé.</p>
-      <p>Al termine del questionario riceverai un <strong>riepilogo personalizzato</strong> con <strong>domande di riflessione mirate</strong>, costruite in base alle tue risposte.</p>
+      <p>Al termine del questionario riceverai un <strong>riepilogo personalizzato</strong> con una descrizione sintetica delle tue risposte e <strong>domande di riflessione mirate</strong>, costruite in base alle tue risposte, per aiutarti a riflettere in autonomia sulle aree più sensibili del tuo funzionamento attuale.</p>
 
       <div class="disclaimer" role="note">
-        <p>I risultati hanno valore esplorativo e riflessivo, non diagnostico. Le risposte, il nome e l’e-mail sono trattati in modo riservato e utilizzati esclusivamente per inviarti il riepilogo con le domande personalizzate.</p>
+        <p>I risultati hanno valore esplorativo e riflessivo, non diagnostico. Le risposte, il nome e l’e‑mail sono trattati in modo riservato e utilizzati esclusivamente per inviarti il riepilogo con le domande personalizzate.</p>
         <p>Se lo desideri, <strong>puoi discuterne in una prima seduta con il Dott. Leonardo Brazzoni</strong> · Psicologo ·
           <a href="https://leonardobrazzoni.com/" target="_blank" rel="noopener" style="color:#22d3ee">leonardobrazzoni.com</a> ·
           <a href="https://wa.me/393290757193" target="_blank" rel="noopener" aria-label="WhatsApp">
@@ -119,31 +121,34 @@
         </p>
       </div>
 
-      <!-- Email & consensi -->
       <div class="card" style="margin-top:14px">
-        <div class="q-title">Ricevi il riepilogo via e-mail</div>
+        <div class="q-title">Ricevi il riepilogo via e‑mail</div>
         <div style="display:grid; gap:10px">
-          <input id="nameInput" type="text" placeholder="Il tuo nome" aria-label="Nome" style="padding:10px;border-radius:10px;border:1px solid var(--border);background:#0a0f1a;color:var(--text)" />
-          <input id="emailInput" type="email" inputmode="email" autocomplete="email" placeholder="La tua e-mail" aria-describedby="emailHelp" style="padding:10px;border-radius:10px;border:1px solid var(--border);background:#0a0f1a;color:#e5e7eb" />
+          <input id="nameInput" type="text" placeholder="Il tuo nome" aria-label="Nome (obbligatorio)" style="padding:10px;border-radius:10px;border:1px solid var(--border);background:#0a0f1a;color:var(--text)" />
+          <input id="emailInput" type="email" inputmode="email" autocomplete="email" placeholder="La tua e‑mail" aria-describedby="emailHelp" aria-label="E‑mail (obbligatoria)" style="padding:10px;border-radius:10px;border:1px solid var(--border);background:#0a0f1a;color:#e5e7eb" />
           <small id="emailHelp" style="color:#94a3b8">Usati solo per inviarti il riepilogo e, se acconsenti, contenuti professionali.</small>
 
           <label style="color:#94a3b8; display:flex; gap:8px; align-items:flex-start">
-            <input id="consentResults" type="checkbox" style="margin-top:4px" />
-            <span>Acconsento a ricevere il <strong>riepilogo del questionario</strong> via e-mail.</span>
+            <input id="consentResults" type="checkbox" style="margin-top:4px" aria-required="true" />
+            <span>Acconsento a ricevere il <strong>riepilogo del questionario</strong> via e‑mail <em>(obbligatorio)</em>.</span>
           </label>
 
           <fieldset style="border:none; padding:0; margin:0; color:#94a3b8">
-            <legend style="font-size:0.95rem; color:#cbd5e1; margin-bottom:6px">Acconsenti a ricevere in futuro <strong>contenuti professionali</strong> (articoli, aggiornamenti)?</legend>
+            <legend style="font-size:0.95rem; color:#cbd5e1; margin-bottom:6px">Acconsenti a ricevere in futuro <strong>contenuti professionali</strong> (articoli, aggiornamenti)? <em>(obbligatorio)</em></legend>
             <div style="display:flex; gap:14px; align-items:center">
               <label style="display:flex; gap:6px; align-items:center">
-                <input type="radio" name="consentMarketing" value="yes" /> Sì
+                <input type="radio" name="consentMarketing" value="yes" aria-required="true" /> Sì
               </label>
               <label style="display:flex; gap:6px; align-items:center">
-                <input type="radio" name="consentMarketing" value="no" /> No
+                <input type="radio" name="consentMarketing" value="no" aria-required="true" /> No
               </label>
             </div>
-            <small style="display:block; margin-top:6px">Il consenso è facoltativo e revocabile in qualsiasi momento.</small>
           </fieldset>
+
+          <label style="color:#94a3b8; display:flex; gap:8px; align-items:flex-start">
+            <input id="isAdult" type="checkbox" style="margin-top:4px" aria-required="true" />
+            <span><strong>Dichiaro di avere almeno 18 anni</strong> e di compilare il questionario in modo volontario. <em>(obbligatorio)</em>.</span>
+          </label>
 
           <div id="msg" class="error" aria-live="polite" role="status"></div>
           <div id="toast" class="notice" aria-live="assertive"></div>
@@ -151,20 +156,21 @@
       </div>
 
       <div class="legend" aria-hidden="true">
-        <span class="pill">1 = Per niente vero</span>
-        <span class="pill">2 = Poco vero</span>
-        <span class="pill">3 = Abbastanza vero</span>
-        <span class="pill">4 = Molto vero</span>
-        <span class="pill">5 = Del tutto vero</span>
+        <span class="pill">1 = Non succede mai</span>
+        <span class="pill">2 = Raramente</span>
+        <span class="pill">3 = A volte</span>
+        <span class="pill">4 = Spesso</span>
+        <span class="pill">5 = Quasi sempre</span>
       </div>
     </section>
 
     <form id="form" novalidate></form>
 
     <section class="actions">
-      <button type="button" class="primary" id="emailBtn">Invia risultati via e-mail</button>
+      <button type="button" class="primary" id="emailBtn">Invia risultati via e‑mail</button>
       <button type="button" id="resetBtn">Azzera risposte</button>
       <button type="button" id="printBtn">Stampa / Salva PDF</button>
+      <small style="display:block; color:#94a3b8; margin-top:4px">Dopo l’invio riceverai il tuo riepilogo personale via e‑mail (controlla anche la cartella spam).</small>
     </section>
 
     <p class="footer">© <span id="year"></span> – <strong>Dott. Leonardo Brazzoni</strong> · Psicologo ·
@@ -172,7 +178,7 @@
       <a href="https://wa.me/393290757193" target="_blank" rel="noopener" aria-label="WhatsApp">
         <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="wa-icon" />
       </a>
-      <br><span style="color:#94a3b8">Questo questionario non invia dati a server se non per l’invio facoltativo via e-mail.</span>
+      <br><span style="color:#94a3b8">Questo questionario non invia dati a server se non per l’invio facoltativo via e‑mail.</span>
     </p>
   </main>
 
@@ -181,172 +187,84 @@
   const bar = document.getElementById('bar');
   const counter = document.getElementById('counter');
   const msg = document.getElementById('msg');
-  const toast = document.getElementById('toast');
   const year = document.getElementById('year');
   if (year) year.textContent = new Date().getFullYear();
 
-  // ENDPOINT APPS SCRIPT (tuo)
-  const GAS_ENDPOINT = 'https://script.google.com/macros/s/AKfycbz_-bqGtyxt7rG5kgKlHP5uwgFG9EzbYfNURqoj2xsWsdpUrANYRLAikJr3F_NyEgEmgA/exec';
+  const GAS_ENDPOINT = "https://script.google.com/macros/s/AKfycbz_-bqGtyxt7rG5kgKlHP5uwgFG9EzbYfNURqoj2xsWsdpUrANYRLAikJr3F_NyEgEmgA/exec";
 
-  // ==== ITEMS ORDINATI (36) ====
-  // Ordine mischiato con 6 positivi (reverse: true) distribuiti nel flusso
   const ITEMS = [
-    {text:"Ho paura che le persone importanti per me si allontanino o mi abbandonino.", reverse:false},         // 1 (A)
-    {text:"Passo dal sentirmi molto vicino a qualcuno al sentirmi improvvisamente distante o deluso.", reverse:false}, // 2 (A)
-    {text:"Non so bene chi sono o cosa voglio davvero.", reverse:false},                                        // 3 (B)
-    {text:"Agisco d’impulso senza pensare alle conseguenze (spese, cibo, sostanze, guida, sesso).", reverse:false}, // 4 (D)
-    {text:"Riesco a fermarmi un attimo prima di reagire quando qualcosa mi fa arrabbiare.", reverse:true},      // 5 (D) POS
-    {text:"Le mie emozioni cambiano rapidamente e sono molto intense.", reverse:false},                         // 6 (C)
-    {text:"Ho pensieri di farmi del male o metto in atto comportamenti autolesivi.", reverse:false},            // 7 (D)
-    {text:"Sento un senso di vuoto o di mancanza di significato nella mia vita.", reverse:false},               // 8 (B)
-    {text:"Anche quando cambio idea o umore, so chi sono e cosa voglio davvero.", reverse:true},                // 9 (B) POS
-    {text:"Provo rabbia intensa e faccio fatica a controllarla.", reverse:false},                               // 10 (C)
-    {text:"Quando sono stressato/a mi sento distaccato/a da me stesso/a o dalla realtà.", reverse:false},       // 11 (E)
-    {text:"Sotto stress riesco comunque a restare lucido e concentrato su quello che sto facendo.", reverse:true}, // 12 (E) POS
-    {text:"Penso che gli altri mi giudichino o ce l’abbiano con me anche senza certezze.", reverse:false},      // 13 (F)
-    {text:"Oscillo tra desiderio di vicinanza e bisogno improvviso di allontanarmi.", reverse:false},           // 14 (A)
-    {text:"Di solito riesco a sentirmi tranquillo anche se una persona importante non si fa sentire per un po’.", reverse:true}, // 15 (A) POS
-    {text:"Dopo un conflitto rischio di fare qualcosa che mi danneggia o peggiora la situazione.", reverse:false}, // 16 (D)
-    {text:"In mezzo agli altri mi perdo in pensieri come “mi giudicano” o “mi rifiuteranno”.", reverse:false},  // 17 (F)
-    {text:"Durante una discussione riesco a esprimere cosa penso senza perdere il controllo.", reverse:true},    // 18 (F) POS
-    {text:"Passo facilmente dall’idealizzare una persona al sentirla molto deludente.", reverse:false}, // 19 (F)
-    {text:"Controllo messaggi, social o spostamenti degli altri per ridurre ansia o gelosia.", reverse:false},  // 20 (A)
-    {text:"Provo vergogna o mi sento inadeguato/a in modo rapido e intenso.", reverse:false},                   // 21 (C)
-    {text:"Quando provo emozioni forti, riesco a capire cosa sto sentendo.", reverse:true},                     // 22 (C) POS
-    {text:"Il modo in cui mi vedo o ciò che voglio cambia facilmente a seconda del contesto.", reverse:false},  // 23 (B)
-    {text:"Dopo momenti di vicinanza temo di essere stato/a “troppo” o di aver dato fastidio.", reverse:false}, // 24 (A)
-    {text:"Se qualcuno non risponde o si allontana entro in allarme (paura, rabbia, gelosia).", reverse:false}, // 25 (A)
-    {text:"Uso cibo, sostanze o attività per spegnere emozioni che mi sembrano insopportabili.", reverse:false}, // 26 (C)
-    {text:"Dopo periodi di forte autocontrollo finisco per perderlo all’improvviso.", reverse:false},           // 27 (C)
-    {text:"Metto alla prova la relazione per capire se l’altra persona ci tiene davvero a me.", reverse:false}, // 28 (A)
-    {text:"Dopo forte stress ho ricordi confusi o vuoti di memoria.", reverse:false},                           // 29 (E)
-    {text:"Durante i litigi alzo il tono o divento improvvisamente freddo/a e distante.", reverse:false},      // 30 (F)
-    {text:"Mi è difficile trovare equilibrio tra farmi rispettare e andare incontro agli altri.", reverse:false}, // 31 (F)
-    {text:"Piccoli segnali (uno sguardo, un ritardo) cambiano drasticamente come mi sento.", reverse:false},    // 32 (A)
-    {text:"Dopo una crisi o una lite provo molta colpa o paura di aver rovinato tutto.", reverse:false},        // 33 (F)
-    {text:"Quando non mi sento capito/a mi chiudo o interrompo i rapporti.", reverse:false},                    // 34 (F)
-    {text:"Mi è difficile restare nel presente: rimugino sul passato o sul futuro.", reverse:false},            // 35 (E)
-    {text:"Mi sento una persona diversa a seconda dell’emozione che provo.", reverse:false}                     // 36 (B)
+    {text:'Passo rapidamente dal desiderare molta vicinanza al prendere le distanze nella stessa relazione.',reverse:false},
+    {text:'Quando provo rabbia, dolore o vuoto, tendo a cercare sensazioni piacevoli e immediate per non sentire il disagio (per es.: cibo, acquisti, messaggi, sesso, altri comportamenti impulsivi).',reverse:false},
+    {text:'Riesco a fermarmi un attimo prima di reagire quando qualcosa mi fa arrabbiare.',reverse:true},
+    {text:'Le mie emozioni cambiano rapidamente e sono molto intense.',reverse:false},
+    {text:'Ho pensieri di farmi del male o metto in atto comportamenti autolesivi.',reverse:false},
+    {text:'Sento un senso di vuoto o di mancanza di significato nella mia vita.',reverse:false},
+    {text:'Anche quando cambio idea o umore, so chi sono e cosa voglio davvero.',reverse:true},
+    {text:'Quando sono stressato/a mi sento distaccato/a da me stesso/a o dalla realtà.',reverse:false},
+    {text:'Sotto stress riesco comunque a restare lucido e concentrato su quello che sto facendo.',reverse:true},
+    {text:'Mi capita di interpretare segnali ambigui (silenzio, tono, sguardi) come se gli altri mi stessero giudicando o ce l’avessero con me.',reverse:false},
+    {text:'Oscillo tra desiderio di vicinanza e bisogno improvviso di allontanarmi.',reverse:false},
+    {text:'Riesco a rimanere sereno se una persona importante non si fa sentire per un po’, senza pensare subito al rifiuto.',reverse:true},
+    {text:'Dopo un conflitto rischio di fare qualcosa che mi danneggia o peggiora la situazione.',reverse:false},
+    {text:'In mezzo agli altri mi perdo in pensieri come “mi giudicano” o “mi rifiuteranno”.',reverse:false},
+    {text:'Durante una discussione riesco a esprimere cosa penso senza perdere il controllo.',reverse:true},
+    {text:'Posso passare rapidamente dal sentirmi molto legato a qualcuno al provare rabbia o delusione verso quella stessa persona.',reverse:false},
+    {text:'Controllo messaggi, social o spostamenti degli altri per ridurre ansia o gelosia.',reverse:false},
+    {text:'Provo vergogna o mi sento inadeguato/a in modo rapido e intenso.',reverse:false},
+    {text:'Quando provo emozioni forti, riesco a capire cosa sto sentendo.',reverse:true},
+    {text:'Mi accorgo che il modo in cui mi vedo cambia molto a seconda delle persone o delle situazioni, e questo a volte mi fa sentire confuso o a disagio.',reverse:false},
+    {text:'Dopo momenti di vicinanza temo di essere stato/a “troppo” o di aver dato fastidio.',reverse:false},
+    {text:'Se qualcuno non risponde o si allontana entro in allarme (paura, rabbia, gelosia).',reverse:false},
+    {text:'Uso cibo, sostanze o attività per spegnere emozioni che mi sembrano insopportabili.',reverse:false},
+    {text:'Dopo periodi di forte autocontrollo finisco per perderlo all’improvviso.',reverse:false},
+    {text:'Metto alla prova la relazione per capire se l’altra persona ci tiene davvero a me.',reverse:false},
+    {text:'Dopo forte stress ho ricordi confusi o vuoti di memoria.',reverse:false},
+    {text:'Durante i litigi alzo il tono o divento improvvisamente freddo/a e distante.',reverse:false},
+    {text:'Mi è difficile trovare equilibrio tra farmi rispettare e andare incontro agli altri.',reverse:false},
+    {text:'Piccoli cambiamenti nel comportamento degli altri (un tono diverso, un messaggio mancato) influenzano molto come mi sento verso di loro.',reverse:false},
+    {text:'Dopo una crisi o una lite provo molta colpa o paura di aver rovinato tutto.',reverse:false},
+    {text:'Quando non mi sento capito/a mi chiudo o interrompo i rapporti.',reverse:false},
+    {text:'Mi è difficile restare nel presente: rimugino sul passato o sul futuro.',reverse:false},
+    {text:'Non so davvero cosa voglio o cosa mi rappresenta: ciò che sento di volere cambia spesso e in modo marcato.',reverse:false},
+    {text:'Mi capita di interrompere o non portare a termine attività o progetti perché temo di fallire o di non essere all’altezza.',reverse:false},
+    {text:'Quando mi sento annoiato o vuoto cerco subito qualcosa di intenso per riempire quel senso di mancanza.',reverse:false},
+    {text:'Mi vergogno di me stesso.',reverse:false},
+    {text:'Dopo aver mostrato emozioni o fragilità, mi sento in imbarazzo o temo di aver sbagliato.',reverse:false}
   ];
 
-  const SCALE = [
-    {value:1,label:'1',desc:'Per niente vero'},
-    {value:2,label:'2',desc:'Poco vero'},
-    {value:3,label:'3',desc:'Abbastanza vero'},
-    {value:4,label:'4',desc:'Molto vero'},
-    {value:5,label:'5',desc:'Del tutto vero'}
-  ];
-
-  // Nuova mappatura AREE (posizioni nell'ordine attuale)
   const AREAS = [
-    { key:'A', title:'Vicinanza e paura del rifiuto', items:[1,2,14,15,20,24,25,28,32]},
-    { key:'B', title:'Identità e continuità del Sé', items:[3,8,9,23,36]},
-    { key:'C', title:'Regolazione emotiva', items:[6,10,21,22,26,33]},
-    { key:'D', title:'Reattività e impulsività', items:[4,5,7,16,27]},
-    { key:'E', title:'Presenza e gestione dello stress', items:[11,12,29,35]},
-    { key:'F', title:'Rabbia, colpa e conflitti', items:[13,17,18,19,30,31,34]}
+    { key:'A', title:'Vicinanza e paura del rifiuto', items:[1,11,12,17,21,22,25,29]},
+    { key:'B', title:'Identità e continuità del Sé', items:[6,7,20,33,34,36]},
+    { key:'C', title:'Regolazione emotiva', items:[4,18,19,23,30,35]},
+    { key:'D', title:'Reattività e impulsività', items:[2,3,5,13,24]},
+    { key:'E', title:'Presenza e gestione dello stress', items:[8,9,26,32]},
+    { key:'F', title:'Rabbia, colpa e conflitti', items:[10,14,15,16,27,28,31,37]}
   ];
 
-  // Testi LEVEL come prima
   const LEVEL = {
     A:{low:{desc:'Ti senti generalmente sicuro nei legami e riesci a vivere la vicinanza con fiducia. Quando l’altro prende le distanze o resta in silenzio, non lo interpreti come un segnale di rifiuto ma come parte normale della relazione.',qs:['Cosa ti aiuta a sentirti sereno anche quando l’altro è più distante?','In che modo riesci a mantenere fiducia nelle relazioni, anche nei momenti di incertezza?','Quali segnali ti fanno capire che un legame è solido, anche senza conferme continue?']},mid:{desc:'Temi di essere rifiutato o lasciato e questo può portare insicurezza nella relazione. Alcuni comportamenti dell’altro (tono, disponibilità) possono metterti in allarme, ma con il tempo ritrovi calma e fiducia.',qs:['In quali situazioni inizi a dubitare della relazione o del legame?','Cosa accade dentro di te quando percepisci freddezza o distanza?','Cosa ti aiuta a ritrovare calma prima di trarre conclusioni sull’altro?']},high:{desc:'La paura di perdere l’altro o di non essere voluto può diventare molto intensa. Anche piccoli segnali generano forte preoccupazione o ansia e rendono difficile sentirti stabile nella relazione.',qs:['Quando temi che qualcuno si allontani, cosa accade nei tuoi pensieri e nel corpo?','Quali azioni o parole dell’altro amplificano maggiormente la tua paura?','Cosa puoi fare per gestire i momenti in cui temi che qualcuno a cui tieni si allontani?']}},
     B:{low:{desc:'Hai un’immagine di te chiara e stabile. Sai cosa ti rappresenta e prendi decisioni coerenti con i tuoi valori, anche quando l’ambiente cambia.',qs:['Quali aspetti di te rimangono stabili anche quando le situazioni cambiano?','In che modo restare coerente con ciò che pensi e senti ti aiuta nelle relazioni?','Come ti accorgi di essere fedele a ciò che per te è importante?']},mid:{desc:'A tratti la percezione di te varia in base a chi hai accanto o alle situazioni. Puoi perdere per un po’ chiarezza su cosa vuoi, ma la ritrovi superata la tensione.',qs:['In quali momenti ti senti incerto su chi sei o su cosa vuoi?','Cosa succede quando cambi idea su te stesso in base a chi hai accanto?','Cosa ti aiuta a ritrovare chiarezza quando ti senti confuso?']},high:{desc:'Ti senti diverso a seconda delle persone o delle circostanze. Le emozioni del momento influenzano molto il modo in cui ti percepisci, con confusione su chi sei o cosa desideri.',qs:['Quali situazioni ti fanno sentire più facilmente “diverso” o distante da te stesso?','Cosa accade quando perdi contatto con ciò che ti rappresenta?','Cosa ti aiuta a ritrovare una sensazione di continuità e direzione personale?']}},
     C:{low:{desc:'Riconosci le emozioni e le gestisci senza che prendano il sopravvento. Anche nei momenti difficili mantieni lucidità e ritrovi calma in tempi brevi.',qs:['Cosa ti aiuta a restare calmo anche quando vivi emozioni forti?','Quali strategie usi per ritrovare equilibrio dopo un momento di stress?','Come ti accorgi che stai gestendo bene una situazione emotivamente intensa?']},mid:{desc:'Le emozioni talvolta diventano intense o cambiano rapidamente, soprattutto sotto stress. Anche se ti serve tempo, poi ritrovi equilibrio e controllo.',qs:['Quali emozioni tendono a farti perdere più facilmente il controllo?','Cosa accade nel corpo o nei pensieri quando ti senti sopraffatto?','Cosa ti aiuta a ritrovare calma senza dover allontanarti o reagire subito?']},high:{desc:'Le emozioni possono essere molto forti e difficili da contenere. Quando arrivano, influenzano scelte e rapporti, lasciandoti spesso stanco o sopraffatto.',qs:['Quali situazioni attivano più facilmente reazioni emotive forti?','Cosa succede dopo che hai espresso un’emozione in modo intenso?','Cosa può aiutarti a gestire la fase immediatamente successiva allo “scatto” emotivo?']}},
-    D:{low:{desc:'Riesci a fermarti un momento prima di reagire. Valuti ciò che provi e scegli come rispondere in modo consapevole, anche sotto pressione.',qs:['Cosa ti aiuta a fermarti prima di reagire d’istinto?','In quali situazioni riesci meglio a scegliere con calma invece di agire subito?','Come puoi applicare questa capacità anche in contesti più difficili?']},mid:{desc:'Talvolta agisci d’impulso per ridurre la tensione o evitare di pensare troppo. Dopo ti accorgi che la decisione era affrettata, ma impari dall’esperienza.',qs:['In quali momenti senti l’urgenza di reagire o di “fare qualcosa” subito?','Cosa ottieni nell’immediato quando agisci d’impulso e cosa accade dopo?','Cosa ti aiuterebbe a concederti qualche secondo in più prima di reagire?']},high:{desc:'Nei momenti di stress o vuoto senti il bisogno di agire subito per calmarti o distrarti. Porta sollievo temporaneo ma spesso lascia colpa o insoddisfazione.',qs:['Cosa senti nel corpo o nei pensieri poco prima di agire impulsivamente?','Quale bisogno cerchi di soddisfare con l’azione immediata?','Cosa potresti fare per ridurre la tensione senza dover agire subito?']}},
+    D:{low:{desc:'Riesci a fermarti un momento prima di reagire. Valuti ciò che provi e scegli come rispondere in modo consapevole, anche sotto pressione.',qs:['Cosa ti aiuta a fermarti prima di reagire d’istinto?','In quali situazioni riesci meglio a scegliere con calma invece di agire subito?','Come puoi applicare questa capacità anche in contesti più difficili?']},mid:{desc:'Talvolta agisci d’impulso per ridurre la tensione o evitare di pensare troppo. Dopo ti accorgi che la decisione era affrettata, ma impari dall’esperienza.',qs:['In quali momenti senti l’urgenza di reagire o di “fare qualcosa” subito?','Cosa ottieni nell’immediato quando agisci d’impulso e cosa accade dopo?','Cosa ti aiuterebbe a concederti qualche secondo in più prima di reagire?']},high:{desc:'Nei momenti di stress o vuoto senti il bisogno di agire subito per calmarti o distrarti. Porta sollievo temporaneo ma spesso lascia colpa o insoddisfazione.',qs:['Cosa senti nel corpo o nei pensieri subito prima di agire d’impulso?','Dopo aver agito, cosa rimane — sollievo, colpa, vuoto?','Cosa potresti provare a fare per allentare la tensione prima di passare all’azione?']}},
     E:{low:{desc:'Sotto pressione resti concentrato e connesso a ciò che vivi. Mantieni lucidità e sai gestire la tensione senza perderti.',qs:['Cosa ti aiuta a restare concentrato anche nei momenti impegnativi?','Come riconosci che stai gestendo bene lo stress?','Quali strategie vuoi mantenere o potenziare per restare presente nel momento?']},mid:{desc:'Quando lo stress aumenta puoi sentirti disorientato o meno presente, ma riesci a riprendere il controllo e rimetterti in carreggiata.',qs:['Cosa accade dentro di te quando inizi a sentirti “spento” o disconnesso?','In che modo recuperi lucidità e presenza?','Quali situazioni mettono più alla prova la tua capacità di restare centrato?']},high:{desc:'Sotto forte stress puoi sentirti distaccato da te stesso o dalla realtà, come “fuori scena”. Questo rende difficile restare concentrato o capire pienamente cosa provi.',qs:['In quali contesti ti capita di sentirti distante da ciò che stai vivendo?','Cosa succede poco prima che tu perda il senso di presenza?','Cosa può aiutarti a ritrovare contatto con te stesso e con la realtà in quei momenti?']}},
-    F:{low:{desc:'Gestisci i conflitti in modo costruttivo. Sai esprimere la rabbia senza ferire e, dopo un confronto, riesci a chiarire e ristabilire il dialogo.',qs:['Cosa ti aiuta a mantenere calma durante un confronto?','Come fai capire il tuo punto senza creare tensione?','Quali segnali ti dicono che la discussione sta diventando costruttiva?']},mid:{desc:'A volte la rabbia arriva rapida e difficile da controllare. Dopo il confronto puoi sentirti stanco o in colpa, ma poi ritrovi equilibrio e comunicazione.',qs:['In quali situazioni la rabbia cresce più rapidamente?','Cosa succede quando provi a trattenerti o a chiuderti?','Dopo un conflitto, cosa ti aiuta a ripristinare il dialogo?']},high:{desc:'La rabbia tende a esplodere facilmente e spesso si accompagna a colpa, vergogna o paura di perdere l’altro. Le oscillazioni creano cicli di tensione e riavvicinamento.',qs:['Quando la rabbia esplode, cosa stai cercando di ottenere o evitare?','Cosa accade dentro di te dopo un momento di rabbia intensa?','Cosa può aiutarti a ristabilire calma e chiarezza dopo lo scontro?']}},
+    F:{low:{desc:'Gestisci i conflitti in modo costruttivo. Sai esprimere la rabbia senza ferire e, dopo un confronto, riesci a chiarire e ristabilire il dialogo.',qs:['Cosa ti aiuta a mantenere calma durante un confronto?','Come fai capire il tuo punto senza creare tensione?','Quali segnali ti dicono che la discussione sta diventando costruttiva?']},mid:{desc:'A volte la rabbia arriva rapida e difficile da controllare. Dopo il confronto puoi sentirti stanco o in colpa, ma poi ritrovi equilibrio e comunicazione.',qs:['In quali situazioni la rabbia cresce più rapidamente?','Cosa succede quando provi a trattenerti o a chiuderti?','Dopo un conflitto, cosa ti aiuta a ripristinare il dialogo?']},high:{desc:'La rabbia tende a esplodere facilmente e spesso si accompagna a colpa, vergogna o paura di perdere l’altro. Le oscillazioni creano cicli di tensione e riavvicinamento.',qs:['Cosa accade dentro di te nei momenti in cui la rabbia esplode e senti di non riuscire a fermarti?','Come ti senti subito dopo, quando l’intensità cala o l’altra persona si allontana?','Cosa potrebbe aiutarti, anche solo per pochi secondi, a riconoscere i segnali che precedono l’esplosione?']}},
   };
 
-  const STORAGE_KEY = 'q_er_values_v5';
-
-  function showToast(text, type='success'){
-    toast.textContent = text;
-    toast.className = 'notice ' + (type==='error'?'error':'success');
-    toast.style.display = 'block';
-    setTimeout(()=>{ toast.style.display='none'; }, 5000);
-  }
-
+  function validateEmail(email){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email); }
   const norm = (value, item) => item.reverse ? (6 - value) : value;
-
   function avg(a){ return a.reduce((x,y)=>x+y,0)/a.length; }
-  function band(m){
-    if(m<=2) return {key:'low', label:'basso'};
-    if(m<=3.5) return {key:'mid', label:'medio'};
-    return {key:'high', label:'alto'};
-  }
+  function band(m){ if(m<=2) return {key:'low', label:'basso'}; if(m<=3.5) return {key:'mid', label:'medio'}; return {key:'high', label:'alto'}; }
 
-  function getValues(){
-    const values = [];
-    for(let i=1;i<=ITEMS.length;i++){
-      const sel = form.querySelector(`input[name=q${i}]:checked`);
-      values.push(sel ? Number(sel.value) : null);
-    }
-    return values;
-  }
+  function getValues(){ const values=[]; for(let i=1;i<=ITEMS.length;i++){ const sel=form.querySelector(`input[name=q${i}]:checked`); values.push(sel?Number(sel.value):null);} return values; }
 
-  function setValues(values){
-    values.forEach((v,i)=>{
-      if(v==null) return;
-      const input = form.querySelector(`input[name=q${i+1}][value="${v}"]`);
-      if(input){ input.checked = true; input.dispatchEvent(new Event('change')); }
-    });
-  }
+  function updateProgress(){ const vals=getValues(); const done=vals.filter(v=>v!==null).length; const pct=Math.round((done/ITEMS.length)*100); if(bar){bar.style.width=pct+'%'; bar.parentElement.setAttribute('aria-valuenow', String(pct));} if(counter) counter.textContent = `${done} / ${ITEMS.length} risposte · ${pct}%`; }
 
-  function updateProgress(){
-    const vals = getValues();
-    const done = vals.filter(v=>v!==null).length;
-    const pct = Math.round((done/ITEMS.length)*100);
-    if (bar) {
-      bar.style.width = pct + '%';
-      bar.parentElement.setAttribute('aria-valuenow', String(pct));
-    }
-    if (counter) counter.textContent = `${done} / ${ITEMS.length} risposte · ${pct}%`;
-  }
-
-  
-  function computeAreaBlocks(vals){
-    return AREAS.map(ar=>{
-      const picked = ar.items.map(i=> { const v=vals[i-1]; return v==null ? null : norm(v, ITEMS[i-1]); }).filter(v=>v!=null);
-      const m = avg(picked);
-      const b = band(m);
-      const L = LEVEL[ar.key][b.key];
-      let block = `▶ ${ar.title} — livello: ${b.label.toUpperCase()} (media ${m.toFixed(2)}/5)
-`;
-      if(L && L.desc){ block += L.desc + '
-'; }
-      if(L && Array.isArray(L.qs) && L.qs.length){
-        block += 'Domande per riflettere:
-';
-        L.qs.forEach(q=> block += `• ${q}
-`);
-      }
-      return block + '
-';
-    }).join('');
-  }
-).filter(v=>v!=null);
-      const m = avg(picked);
-      const b = band(m);
-      const L = LEVEL[ar.key][b.key];
-      let block = `▶ ${ar.title} — livello: ${b.label.toUpperCase()} (media ${m.toFixed(2)}/5)\n${L.desc}\n`;
-      if(L.qs && L.qs.length){
-        block += 'Domande per riflettere:\n';
-        L.qs.forEach(q=> block += `• ${q}\n`);
-      }
-      return block + '\n';
-    }).join('');
-  }
-
-  
   function buildEmailHtml() {
     const vals = getValues();
     const miss = vals.filter(v=>v==null).length;
     if(miss){ throw new Error(`Per ricevere i risultati devi rispondere a tutte le domande. Mancano ${miss} risposta/e.`); }
     const name = document.getElementById('nameInput')?.value?.trim() || '';
-    const consentMarketing = (document.querySelector('input[name=consentMarketing]:checked')?.value === 'yes');
-    const isAdult = document.getElementById('isAdult')?.checked;
 
-    // Build sections per area with level colors
     const levelColor = (b)=> b.key==='low' ? '#16a34a' : (b.key==='mid' ? '#f59e0b' : '#e11d48');
     const areaBlocks = AREAS.map(ar=>{
       const picked = ar.items.map(i=> { const v=vals[i-1]; return v==null ? null : norm(v, ITEMS[i-1]); }).filter(v=>v!=null);
@@ -395,14 +313,12 @@
     text += 'Periodo di riferimento: **ultime due settimane**\n';
     text += 'Esito non diagnostico: analisi sintetica per aree utile a orientare il lavoro terapeutico.\n\n';
 
-    // Breve elenco aree con livello
     text += AREAS.map(ar=>{
       const picked = ar.items.map(i=> { const v=vals[i-1]; return v==null ? null : norm(v, ITEMS[i-1]); }).filter(v=>v!=null);
       const m = avg(picked); const b = band(m);
       return `▶ ${ar.title} — livello: ${b.label.toUpperCase()} (media ${m.toFixed(2)}/5)`;
     }).join('\n') + '\n\n';
 
-    // Riepilogo risposte
     text += 'Riepilogo risposte (1–5) per ogni item:\n';
     vals.forEach((v,i)=>{ text += `${i+1}. ${ITEMS[i].text} — ${v}/5\n`; });
     text += '\nConsenso a contenuti futuri: ' + (consentMarketing ? 'SÌ' : 'NO') + '\n';
@@ -411,45 +327,8 @@
     text += '\n—\nSe lo desideri, puoi discuterne in una prima seduta con il Dott. Leonardo Brazzoni.\n';
     return text;
   }
-    const name = document.getElementById('nameInput')?.value?.trim() || '';
-    const email = document.getElementById('emailInput')?.value?.trim() || '';
-    const consentMarketing = (document.querySelector('input[name=consentMarketing]:checked')?.value === 'yes');
 
-    const saluto = name ? `Ciao ${name},` : 'Ciao,';
-    const intro = `${saluto}\n\ngrazie per aver completato il questionario sul funzionamento borderline.\n` +
-      `Qui sotto trovi il tuo riepilogo personale, con una descrizione delle aree principali e alcune domande di riflessione ` +
-      `per aiutarti a comprendere meglio i tuoi schemi relazionali ed emotivi.\n\n` +
-      `Ti invito a leggerlo con calma: non si tratta di un risultato “giusto” o “sbagliato”, ma di un punto di partenza ` +
-      `per capire dove potresti lavorare su te stesso.\n\n` +
-      `Se lo desideri, possiamo approfondire insieme queste aree in una prima seduta di confronto.\n\n` +
-      `Un caro saluto,\n` +
-      `Dott. Leonardo Brazzoni\n` +
-      `Psicologo – www.leonardobrazzoni.com\n` +
-      `WhatsApp: https://wa.me/393290757193\n\n` +
-      `───────────────────────────────\n`;
-
-    let text = '';
-    text += 'Questionario sul funzionamento borderline\n';
-    text += 'Periodo di riferimento: ultimi 6 mesi\n';
-    text += 'Esito non diagnostico: analisi sintetica per aree utile a orientare il lavoro terapeutico.\n\n';
-    text += computeAreaBlocks(vals);
-
-    // riepilogo item-per-item (mostro il punteggio dato dall'utente, senza inversione)
-    text += 'Riepilogo risposte (1–5) per ogni item:\n';
-    vals.forEach((v,i)=>{ text += `${i+1}. ${ITEMS[i].text} — ${v}/5\n`; });
-    text += '\nConsenso a contenuti futuri: ' + (consentMarketing ? 'SÌ' : 'NO') + '\n';
-    if(email) text += 'E-mail fornita: ' + email + '\n';
-
-    text += '\n—\nSe lo desideri, puoi discuterne in una prima seduta con il Dott. Leonardo Brazzoni.\n';
-
-    return intro + text;
-  }
-
-  function validateEmail(email){
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-  }
-
-  function markMissing(){
+  function validateAllSelected(){
     const vals = getValues();
     let firstMissingCard = null;
     vals.forEach((v, i)=>{
@@ -457,13 +336,11 @@
       if(v==null){
         card.classList.add('missing');
         if(!firstMissingCard) firstMissingCard = card;
-      }else{
+      } else {
         card.classList.remove('missing');
       }
     });
-    if(firstMissingCard){
-      firstMissingCard.scrollIntoView({behavior:'smooth', block:'center'});
-    }
+    if(firstMissingCard) firstMissingCard.scrollIntoView({behavior:'smooth', block:'center'});
     return vals.filter(v=>v==null).length;
   }
 
@@ -472,18 +349,19 @@
     const name = document.getElementById('nameInput')?.value?.trim();
     const email = document.getElementById('emailInput')?.value?.trim();
     const consentResults = document.getElementById('consentResults')?.checked;
-    const consentMarketing = (document.querySelector('input[name=consentMarketing]:checked')?.value === 'yes');
+    const consentMarketingSelected = document.querySelector('input[name=consentMarketing]:checked');
+    const consentMarketing = (consentMarketingSelected?.value === 'yes');
+    const isAdult = document.getElementById('isAdult')?.checked;
 
-    const missing = markMissing();
+    const missing = validateAllSelected();
     if(missing){ msg.textContent = `Compila tutte le domande: mancano ${missing} risposta/e.`; return; }
 
     if(!name){ msg.textContent='Inserisci il tuo nome.'; return; }
-    if(!email){ msg.textContent='Inserisci la tua e-mail.'; return; }
-    if(!validateEmail(email)){ msg.textContent='Inserisci un indirizzo e-mail valido.'; return; }
+    if(!email){ msg.textContent='Inserisci la tua e‑mail.'; return; }
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){ msg.textContent='Inserisci un indirizzo e‑mail valido.'; return; }
     if(!consentResults){ msg.textContent='Spunta il consenso per l’invio del riepilogo.'; return; }
-
-    let message='';
-    try{ message = buildEmailSummary(); }catch(e){ msg.textContent = e.message; return; }
+    if(!consentMarketingSelected){ msg.textContent='Seleziona Sì o No per i contenuti futuri.'; return; }
+    if(!isAdult){ msg.textContent='Per continuare, conferma di essere maggiorenne (≥18 anni).'; return; }
 
     const payload = {
       to: email,
@@ -503,58 +381,51 @@
     };
 
     try{
-      const res = await fetch(GAS_ENDPOINT, { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload) });
-      let data={}; try{ data = await res.json(); }catch(_){ }
-      if(!res.ok || (data.status && data.status!=='ok')) throw new Error((data && data.error) || 'Invio non riuscito.');
+      const formBody = new URLSearchParams({ data: JSON.stringify(payload) }).toString();
+      const res = await fetch(GAS_ENDPOINT, { method:'POST', headers:{ 'Content-Type':'application/x-www-form-urlencoded;charset=UTF-8' }, body: formBody });
+      const rawText = await res.text();
+      let data={}; try{ data = JSON.parse(rawText); }catch(_){}
+
+      if(!res.ok || (data.status && data.status!=='ok')) {
+        console.error('RES STATUS', res.status, 'RAW', rawText);
+        throw new Error((data && data.error) || 'Invio non riuscito.');
+      }
       msg.style.color = '#22c55e';
       msg.textContent = 'Riepilogo inviato. Controlla anche la cartella spam.';
-      showToast('Riepilogo inviato. Controlla anche la cartella spam.', 'success');
     }catch(err){
-      console.error(err);
+      console.error('FETCH ERROR', err);
       msg.style.color = '#fca5a5';
       msg.textContent = 'Invio non riuscito. Verifica la Web App di Apps Script e riprova.';
-      showToast('Invio non riuscito. Verifica la Web App di Apps Script e riprova.', 'error');
     }
   }
 
-  function persist(){ localStorage.setItem(STORAGE_KEY, JSON.stringify(getValues())); }
-  function restore(){
-    const raw = localStorage.getItem(STORAGE_KEY);
-    if(!raw) return;
-    try{
-      const vals = JSON.parse(raw);
-      if(Array.isArray(vals) && vals.length===ITEMS.length){ setValues(vals); }
-    }catch(_){ }
-  }
-
   function render(){
+    const SCALE_OPT = ['Non succede mai','Raramente','A volte','Spesso','Quasi sempre'];
     ITEMS.forEach((item, idx)=>{
       const card = document.createElement('fieldset');
       card.className = 'card';
       card.setAttribute('data-q', idx+1);
       const legend = document.createElement('legend');
       legend.className = 'q-title';
-      legend.textContent = `${idx+1}. ${item.text}`; // niente etichetta "(positivo)"
+      legend.textContent = `${idx+1}. ${item.text}`;
       card.appendChild(legend);
 
       const scale = document.createElement('div');
       scale.className = 'scale';
-      SCALE.forEach(opt=>{
+      [1,2,3,4,5].forEach(v=>{
         const label = document.createElement('label');
         label.className = 'opt';
-        label.setAttribute('for', `q${idx+1}_${opt.value}`);
         const input = document.createElement('input');
         input.type = 'radio';
         input.name = `q${idx+1}`;
-        input.id = `q${idx+1}_${opt.value}`;
-        input.value = opt.value;
-        input.setAttribute('aria-label', `${opt.value} - ${opt.desc}`);
+        input.value = String(v);
+        input.setAttribute('aria-label', `${v} - ${SCALE_OPT[v-1]}`);
         const num = document.createElement('div');
         num.className = 'num';
-        num.textContent = opt.label;
+        num.textContent = String(v);
         const desc = document.createElement('div');
         desc.className = 'desc';
-        desc.textContent = opt.desc;
+        desc.textContent = SCALE_OPT[v-1];
         label.appendChild(input);
         label.appendChild(num);
         label.appendChild(desc);
@@ -565,7 +436,6 @@
           scale.querySelectorAll('.opt').forEach(o=>o.classList.remove('selected'));
           label.classList.add('selected');
           updateProgress();
-          persist();
         });
       });
       card.append(scale);
@@ -578,13 +448,10 @@
     form.reset(); updateProgress();
     document.querySelectorAll('.card').forEach(c=>c.classList.remove('missing'));
     document.querySelectorAll('.opt').forEach(o=>o.classList.remove('selected'));
-    localStorage.removeItem(STORAGE_KEY);
-    showToast('Risposte azzerate.', 'success');
   });
   document.getElementById('printBtn')?.addEventListener('click', ()=> window.print());
 
   render();
-  restore();
   updateProgress();
   </script>
 </body>

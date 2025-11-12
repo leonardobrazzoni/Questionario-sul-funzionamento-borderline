@@ -28,14 +28,10 @@
     }
     h1{font-size:clamp(1.55rem,1rem + 2.2vw,2.4rem);margin:0 0 10px}
     p{margin:0 0 10px}
-    .disclaimer{
-      font-size:.95rem;color:var(--muted);background:#0a0f1a;border:1px solid var(--border);
-      padding:12px 14px;border-radius:12px;margin-top:6px
-    }
-    .legend{display:flex;gap:10px;flex-wrap:wrap;margin:12px 0 0}
-    .pill{border:1px solid var(--border);padding:6px 10px;border-radius:999px;color:var(--muted);background:#0a0f1a;font-size:.9rem}
     .progress{
-      position:sticky;top:0;z-index:20;background:linear-gradient(180deg,rgba(15,23,42,.92),rgba(15,23,42,.85));backdrop-filter:blur(6px);
+      position:sticky;top:0;z-index:20;
+      background:linear-gradient(180deg,rgba(15,23,42,.92),rgba(15,23,42,.85));
+      backdrop-filter:blur(6px);
       border-bottom:1px solid var(--border)
     }
     .progress .bar-wrap{height:6px;background:#0a0f1a}
@@ -69,11 +65,13 @@
     .notice.success{background:rgba(34,197,94,.08);color:#bbf7d0;border-color:rgba(34,197,94,.35)}
     .notice.error{background:rgba(244,63,94,.08);color:#fecaca;border-color:rgba(244,63,94,.35)}
     .wa-icon{width:18px;height:18px;vertical-align:middle;margin-left:6px}
-    details.gdpr{border:1px solid var(--border);border-radius:12px;background:#0a0f1a;padding:12px 14px}
+    details.gdpr{border:1px solid var(--border);border-radius:12px;background:#0a0f1a;padding:12px 14px;margin-top:10px}
     details.gdpr summary{cursor:pointer;list-style:none;font-weight:600;color:#e5e7eb}
     details.gdpr summary::-webkit-details-marker{display:none}
     details.gdpr[open]{background:#0b1220}
     details.gdpr .gdpr-body{color:#94a3b8;margin-top:8px;font-size:.95rem}
+    .legend{display:flex;gap:10px;flex-wrap:wrap;margin:12px 0 0}
+    .pill{border:1px solid var(--border);padding:6px 10px;border-radius:999px;color:var(--muted);background:#0a0f1a;font-size:.9rem}
     @media print{
       .progress,.actions{display:none!important}
       body{background:#fff;color:#111}
@@ -109,24 +107,26 @@
         <li><strong>Rabbia, colpa e conflitti</strong></li>
       </ul>
 
-      <p>La valutazione fa riferimento alla <strong>situazione attuale</strong> e a come ci si è sentiti <span style="font-size:1.05em; font-weight:700; color:#a5f3fc; text-decoration:underline;">nelle ultime due settimane</span>.</p>
+      <p>La valutazione fa riferimento alla <strong>situazione attuale</strong> e a come ci si è sentiti
+        <span style="font-size:1.05em; font-weight:700; color:#a5f3fc; text-decoration:underline;">nelle ultime due settimane</span>.
+      </p>
 
-      <p>L’obiettivo non è formulare una diagnosi, ma <strong>individuare le aree su cui può essere utile lavorare in terapia</strong>, per migliorare la stabilità emotiva, la qualità dei legami e la consapevolezza di sé.</p>
-      <p>Al termine del questionario riceverai un <strong>riepilogo personalizzato</strong> con <strong>domande di riflessione mirate</strong>, costruite in base alle tue risposte.</p>
+      <p>L’obiettivo non è formulare una diagnosi, ma <strong>individuare le aree su cui può essere utile lavorare in terapia</strong>,
+        per migliorare la stabilità emotiva, la qualità dei legami e la consapevolezza di sé.</p>
+
+      <p>Al termine del questionario viene inviato un <strong>riepilogo personalizzato via e-mail</strong> con
+        <strong>domande di riflessione mirate</strong>, costruite in base alle risposte fornite.</p>
+
+      <p>Se lo desideri, puoi <strong>discuterne in una prima seduta con il Dott. Leonardo Brazzoni</strong>.</p>
 
       <details class="gdpr">
         <summary>Informativa privacy (GDPR) <span aria-hidden="true" style="color:#94a3b8;font-weight:400">— clicca per leggere</span></summary>
         <div class="gdpr-body">
-          I dati inseriti (risposte, nome, e‑mail, consensi) sono trattati al solo scopo di inviarti il riepilogo
+          I dati inseriti (risposte, nome, e-mail, consensi) sono trattati al solo scopo di inviarti il riepilogo
           e, se acconsenti, futuri contenuti professionali. I dati non hanno valore diagnostico.
           Sono conservati su sistemi Google (Foglio Google collegato) e non vengono ceduti a terzi.
           Puoi chiedere rettifica o cancellazione scrivendo a
           <a href="mailto:info@leonardobrazzoni.com" style="color:#22d3ee">info@leonardobrazzoni.com</a>.
-          Se lo desideri, <strong>puoi discuterne in una prima seduta con il Dott. Leonardo Brazzoni</strong> · Psicologo ·
-          <a href="https://leonardobrazzoni.com/" target="_blank" rel="noopener" style="color:#22d3ee">leonardobrazzoni.com</a> ·
-          <a href="https://wa.me/393290757193" target="_blank" rel="noopener" aria-label="WhatsApp">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="wa-icon" />
-          </a>
         </div>
       </details>
 
@@ -139,7 +139,7 @@
             <input id="nameInput" type="text" placeholder="Il tuo nome" aria-label="Nome" required style="width:100%;padding:10px;border-radius:10px;border:1px solid var(--border);background:#0a0f1a;color:var(--text)" />
           </label>
           <label style="display:block">
-            <span style="font-size:0.9rem;color:#94a3b8">E‑mail <span style="color:#fca5a5">*</span></span>
+            <span style="font-size:0.9rem;color:#94a3b8">E-mail <span style="color:#fca5a5">*</span></span>
             <input id="emailInput" type="email" inputmode="email" autocomplete="email" placeholder="nome@esempio.it" aria-describedby="emailHelp" required style="width:100%;padding:10px;border-radius:10px;border:1px solid var(--border);background:#0a0f1a;color:#e5e7eb" />
           </label>
           <small id="emailHelp" style="color:#94a3b8">Usati solo per inviarti il riepilogo e, se acconsenti, contenuti professionali.</small>
@@ -150,7 +150,9 @@
           </label>
 
           <fieldset style="border:none; padding:0; margin:0; color:#94a3b8">
-            <legend style="font-size:0.95rem; color:#cbd5e1; margin-bottom:6px">Acconsenti a ricevere in futuro <strong>contenuti professionali</strong> (articoli, aggiornamenti)? <span style="color:#fca5a5">*</span></legend>
+            <legend style="font-size:0.95rem; color:#cbd5e1; margin-bottom:6px">
+              Acconsenti a ricevere in futuro <strong>contenuti professionali</strong> (articoli, aggiornamenti)? <span style="color:#fca5a5">*</span>
+            </legend>
             <div style="display:flex; gap:14px; align-items:center">
               <label style="display:flex; gap:6px; align-items:center">
                 <input type="radio" name="consentMarketing" value="yes" /> Sì
@@ -159,7 +161,9 @@
                 <input type="radio" name="consentMarketing" value="no" /> No
               </label>
             </div>
-            <small style="display:block; margin-top:6px">Il consenso è facoltativo e revocabile in qualsiasi momento (la domanda è obbligatoria per inviare il riepilogo).</small>
+            <small style="display:block; margin-top:6px">
+              Il consenso è facoltativo e revocabile in qualsiasi momento (la domanda è obbligatoria per inviare il riepilogo).
+            </small>
           </fieldset>
 
           <label style="color:#94a3b8; display:flex; gap:8px; align-items:flex-start">
@@ -207,10 +211,9 @@
   const year = document.getElementById('year');
   if (year) year.textContent = new Date().getFullYear();
 
-  // ENDPOINT APPS SCRIPT (aggiornato su richiesta)
+  // ENDPOINT APPS SCRIPT
   const GAS_ENDPOINT = 'https://script.google.com/macros/s/AKfycbyKiz4beh_gmeniq2l00pkTSXIYbl9MhgCHrfT4N0oKKgxtTP-3J_FM4Ds-7CbMQ-kQKw/exec';
 
-  // ==== ITEMS ORDINATI (36) ====
   const ITEMS = [
     {text:"Ho paura che le persone importanti per me si allontanino o mi abbandonino.", reverse:false},
     {text:"Passo dal sentirmi molto vicino a qualcuno al sentirmi improvvisamente distante o deluso.", reverse:false},
@@ -258,31 +261,13 @@
     {value:5,label:'5',desc:'Quasi sempre'}
   ];
 
-  const AREAS = [
-    { key:'A', title:'Vicinanza e paura del rifiuto', items:[1,2,14,15,20,24,25,28,32]},
-    { key:'B', title:'Identità e continuità del Sé', items:[3,8,9,23,36]},
-    { key:'C', title:'Regolazione emotiva', items:[6,10,21,22,26,33]},
-    { key:'D', title:'Reattività e impulsività', items:[4,5,7,16,27]},
-    { key:'E', title:'Presenza e gestione dello stress', items:[11,12,29,35]},
-    { key:'F', title:'Rabbia, colpa e conflitti', items:[13,17,18,19,30,31,34]}
-  ];
-
-  const STORAGE_KEY = 'q_er_values_v8';
+  const STORAGE_KEY = 'q_er_values_v9';
 
   function showToast(text, type='success'){
     toast.textContent = text;
     toast.className = 'notice ' + (type==='error'?'error':'success');
     toast.style.display = 'block';
     setTimeout(()=>{ toast.style.display='none'; }, 5000);
-  }
-
-  const norm = (value, item) => item.reverse ? (6 - value) : value;
-
-  function avg(a){ return a.reduce((x,y)=>x+y,0)/a.length; }
-  function band(m){
-    if(m<=2) return {key:'low', label:'basso'};
-    if(m<=3.5) return {key:'mid', label:'medio'};
-    return {key:'high', label:'alto'};
   }
 
   function getValues(){
@@ -334,7 +319,6 @@
       `WhatsApp: https://wa.me/393290757193\n\n` +
       `───────────────────────────────\n`;
 
-    // Testo di servizio (il rendering elegante + domande lo fa Apps Script)
     let text = '';
     text += 'Questionario sul funzionamento borderline\n';
     text += 'Periodo di riferimento: ultime due settimane\n';
@@ -349,7 +333,8 @@
   }
 
   function validateEmail(email){
-    return /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email);
+    // regex semplice e permissiva (niente blocchi strani)
+    return /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email);
   }
 
   function markMissing(){
@@ -357,11 +342,13 @@
     let firstMissingCard = null;
     vals.forEach((v, i)=>{
       const card = form.querySelector(`.card[data-q="${i+1}"]`);
-      if(v==null){
-        card.classList.add('missing');
-        if(!firstMissingCard) firstMissingCard = card;
-      }else{
-        card.classList.remove('missing');
+      if(card){
+        if(v==null){
+          card.classList.add('missing');
+          if(!firstMissingCard) firstMissingCard = card;
+        }else{
+          card.classList.remove('missing');
+        }
       }
     });
     if(firstMissingCard){
@@ -372,6 +359,8 @@
 
   async function sendEmailResults(){
     msg.textContent='';
+    msg.style.color = '#fca5a5';
+
     const name = document.getElementById('nameInput')?.value?.trim();
     const email = document.getElementById('emailInput')?.value?.trim();
     const consentResults = document.getElementById('consentResults')?.checked;
@@ -393,7 +382,7 @@
     const payload = {
       to: email,
       subject: 'Il tuo riepilogo – Questionario sul funzionamento borderline',
-      message: buildEmailSummary(), // testo di servizio
+      message: buildEmailSummary(), // testo di servizio, la mail elegante viene generata in Apps Script
       subscribe: !!consentMarketing,
       referenceWindow: 'ultime due settimane',
       answers: getValues().map((v,i)=> v==null ? null : (ITEMS[i].reverse ? 6 - v : v)),
@@ -403,7 +392,11 @@
     };
 
     try{
-      const res = await fetch(GAS_ENDPOINT, { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload) });
+      const res = await fetch(GAS_ENDPOINT, {
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body: JSON.stringify(payload)
+      });
       let data={}; try{ data = await res.json(); }catch(_){ }
       if(!res.ok || (data.status && data.status!=='ok')) throw new Error((data && data.error) || 'Invio non riuscito.');
       msg.style.color = '#22c55e';

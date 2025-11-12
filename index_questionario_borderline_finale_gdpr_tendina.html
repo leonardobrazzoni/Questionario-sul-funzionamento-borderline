@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Questionario sul funzionamento borderline</title>
+  <meta name="description" content="Questionario sul funzionamento borderline: riflessione (ultime due settimane) su emozioni, relazioni e identità. Esito via e-mail, non diagnostico." />
+  <style>
+    :root{
+      --bg:#0f172a;--panel:#0b1220;--muted:#94a3b8;--text:#e5e7eb;
+      --accent:#22d3ee;--accent2:#a78bfa;--border:#1f2937;--focus:#60a5fa;
+      --opt-bg:#0a0f1a; --opt-sel:#111b33; --shadow:0 10px 30px rgba(0,0,0,.35);
+      --danger:#f43f5e; --success:#22c55e
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      background:radial-gradient(1200px 600px at 20% -10%,#1e293b,transparent),
+                 radial-gradient(900px 600px at 120% 10%,#1f2937,transparent),
+                 var(--bg);
+      color:var(--text);line-height:1.55
+    }
+    .container{max-width:980px;margin:0 auto;padding:24px}
+    .hero{
+      background:linear-gradient(135deg,#0b1220 0%,#0f172a 100%);
+      border:1px solid var(--border);border-radius:20px;padding:28px;box-shadow:var(--shadow)
+    }
+    h1{font-size:clamp(1.55rem,1rem + 2.2vw,2.4rem);margin:0 0 10px}
+    p{margin:0 0 10px}
+    .disclaimer{
+      font-size:.95rem;color:var(--muted);background:#0a0f1a;border:1px solid var(--border);
+      padding:12px 14px;border-radius:12px;margin-top:6px
+    }
+    .legend{display:flex;gap:10px;flex-wrap:wrap;margin:12px 0 0}
+    .pill{border:1px solid var(--border);padding:6px 10px;border-radius:999px;color:var(--muted);background:#0a0f1a;font-size:.9rem}
+    .progress{
+      position:sticky;top:0;z-index:20;background:linear-gradient(180deg,rgba(15,23,42,.92),rgba(15,23,42,.85));backdrop-filter:blur(6px);
+      border-bottom:1px solid var(--border)
+    }
+    .progress .bar-wrap{height:6px;background:#0a0f1a}
+    .progress .bar{height:100%;width:0%;background:linear-gradient(90deg,var(--accent),var(--accent2));transition:width .35s ease}
+    .progress .stats{display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:.92rem;color:var(--muted);padding:8px 24px}
+    .pct{font-variant-numeric:tabular-nums}
+    form{margin-top:18px}
+    .card{background:rgba(17,24,39,.65);border:1px solid var(--border);border-radius:16px;padding:18px;margin:14px 0;transition:border-color .2s, box-shadow .2s}
+    .card.missing{border-color:var(--danger); box-shadow:0 0 0 2px rgba(244,63,94,.2), 0 8px 28px rgba(0,0,0,.35)}
+    .q-title{font-weight:600;margin-bottom:12px}
+    .scale{display:grid;grid-template-columns:repeat(5,minmax(120px,1fr));gap:12px}
+    @media (max-width:720px){.scale{grid-template-columns:repeat(2,1fr)}}
+    .opt{position:relative;border:1px solid var(--border);border-radius:14px;background:var(--opt-bg);
+      padding:16px;text-align:center;cursor:pointer;box-shadow:0 1px 0 rgba(255,255,255,.03) inset}
+    .opt .num{font-size:1.6rem;font-weight:800;letter-spacing:.5px}
+    .opt .desc{display:block;margin-top:6px;font-size:.85rem;color:var(--muted)}
+    .opt input[type=radio]{position:absolute;inset:0;opacity:0;cursor:pointer}
+    .opt:has(input[type=radio]:checked){outline:2px solid var(--focus);outline-offset:2px;background:linear-gradient(180deg,var(--opt-sel),#0f172a)}
+    .opt:has(input[type=radio]:checked) .num{color:#e5e7eb}
+    .opt:has(input[type=radio]:checked) .desc{color:#cbd5e1}
+    .opt.selected{outline:2px solid var(--focus);outline-offset:2px;background:linear-gradient(180deg,var(--opt-sel),#0f172a)}
+    .opt.selected .num{color:#e5e7eb}
+    .opt.selected .desc{color:#cbd5e1}
+    .actions{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0 8px}
+    button{appearance:none;border:1px solid var(--border);background:#0a0f1a;color:#e5e7eb;padding:10px 14px;border-radius:12px;cursor:pointer;font-weight:600}
+    button.primary{background:linear-gradient(90deg,var(--accent),var(--accent2));color:#0b1020;border:none}
+    button:focus{outline:2px solid var(--focus);outline-offset:2px}
+    .footer{color:#94a3b8;font-size:.9rem;margin-top:12px}
+    .error{color:#fca5a5;margin-top:6px}
+    .notice{margin-top:10px;padding:12px 14px;border-radius:12px;border:1px solid var(--border);display:none}
+    .notice.success{background:rgba(34,197,94,.08);color:#bbf7d0;border-color:rgba(34,197,94,.35)}
+    .notice.error{background:rgba(244,63,94,.08);color:#fecaca;border-color:rgba(244,63,94,.35)}
+    .wa-icon{width:18px;height:18px;vertical-align:middle;margin-left:6px}
+    details.gdpr{border:1px solid var(--border);border-radius:12px;background:#0a0f1a;padding:12px 14px}
+    details.gdpr summary{cursor:pointer;list-style:none;font-weight:600;color:#e5e7eb}
+    details.gdpr summary::-webkit-details-marker{display:none}
+    details.gdpr[open]{background:#0b1220}
+    details.gdpr .gdpr-body{color:#94a3b8;margin-top:8px;font-size:.95rem}
+    @media print{
+      .progress,.actions{display:none!important}
+      body{background:#fff;color:#111}
+      .card{break-inside:avoid}
+      a{color:#111}
+    }
+  </style>
+</head>
+<body>
+  <!-- Barra progresso -->
+  <div class="progress" aria-hidden="true">
+    <div class="stats container">
+      <div><strong>Questionario</strong> · 36 affermazioni · Scala 1–5</div>
+      <div id="counter" class="pct">0 / 36 risposte · 0%</div>
+    </div>
+    <div class="bar-wrap" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-label="Avanzamento">
+      <div class="bar" id="bar"></div>
+    </div>
+  </div>
+
+  <main class="container">
+    <section class="hero">
+      <h1>Questionario sul funzionamento borderline</h1>
+
+      <!-- Intro -->
+      <p>Questo questionario si focalizza su <strong>sei aree</strong>:</p>
+      <ul style="margin:0 0 10px 18px; padding:0; line-height:1.6">
+        <li><strong>Vicinanza e paura del rifiuto</strong></li>
+        <li><strong>Identità e continuità del Sé</strong></li>
+        <li><strong>Regolazione emotiva</strong></li>
+        <li><strong>Reattività e impulsività</strong></li>
+        <li><strong>Presenza e gestione dello stress</strong></li>
+        <li><strong>Rabbia, colpa e conflitti</strong></li>
+      </ul>
+
+      <p>La valutazione fa riferimento alla <strong>situazione attuale</strong> e a come ci si è sentiti <span style="font-size:1.05em; font-weight:700; color:#a5f3fc; text-decoration:underline;">nelle ultime due settimane</span>.</p>
+
+      <p>L’obiettivo non è formulare una diagnosi, ma <strong>individuare le aree su cui può essere utile lavorare in terapia</strong>, per migliorare la stabilità emotiva, la qualità dei legami e la consapevolezza di sé.</p>
+      <p>Al termine del questionario riceverai un <strong>riepilogo personalizzato</strong> con <strong>domande di riflessione mirate</strong>, costruite in base alle tue risposte.</p>
+
+      <details class="gdpr">
+        <summary>Informativa privacy (GDPR) <span aria-hidden="true" style="color:#94a3b8;font-weight:400">— clicca per leggere</span></summary>
+        <div class="gdpr-body">
+          I dati inseriti (risposte, nome, e‑mail, consensi) sono trattati al solo scopo di inviarti il riepilogo
+          e, se acconsenti, futuri contenuti professionali. I dati non hanno valore diagnostico.
+          Sono conservati su sistemi Google (Foglio Google collegato) e non vengono ceduti a terzi.
+          Puoi chiedere rettifica o cancellazione scrivendo a
+          <a href="mailto:info@leonardobrazzoni.com" style="color:#22d3ee">info@leonardobrazzoni.com</a>.
+          Se lo desideri, <strong>puoi discuterne in una prima seduta con il Dott. Leonardo Brazzoni</strong> · Psicologo ·
+          <a href="https://leonardobrazzoni.com/" target="_blank" rel="noopener" style="color:#22d3ee">leonardobrazzoni.com</a> ·
+          <a href="https://wa.me/393290757193" target="_blank" rel="noopener" aria-label="WhatsApp">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="wa-icon" />
+          </a>
+        </div>
+      </details>
+
+      <!-- Email & consensi -->
+      <div class="card" style="margin-top:14px">
+        <div class="q-title">Ricevi il riepilogo via e-mail <span aria-hidden="true" title="obbligatorio" style="color:#fca5a5">*</span></div>
+        <div style="display:grid; gap:10px">
+          <label style="display:block">
+            <span style="font-size:0.9rem;color:#94a3b8">Nome <span style="color:#fca5a5">*</span></span>
+            <input id="nameInput" type="text" placeholder="Il tuo nome" aria-label="Nome" required style="width:100%;padding:10px;border-radius:10px;border:1px solid var(--border);background:#0a0f1a;color:var(--text)" />
+          </label>
+          <label style="display:block">
+            <span style="font-size:0.9rem;color:#94a3b8">E‑mail <span style="color:#fca5a5">*</span></span>
+            <input id="emailInput" type="email" inputmode="email" autocomplete="email" placeholder="nome@esempio.it" aria-describedby="emailHelp" required style="width:100%;padding:10px;border-radius:10px;border:1px solid var(--border);background:#0a0f1a;color:#e5e7eb" />
+          </label>
+          <small id="emailHelp" style="color:#94a3b8">Usati solo per inviarti il riepilogo e, se acconsenti, contenuti professionali.</small>
+
+          <label style="color:#94a3b8; display:flex; gap:8px; align-items:flex-start">
+            <input id="consentResults" type="checkbox" style="margin-top:4px" />
+            <span>Acconsento a ricevere il <strong>riepilogo del questionario</strong> via e-mail. <span style="color:#fca5a5">*</span></span>
+          </label>
+
+          <fieldset style="border:none; padding:0; margin:0; color:#94a3b8">
+            <legend style="font-size:0.95rem; color:#cbd5e1; margin-bottom:6px">Acconsenti a ricevere in futuro <strong>contenuti professionali</strong> (articoli, aggiornamenti)? <span style="color:#fca5a5">*</span></legend>
+            <div style="display:flex; gap:14px; align-items:center">
+              <label style="display:flex; gap:6px; align-items:center">
+                <input type="radio" name="consentMarketing" value="yes" /> Sì
+              </label>
+              <label style="display:flex; gap:6px; align-items:center">
+                <input type="radio" name="consentMarketing" value="no" /> No
+              </label>
+            </div>
+            <small style="display:block; margin-top:6px">Il consenso è facoltativo e revocabile in qualsiasi momento (la domanda è obbligatoria per inviare il riepilogo).</small>
+          </fieldset>
+
+          <label style="color:#94a3b8; display:flex; gap:8px; align-items:flex-start">
+            <input id="adultCheckbox" type="checkbox" style="margin-top:4px" />
+            <span>Dichiaro di essere <strong>maggiorenne</strong> e di aver letto l’informativa privacy. <span style="color:#fca5a5">*</span></span>
+          </label>
+
+          <div id="msg" class="error" aria-live="polite" role="status"></div>
+          <div id="toast" class="notice" aria-live="assertive"></div>
+        </div>
+      </div>
+
+      <div class="legend" aria-hidden="true">
+        <span class="pill">1 = Non succede mai</span>
+        <span class="pill">2 = Raramente</span>
+        <span class="pill">3 = A volte</span>
+        <span class="pill">4 = Spesso</span>
+        <span class="pill">5 = Quasi sempre</span>
+      </div>
+    </section>
+
+    <form id="form" novalidate></form>
+
+    <section class="actions">
+      <button type="button" class="primary" id="emailBtn">Invia risultati via e-mail</button>
+      <button type="button" id="resetBtn">Azzera risposte</button>
+      <button type="button" id="printBtn">Stampa / Salva PDF</button>
+    </section>
+
+    <p class="footer">© <span id="year"></span> – <strong>Dott. Leonardo Brazzoni</strong> · Psicologo ·
+      <a href="https://leonardobrazzoni.com/" target="_blank" style="color:#22d3ee" rel="noopener">leonardobrazzoni.com</a> ·
+      <a href="https://wa.me/393290757193" target="_blank" rel="noopener" aria-label="WhatsApp">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="wa-icon" />
+      </a>
+      <br><span style="color:#94a3b8">Questo questionario non invia dati a server se non per l’invio facoltativo via e-mail.</span>
+    </p>
+  </main>
+
+  <script>
+  const form = document.getElementById('form');
+  const bar = document.getElementById('bar');
+  const counter = document.getElementById('counter');
+  const msg = document.getElementById('msg');
+  const toast = document.getElementById('toast');
+  const year = document.getElementById('year');
+  if (year) year.textContent = new Date().getFullYear();
+
+  // ENDPOINT APPS SCRIPT (aggiornato su richiesta)
+  const GAS_ENDPOINT = 'https://script.google.com/macros/s/AKfycbyKiz4beh_gmeniq2l00pkTSXIYbl9MhgCHrfT4N0oKKgxtTP-3J_FM4Ds-7CbMQ-kQKw/exec';
+
+  // ==== ITEMS ORDINATI (36) ====
+  const ITEMS = [
+    {text:"Ho paura che le persone importanti per me si allontanino o mi abbandonino.", reverse:false},
+    {text:"Passo dal sentirmi molto vicino a qualcuno al sentirmi improvvisamente distante o deluso.", reverse:false},
+    {text:"Non so bene chi sono o cosa voglio davvero.", reverse:false},
+    {text:"Agisco d’impulso senza pensare alle conseguenze (spese, cibo, sostanze, guida, sesso).", reverse:false},
+    {text:"Riesco a fermarmi un attimo prima di reagire quando qualcosa mi fa arrabbiare.", reverse:true},
+    {text:"Le mie emozioni cambiano rapidamente e sono molto intense.", reverse:false},
+    {text:"Ho pensieri di farmi del male o metto in atto comportamenti autolesivi.", reverse:false},
+    {text:"Sento un senso di vuoto o di mancanza di significato nella mia vita.", reverse:false},
+    {text:"Anche quando cambio idea o umore, so chi sono e cosa voglio davvero.", reverse:true},
+    {text:"Provo rabbia intensa e faccio fatica a controllarla.", reverse:false},
+    {text:"Quando sono stressato/a mi sento distaccato/a da me stesso/a o dalla realtà.", reverse:false},
+    {text:"Sotto stress riesco comunque a restare lucido e concentrato su quello che sto facendo.", reverse:true},
+    {text:"Tendo a interpretare gli atteggiamenti degli altri come critici o ostili nei miei confronti.", reverse:false},
+    {text:"Oscillo tra desiderio di vicinanza e bisogno improvviso di allontanarmi.", reverse:false},
+    {text:"Di solito riesco a sentirmi tranquillo anche se una persona importante non si fa sentire per un po’.", reverse:true},
+    {text:"Dopo un conflitto rischio di fare qualcosa che mi danneggia o peggiora la situazione.", reverse:false},
+    {text:"In mezzo agli altri mi perdo in pensieri come “mi giudicano” o “mi rifiuteranno”.", reverse:false},
+    {text:"Durante una discussione riesco a esprimere cosa penso senza perdere il controllo.", reverse:true},
+    {text:"Passo facilmente dall’idealizzare una persona al sentirla molto deludente.", reverse:false},
+    {text:"Controllo messaggi, social o spostamenti degli altri per ridurre ansia o gelosia.", reverse:false},
+    {text:"Provo vergogna che mi porta a sentirmi inadeguato/a o sbagliato/a.", reverse:false},
+    {text:"Quando provo emozioni forti, riesco a capire cosa sto sentendo.", reverse:true},
+    {text:"Il modo in cui mi vedo o ciò che voglio cambia facilmente a seconda del contesto e questo mi crea disagio.", reverse:false},
+    {text:"Dopo momenti di vicinanza temo di essere stato/a “troppo” o di aver dato fastidio.", reverse:false},
+    {text:"Se qualcuno non risponde o si allontana entro in allarme (paura, rabbia, gelosia).", reverse:false},
+    {text:"Uso cibo, sostanze o attività per spegnere emozioni che mi sembrano insopportabili.", reverse:false},
+    {text:"Dopo periodi di forte autocontrollo finisco per perderlo all’improvviso.", reverse:false},
+    {text:"Metto alla prova la relazione per capire se l’altra persona ci tiene davvero a me.", reverse:false},
+    {text:"Dopo forte stress ho ricordi confusi o vuoti di memoria.", reverse:false},
+    {text:"Durante i litigi alzo il tono o divento improvvisamente freddo/a e distante.", reverse:false},
+    {text:"Mi è difficile trovare equilibrio tra farmi rispettare e andare incontro agli altri.", reverse:false},
+    {text:"Piccoli segnali (uno sguardo, un ritardo) cambiano drasticamente come mi sento nella relazione.", reverse:false},
+    {text:"Dopo una crisi o una lite provo molta colpa o paura di aver rovinato tutto.", reverse:false},
+    {text:"Quando non mi sento capito/a mi chiudo o interrompo i rapporti.", reverse:false},
+    {text:"Mi è difficile restare nel presente: rimugino sul passato o sul futuro.", reverse:false},
+    {text:"Mi sento una persona diversa a seconda dell’emozione che provo e questo mi crea disagio.", reverse:false}
+  ];
+
+  const SCALE = [
+    {value:1,label:'1',desc:'Non succede mai'},
+    {value:2,label:'2',desc:'Raramente'},
+    {value:3,label:'3',desc:'A volte'},
+    {value:4,label:'4',desc:'Spesso'},
+    {value:5,label:'5',desc:'Quasi sempre'}
+  ];
+
+  const AREAS = [
+    { key:'A', title:'Vicinanza e paura del rifiuto', items:[1,2,14,15,20,24,25,28,32]},
+    { key:'B', title:'Identità e continuità del Sé', items:[3,8,9,23,36]},
+    { key:'C', title:'Regolazione emotiva', items:[6,10,21,22,26,33]},
+    { key:'D', title:'Reattività e impulsività', items:[4,5,7,16,27]},
+    { key:'E', title:'Presenza e gestione dello stress', items:[11,12,29,35]},
+    { key:'F', title:'Rabbia, colpa e conflitti', items:[13,17,18,19,30,31,34]}
+  ];
+
+  const STORAGE_KEY = 'q_er_values_v8';
+
+  function showToast(text, type='success'){
+    toast.textContent = text;
+    toast.className = 'notice ' + (type==='error'?'error':'success');
+    toast.style.display = 'block';
+    setTimeout(()=>{ toast.style.display='none'; }, 5000);
+  }
+
+  const norm = (value, item) => item.reverse ? (6 - value) : value;
+
+  function avg(a){ return a.reduce((x,y)=>x+y,0)/a.length; }
+  function band(m){
+    if(m<=2) return {key:'low', label:'basso'};
+    if(m<=3.5) return {key:'mid', label:'medio'};
+    return {key:'high', label:'alto'};
+  }
+
+  function getValues(){
+    const values = [];
+    for(let i=1;i<=ITEMS.length;i++){
+      const sel = form.querySelector(`input[name=q${i}]:checked`);
+      values.push(sel ? Number(sel.value) : null);
+    }
+    return values;
+  }
+
+  function setValues(values){
+    values.forEach((v,i)=>{
+      if(v==null) return;
+      const input = form.querySelector(`input[name=q${i+1}][value="${v}"]`);
+      if(input){ input.checked = true; input.dispatchEvent(new Event('change')); }
+    });
+  }
+
+  function updateProgress(){
+    const vals = getValues();
+    const done = vals.filter(v=>v!==null).length;
+    const pct = Math.round((done/ITEMS.length)*100);
+    if (bar) {
+      bar.style.width = pct + '%';
+      bar.parentElement.setAttribute('aria-valuenow', String(pct));
+    }
+    if (counter) counter.textContent = `${done} / ${ITEMS.length} risposte · ${pct}%`;
+  }
+
+  function buildEmailSummary(){
+    const vals = getValues();
+    const miss = vals.filter(v=>v==null).length;
+    if(miss){ throw new Error(`Per ricevere i risultati devi rispondere a tutte le domande. Mancano ${miss} risposta/e.`); }
+    const name = document.getElementById('nameInput')?.value?.trim() || '';
+    const email = document.getElementById('emailInput')?.value?.trim() || '';
+    const consentMarketing = (document.querySelector('input[name=consentMarketing]:checked')?.value === 'yes');
+
+    const saluto = name ? `Ciao ${name},` : 'Ciao,';
+    const intro = `${saluto}\n\ngrazie per aver completato il questionario sul funzionamento borderline.\n` +
+      `Qui sotto trovi il tuo riepilogo personale, con una descrizione delle aree principali e alcune domande di riflessione ` +
+      `per aiutarti a comprendere meglio i tuoi schemi relazionali ed emotivi.\n\n` +
+      `Ti invitiamo a leggerlo con calma: non si tratta di un risultato “giusto” o “sbagliato”, ma di un punto di partenza ` +
+      `per capire dove potresti lavorare su te stessə.\n\n` +
+      `Se lo desideri, puoi discuterne in una prima seduta con il Dott. Leonardo Brazzoni.\n\n` +
+      `Un caro saluto,\n` +
+      `Dott. Leonardo Brazzoni\n` +
+      `Psicologo – www.leonardobrazzoni.com\n` +
+      `WhatsApp: https://wa.me/393290757193\n\n` +
+      `───────────────────────────────\n`;
+
+    // Testo di servizio (il rendering elegante + domande lo fa Apps Script)
+    let text = '';
+    text += 'Questionario sul funzionamento borderline\n';
+    text += 'Periodo di riferimento: ultime due settimane\n';
+    text += 'Esito non diagnostico: analisi sintetica per aree utile a orientare il lavoro terapeutico.\n\n';
+
+    text += '\nConsenso a contenuti futuri: ' + (consentMarketing ? 'SÌ' : 'NO') + '\n';
+    if(email) text += 'E-mail fornita: ' + email + '\n';
+
+    text += '\n—\nSe lo desideri, puoi discuterne in una prima seduta con il Dott. Leonardo Brazzoni.\n';
+
+    return intro + text;
+  }
+
+  function validateEmail(email){
+    return /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email);
+  }
+
+  function markMissing(){
+    const vals = getValues();
+    let firstMissingCard = null;
+    vals.forEach((v, i)=>{
+      const card = form.querySelector(`.card[data-q="${i+1}"]`);
+      if(v==null){
+        card.classList.add('missing');
+        if(!firstMissingCard) firstMissingCard = card;
+      }else{
+        card.classList.remove('missing');
+      }
+    });
+    if(firstMissingCard){
+      firstMissingCard.scrollIntoView({behavior:'smooth', block:'center'});
+    }
+    return vals.filter(v=>v==null).length;
+  }
+
+  async function sendEmailResults(){
+    msg.textContent='';
+    const name = document.getElementById('nameInput')?.value?.trim();
+    const email = document.getElementById('emailInput')?.value?.trim();
+    const consentResults = document.getElementById('consentResults')?.checked;
+    const consentMarketingEl = document.querySelector('input[name=consentMarketing]:checked');
+    const adult = document.getElementById('adultCheckbox')?.checked;
+
+    const missing = markMissing();
+    if(missing){ msg.textContent = `Compila tutte le domande: mancano ${missing} risposta/e.`; return; }
+
+    if(!name){ msg.textContent='Inserisci il tuo nome.'; return; }
+    if(!email){ msg.textContent='Inserisci la tua e-mail.'; return; }
+    if(!validateEmail(email)){ msg.textContent='Inserisci un indirizzo e-mail valido.'; return; }
+    if(!consentResults){ msg.textContent='Spunta il consenso per l’invio del riepilogo.'; return; }
+    if(!consentMarketingEl){ msg.textContent='Indica se desideri ricevere contenuti futuri (Sì/No).'; return; }
+    if(!adult){ msg.textContent='Dichiara di essere maggiorenne per procedere.'; return; }
+
+    const consentMarketing = (consentMarketingEl.value === 'yes');
+
+    const payload = {
+      to: email,
+      subject: 'Il tuo riepilogo – Questionario sul funzionamento borderline',
+      message: buildEmailSummary(), // testo di servizio
+      subscribe: !!consentMarketing,
+      referenceWindow: 'ultime due settimane',
+      answers: getValues().map((v,i)=> v==null ? null : (ITEMS[i].reverse ? 6 - v : v)),
+      answers_raw: getValues(),
+      items: ITEMS.map(it=> ({text: it.text, reverse: !!it.reverse})),
+      name: name
+    };
+
+    try{
+      const res = await fetch(GAS_ENDPOINT, { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload) });
+      let data={}; try{ data = await res.json(); }catch(_){ }
+      if(!res.ok || (data.status && data.status!=='ok')) throw new Error((data && data.error) || 'Invio non riuscito.');
+      msg.style.color = '#22c55e';
+      msg.textContent = 'Riepilogo inviato. Controlla anche la cartella spam.';
+      showToast('Riepilogo inviato. Controlla anche la cartella spam.', 'success');
+    }catch(err){
+      console.error(err);
+      msg.style.color = '#fca5a5';
+      msg.textContent = 'Invio non riuscito. Verifica la Web App di Apps Script e riprova.';
+      showToast('Invio non riuscito. Verifica la Web App di Apps Script e riprova.', 'error');
+    }
+  }
+
+  function persist(){ localStorage.setItem(STORAGE_KEY, JSON.stringify(getValues())); }
+  function restore(){
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if(!raw) return;
+    try{
+      const vals = JSON.parse(raw);
+      if(Array.isArray(vals) && vals.length===ITEMS.length){ setValues(vals); }
+    }catch(_){ }
+  }
+
+  function render(){
+    ITEMS.forEach((item, idx)=>{
+      const card = document.createElement('fieldset');
+      card.className = 'card';
+      card.setAttribute('data-q', idx+1);
+      const legend = document.createElement('legend');
+      legend.className = 'q-title';
+      legend.textContent = `${idx+1}. ${item.text}`;
+      card.appendChild(legend);
+
+      const scale = document.createElement('div');
+      scale.className = 'scale';
+      SCALE.forEach(opt=>{
+        const label = document.createElement('label');
+        label.className = 'opt';
+        label.setAttribute('for', `q${idx+1}_${opt.value}`);
+        const input = document.createElement('input');
+        input.type = 'radio';
+        input.name = `q${idx+1}`;
+        input.id = `q${idx+1}_${opt.value}`;
+        input.value = opt.value;
+        input.setAttribute('aria-label', `${opt.value} - ${opt.desc}`);
+        const num = document.createElement('div');
+        num.className = 'num';
+        num.textContent = opt.label;
+        const desc = document.createElement('div');
+        desc.className = 'desc';
+        desc.textContent = opt.desc;
+        label.appendChild(input);
+        label.appendChild(num);
+        label.appendChild(desc);
+        scale.appendChild(label);
+
+        input.addEventListener('change', ()=>{
+          card.classList.remove('missing');
+          scale.querySelectorAll('.opt').forEach(o=>o.classList.remove('selected'));
+          label.classList.add('selected');
+          updateProgress();
+          persist();
+        });
+      });
+      card.append(scale);
+      form.appendChild(card);
+    });
+  }
+
+  document.getElementById('emailBtn')?.addEventListener('click', sendEmailResults);
+  document.getElementById('resetBtn')?.addEventListener('click', ()=> {
+    form.reset(); updateProgress();
+    document.querySelectorAll('.card').forEach(c=>c.classList.remove('missing'));
+    document.querySelectorAll('.opt').forEach(o=>o.classList.remove('selected'));
+    localStorage.removeItem(STORAGE_KEY);
+    showToast('Risposte azzerate.', 'success');
+  });
+  document.getElementById('printBtn')?.addEventListener('click', ()=> window.print());
+
+  render();
+  restore();
+  updateProgress();
+  </script>
+</body>
+</html>

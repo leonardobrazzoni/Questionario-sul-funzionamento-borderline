@@ -391,42 +391,23 @@
       name: name
     };
 
-    try{
-      const res = await fetch(GAS_ENDPOINT, {
+    try {
+      // mode: 'no-cors' per evitare blocchi CORS / "Failed to fetch"
+      await fetch(GAS_ENDPOINT, {
         method:'POST',
+        mode:'no-cors',
         headers:{'Content-Type':'application/json'},
         body: JSON.stringify(payload)
       });
 
-      let data = null;
-      let rawText = '';
-
-      try {
-        rawText = await res.text();
-        data = JSON.parse(rawText);
-      } catch(parseErr) {
-        console.log('Risposta non JSON da Apps Script:', rawText);
-      }
-
-      console.log('RISPOSTA Apps Script:', data || rawText);
-
-      if (!res.ok || (data && data.status && data.status !== 'ok')) {
-        const serverError =
-          (data && data.error) ? data.error :
-          (rawText || 'Invio non riuscito (risposta non valida dal server).');
-        throw new Error(serverError);
-      }
-
+      // Se la richiesta non genera errori di rete, assumiamo che sia andata a buon fine
       msg.style.color = '#22c55e';
-      msg.textContent = 'Riepilogo inviato. Controlla anche la cartella spam.';
-      showToast('Riepilogo inviato. Controlla anche la cartella spam.', 'success');
-
-    }catch(err){
-      console.error('ERRORE INVIO:', err);
+      msg.textContent = 'Riepilogo inviato. Se non lo trovi, controlla anche la cartella spam.';
+      showToast('Riepilogo inviato. Se non lo trovi, controlla anche la cartella spam.', 'success');
+    } catch (err) {
+      console.error('ERRORE INVIO (rete):', err);
       msg.style.color = '#fca5a5';
-      msg.textContent = err && err.message
-        ? 'Errore Apps Script: ' + err.message
-        : 'Invio non riuscito (errore sconosciuto).';
+      msg.textContent = 'Invio non riuscito. Controlla la connessione o riprova tra qualche minuto.';
       showToast(msg.textContent, 'error');
     }
   }

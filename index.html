@@ -382,7 +382,7 @@
     const payload = {
       to: email,
       subject: 'Il tuo riepilogo – Questionario sul funzionamento borderline',
-      message: buildEmailSummary(), // testo di servizio, la mail elegante viene generata in Apps Script
+      message: buildEmailSummary(),
       subscribe: !!consentMarketing,
       referenceWindow: 'ultime due settimane',
       answers: getValues().map((v,i)=> v==null ? null : (ITEMS[i].reverse ? 6 - v : v)),
@@ -397,16 +397,37 @@
         headers:{'Content-Type':'application/json'},
         body: JSON.stringify(payload)
       });
-      let data={}; try{ data = await res.json(); }catch(_){ }
-      if(!res.ok || (data.status && data.status!=='ok')) throw new Error((data && data.error) || 'Invio non riuscito.');
+
+      let data = null;
+      let rawText = '';
+
+      try {
+        rawText = await res.text();
+        data = JSON.parse(rawText);
+      } catch(parseErr) {
+        console.log('Risposta non JSON da Apps Script:', rawText);
+      }
+
+      console.log('RISPOSTA Apps Script:', data || rawText);
+
+      if (!res.ok || (data && data.status && data.status !== 'ok')) {
+        const serverError =
+          (data && data.error) ? data.error :
+          (rawText || 'Invio non riuscito (risposta non valida dal server).');
+        throw new Error(serverError);
+      }
+
       msg.style.color = '#22c55e';
       msg.textContent = 'Riepilogo inviato. Controlla anche la cartella spam.';
       showToast('Riepilogo inviato. Controlla anche la cartella spam.', 'success');
+
     }catch(err){
-      console.error(err);
+      console.error('ERRORE INVIO:', err);
       msg.style.color = '#fca5a5';
-      msg.textContent = 'Invio non riuscito. Verifica la Web App di Apps Script e riprova.';
-      showToast('Invio non riuscito. Verifica la Web App di Apps Script e riprova.', 'error');
+      msg.textContent = err && err.message
+        ? 'Errore Apps Script: ' + err.message
+        : 'Invio non riuscito (errore sconosciuto).';
+      showToast(msg.textContent, 'error');
     }
   }
 

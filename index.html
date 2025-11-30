@@ -144,7 +144,7 @@
           <small id="emailHelp" style="color:#94a3b8">Usati solo per inviarti il riepilogo e, se acconsenti, contenuti professionali.</small>
 
           <label style="color:#94a3b8; display:flex; gap:8px; align-items:flex-start">
-            <input id="consentResults" type="checkbox" style="margin-top:4px" />
+            <input id="consentResults" type="checkbox" required style="margin-top:4px" />
             <span>Acconsento a ricevere il <strong>riepilogo del questionario</strong> via e-mail. <span style="color:#fca5a5">*</span></span>
           </label>
 
@@ -154,7 +154,7 @@
             </legend>
             <div style="display:flex; gap:14px; align-items:center">
               <label style="display:flex; gap:6px; align-items:center">
-                <input type="radio" name="consentMarketing" value="yes" /> Sì
+                <input type="radio" name="consentMarketing" value="yes" required /> Sì
               </label>
               <label style="display:flex; gap:6px; align-items:center">
                 <input type="radio" name="consentMarketing" value="no" /> No
@@ -166,11 +166,11 @@
           </fieldset>
 
           <label style="color:#94a3b8; display:flex; gap:8px; align-items:flex-start">
-            <input id="adultCheckbox" type="checkbox" style="margin-top:4px" />
+            <input id="adultCheckbox" type="checkbox" required style="margin-top:4px" />
             <span>Dichiaro di essere <strong>maggiorenne</strong> e di aver letto l’informativa privacy. <span style="color:#fca5a5">*</span></span>
           </label>
 
-          <div id="msg" class="error" aria-live="polite" role="status"></div>
+          <div id="msg" class="error" aria-live="polite" role="status" tabindex="-1"></div>
           <div id="toast" class="notice" aria-live="assertive"></div>
         </div>
       </div>
@@ -1462,14 +1462,14 @@ grazie per aver completato il questionario sul funzionamento borderline.
     const adult = document.getElementById('adultCheckbox')?.checked;
 
     const missing = markMissing();
-    if(missing){ msg.textContent = `Compila tutte le domande: mancano ${missing} risposta/e.`; return; }
+    if(missing){ msg.textContent = `Compila tutte le domande: mancano ${missing} risposta/e.`; msg.scrollIntoView({behavior:'smooth', block:'center'}); msg.focus(); return; }
 
-    if(!name){ msg.textContent='Inserisci il tuo nome.'; return; }
-    if(!email){ msg.textContent='Inserisci la tua e-mail.'; return; }
-    if(!validateEmail(email)){ msg.textContent='Inserisci un indirizzo e-mail valido.'; return; }
-    if(!consentResults){ msg.textContent='Spunta il consenso per l’invio del riepilogo.'; return; }
-    if(!consentMarketingEl){ msg.textContent='Indica se desideri ricevere contenuti futuri (Sì/No).'; return; }
-    if(!adult){ msg.textContent='Dichiara di essere maggiorenne per procedere.'; return; }
+    if(!name){ msg.textContent='Inserisci il tuo nome.'; msg.scrollIntoView({behavior:'smooth', block:'center'}); msg.focus(); return; }
+    if(!email){ msg.textContent='Inserisci la tua e-mail.'; msg.scrollIntoView({behavior:'smooth', block:'center'}); msg.focus(); return; }
+    if(!validateEmail(email)){ msg.textContent='Inserisci un indirizzo e-mail valido.'; msg.scrollIntoView({behavior:'smooth', block:'center'}); msg.focus(); return; }
+    if(!consentResults){ msg.textContent='Spunta il consenso per l’invio del riepilogo.'; msg.scrollIntoView({behavior:'smooth', block:'center'}); msg.focus(); return; }
+    if(!consentMarketingEl){ msg.textContent='Indica se desideri ricevere contenuti futuri (Sì/No).'; msg.scrollIntoView({behavior:'smooth', block:'center'}); msg.focus(); return; }
+    if(!adult){ msg.textContent='Dichiara di essere maggiorenne per procedere.'; msg.scrollIntoView({behavior:'smooth', block:'center'}); msg.focus(); return; }
 
     const consentMarketing = (consentMarketingEl.value === 'yes');
 
@@ -1494,12 +1494,16 @@ grazie per aver completato il questionario sul funzionamento borderline.
       });
 
       msg.style.color = '#22c55e';
-      msg.textContent = 'Riepilogo inviato. Se non lo trovi, controlla anche la cartella spam.';
+      msg.textContent = 'Mail inviata. Se non la trovi, controlla anche la cartella spam.';
+      msg.scrollIntoView({behavior:'smooth', block:'center'});
+      msg.focus();
       showToast('Riepilogo inviato. Se non lo trovi, controlla anche la cartella spam.', 'success');
     } catch (err) {
       console.error('ERRORE INVIO (rete):', err);
       msg.style.color = '#fca5a5';
       msg.textContent = 'Invio non riuscito. Controlla la connessione o riprova tra qualche minuto.';
+      msg.scrollIntoView({behavior:'smooth', block:'center'});
+      msg.focus();
       showToast(msg.textContent, 'error');
     }
   }

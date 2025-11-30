@@ -49,6 +49,9 @@
     .opt .num{font-size:1.6rem;font-weight:800;letter-spacing:.5px}
     .opt .desc{display:block;margin-top:6px;font-size:.85rem;color:var(--muted)}
     .opt input[type=radio]{position:absolute;inset:0;opacity:0;cursor:pointer}
+    .opt:has(input[type=radio]:checked){outline:2px solid var(--focus);outline-offset:2px;background:linear-gradient(180deg,var(--opt-sel),#0f172a)}
+    .opt:has(input[type=radio]:checked) .num{color:#e5e7eb}
+    .opt:has(input[type=radio]:checked) .desc{color:#cbd5e1}
     .opt.selected{outline:2px solid var(--focus);outline-offset:2px;background:linear-gradient(180deg,var(--opt-sel),#0f172a)}
     .opt.selected .num{color:#e5e7eb}
     .opt.selected .desc{color:#cbd5e1}
@@ -93,7 +96,16 @@
     <section class="hero">
       <h1>Questionario sul funzionamento borderline</h1>
 
-      <p>Questo questionario esplora <strong>alcune aree chiave</strong> del tuo funzionamento emotivo e relazionale, le stesse che troverai descritte nel riepilogo che riceverai via e-mail.</p>
+      <!-- Intro -->
+      <p>Questo questionario esplora <strong>sei aree</strong> del tuo funzionamento emotivo e relazionale:</p>
+      <ul style="margin:0 0 10px 18px; padding:0; line-height:1.6">
+        <li><strong>Paura dell’abbandono</strong></li>
+        <li><strong>Identità e direzione personale</strong></li>
+        <li><strong>Emozioni e sovraccarico emotivo</strong></li>
+        <li><strong>Reattività e impulsività</strong></li>
+        <li><strong>Presenza, vuoto e disconnessione</strong></li>
+        <li><strong>Rabbia e conflitto</strong></li>
+      </ul>
 
       <p>Si riferisce a come ti sei sentito nelle <strong>ultime due settimane</strong>, non all’intera vita.</p>
 
@@ -139,7 +151,7 @@
           <small id="emailHelp" style="color:#94a3b8">Usati solo per inviarti il riepilogo e, se acconsenti, contenuti professionali.</small>
 
           <label style="color:#94a3b8; display:flex; gap:8px; align-items:flex-start">
-            <input id="consentResults" type="checkbox" required style="margin-top:4px" />
+            <input id="consentResults" type="checkbox" style="margin-top:4px" />
             <span>Acconsento a ricevere il <strong>riepilogo del questionario</strong> via e-mail. <span style="color:#fca5a5">*</span></span>
           </label>
 
@@ -149,7 +161,7 @@
             </legend>
             <div style="display:flex; gap:14px; align-items:center">
               <label style="display:flex; gap:6px; align-items:center">
-                <input type="radio" name="consentMarketing" value="yes" required /> Sì
+                <input type="radio" name="consentMarketing" value="yes" /> Sì
               </label>
               <label style="display:flex; gap:6px; align-items:center">
                 <input type="radio" name="consentMarketing" value="no" /> No
@@ -161,11 +173,11 @@
           </fieldset>
 
           <label style="color:#94a3b8; display:flex; gap:8px; align-items:flex-start">
-            <input id="adultCheckbox" type="checkbox" required style="margin-top:4px" />
+            <input id="adultCheckbox" type="checkbox" style="margin-top:4px" />
             <span>Dichiaro di essere <strong>maggiorenne</strong> e di aver letto l’informativa privacy. <span style="color:#fca5a5">*</span></span>
           </label>
 
-          <div id="msg" class="error" aria-live="polite" role="status" tabindex="-1"></div>
+          <div id="msg" class="error" aria-live="polite" role="status"></div>
           <div id="toast" class="notice" aria-live="assertive"></div>
         </div>
       </div>
@@ -197,20 +209,18 @@
   </main>
 
   <script>
-  const form = document.getElementById('form');
-  const bar = document.getElementById('bar');
-  const counter = document.getElementById('counter');
-  const msg = document.getElementById('msg');
-  const toast = document.getElementById('toast');
-  const year = document.getElementById('year');
-  if (year) { year.textContent = new Date().getFullYear(); }
+  var form = document.getElementById('form');
+  var bar = document.getElementById('bar');
+  var counter = document.getElementById('counter');
+  var msg = document.getElementById('msg');
+  var toast = document.getElementById('toast');
+  var year = document.getElementById('year');
+  if (year) year.textContent = new Date().getFullYear();
 
-  const emailBtn = document.getElementById('emailBtn');
+  // ENDPOINT APPS SCRIPT (NUOVO)
+  var GAS_ENDPOINT = 'https://script.google.com/macros/s/AKfycbxHyulkJHsxnxWLqSP_1Jtvt_AzihWviI_45JiAl0u5XK7Z9_WRK9Tn6Hy-LTO7ktOqbw/exec';
 
-  // ENDPOINT APPS SCRIPT
-  const GAS_ENDPOINT = 'https://script.google.com/macros/s/AKfycbzaQnFPONvFbLKiww3PyMgBTl-CGQalMH7O8Fru2L0SbSZOAPjXuBsXuelknWKNj3tkHA/exec';
-
-  const ITEMS = [
+  var ITEMS = [
     {text:"Ho paura che le persone importanti per me si allontanino o mi abbandonino.", reverse:false},
     {text:"Passo dal sentirmi molto vicino a qualcuno al sentirmi improvvisamente distante o deluso.", reverse:false},
     {text:"Non so bene chi sono o cosa voglio davvero.", reverse:false},
@@ -249,7 +259,7 @@
     {text:"Mi sento una persona diversa a seconda dell’emozione che provo e questo mi crea disagio.", reverse:false}
   ];
 
-  const SCALE = [
+  var SCALE = [
     {value:1,label:'1',desc:'Non succede mai'},
     {value:2,label:'2',desc:'Raramente'},
     {value:3,label:'3',desc:'A volte'},
@@ -257,30 +267,30 @@
     {value:5,label:'5',desc:'Quasi sempre'}
   ];
 
-  const STORAGE_KEY = 'q_er_values_v10';
+  var STORAGE_KEY = 'q_er_values_v9';
 
   function showToast(text, type){
-    if (!toast) return;
+    if (type === void 0) type = 'success';
     toast.textContent = text;
-    toast.className = 'notice ' + (type === 'error' ? 'error' : 'success');
+    toast.className = 'notice ' + (type==='error'?'error':'success');
     toast.style.display = 'block';
-    setTimeout(function(){ toast.style.display = 'none'; }, 5000);
+    setTimeout(function(){ toast.style.display='none'; }, 5000);
   }
 
   function getValues(){
     var values = [];
-    for (var i = 1; i <= ITEMS.length; i++){
-      var sel = form.querySelector('input[name="q' + i + '"]:checked');
+    for(var i=1;i<=ITEMS.length;i++){
+      var sel = form.querySelector('input[name=q'+i+']:checked');
       values.push(sel ? Number(sel.value) : null);
     }
     return values;
   }
 
   function setValues(values){
-    values.forEach(function(v, i){
-      if (v == null) return;
-      var input = form.querySelector('input[name="q' + (i+1) + '"][value="' + v + '"]');
-      if (input){
+    values.forEach(function(v,i){
+      if(v==null) return;
+      var input = form.querySelector('input[name=q'+(i+1)+'][value="'+v+'"]');
+      if(input){
         input.checked = true;
         input.dispatchEvent(new Event('change'));
       }
@@ -289,40 +299,38 @@
 
   function updateProgress(){
     var vals = getValues();
-    var done = vals.filter(function(v){ return v !== null; }).length;
-    var pct = Math.round((done / ITEMS.length) * 100);
+    var done = vals.filter(function(v){return v!==null;}).length;
+    var pct = Math.round((done/ITEMS.length)*100);
     if (bar) {
       bar.style.width = pct + '%';
       bar.parentElement.setAttribute('aria-valuenow', String(pct));
     }
-    if (counter) {
-      counter.textContent = done + ' / ' + ITEMS.length + ' risposte · ' + pct + '%';
-    }
+    if (counter) counter.textContent = done + ' / ' + ITEMS.length + ' risposte · ' + pct + '%';
   }
 
   function buildEmailSummary(){
     var vals = getValues();
-    var miss = vals.filter(function(v){ return v == null; }).length;
-    if (miss){
-      throw new Error('Per ricevere i risultati devi rispondere a tutte le domande. Mancano ' + miss + ' risposta/e.');
-    }
+    var miss = vals.filter(function(v){return v==null;}).length;
+    if(miss){ throw new Error('Per ricevere i risultati devi rispondere a tutte le domande. Mancano '+miss+' risposta/e.'); }
     var nameEl = document.getElementById('nameInput');
     var emailEl = document.getElementById('emailInput');
-    var name = nameEl && nameEl.value ? nameEl.value.trim() : '';
-    var email = emailEl && emailEl.value ? emailEl.value.trim() : '';
-    var consentMarketingRadio = document.querySelector('input[name="consentMarketing"]:checked');
-    var consentMarketing = consentMarketingRadio && consentMarketingRadio.value === 'yes';
+    var name = nameEl ? nameEl.value.trim() : '';
+    var email = emailEl ? emailEl.value.trim() : '';
+    var consentMarketing = false;
+    var cm = document.querySelector('input[name=consentMarketing]:checked');
+    if(cm && cm.value === 'yes') consentMarketing = true;
 
-    var saluto = name ? ('Ciao ' + name + ',') : 'Ciao,';
-    var intro = saluto + '\n\n' +
-      'grazie per aver completato il questionario sul funzionamento borderline.\n' +
-      'Qui sotto trovi il tuo riepilogo personale, con una descrizione delle aree principali e alcune indicazioni pratiche ' +
-      'per aiutarti a comprendere meglio i tuoi schemi relazionali ed emotivi.\n\n' +
-      'Queste indicazioni non si sostituiscono a un percorso terapeutico, ma possono orientare la riflessione personale.\n\n' +
-      'Un caro saluto,\n' +
-      'Dott. Leonardo Brazzoni\n' +
-      'Psicologo – www.leonardobrazzoni.com\n' +
-      'WhatsApp: https://wa.me/393290757193\n\n' +
+    var saluto = name ? ('Ciao '+name+',') : 'Ciao,';
+    var intro = saluto+'\n\n'+
+      'grazie per aver completato il questionario sul funzionamento borderline.\n'+
+      'Qui sotto trovi il tuo riepilogo personale, con una descrizione delle aree principali e alcune indicazioni pratiche '+
+      'per aiutarti a comprendere meglio i tuoi schemi relazionali ed emotivi.\n\n'+
+      'Queste indicazioni non risolvono ma orientano. Se desideri iniziare il tuo percorso assieme a me, '+
+      'puoi prenotare una seduta o scrivermi ai contatti in fondo a questa mail.\n\n'+
+      'Un caro saluto,\n'+
+      'Dott. Leonardo Brazzoni\n'+
+      'Psicologo – www.leonardobrazzoni.com\n'+
+      'WhatsApp: https://wa.me/393290757193\n\n'+
       '───────────────────────────────\n';
 
     var text = '';
@@ -331,97 +339,80 @@
     text += 'Esito non diagnostico: analisi sintetica per aree utile a orientare il lavoro terapeutico.\n\n';
 
     text += '\nConsenso a contenuti futuri: ' + (consentMarketing ? 'SÌ' : 'NO') + '\n';
-    if (email) text += 'E-mail fornita: ' + email + '\n';
+    if(email) text += 'E-mail fornita: ' + email + '\n';
 
     return intro + text;
   }
 
   function validateEmail(email){
-    var re = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
-    return re.test(email);
+    return /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email);
   }
 
   function markMissing(){
     var vals = getValues();
     var firstMissingCard = null;
     vals.forEach(function(v, i){
-      var card = form.querySelector('.card[data-q="' + (i+1) + '"]');
-      if (card){
-        if (v == null){
+      var card = form.querySelector('.card[data-q="'+(i+1)+'"]');
+      if(card){
+        if(v==null){
           card.classList.add('missing');
-          if (!firstMissingCard) firstMissingCard = card;
-        } else {
+          if(!firstMissingCard) firstMissingCard = card;
+        }else{
           card.classList.remove('missing');
         }
       }
     });
-    if (firstMissingCard){
+    if(firstMissingCard){
       firstMissingCard.scrollIntoView({behavior:'smooth', block:'center'});
     }
-    return vals.filter(function(v){ return v == null; }).length;
+    return vals.filter(function(v){return v==null;}).length;
   }
 
-  function focusMsg(){
-    if (!msg) return;
-    msg.scrollIntoView({behavior:'smooth', block:'center'});
-    try { msg.focus(); } catch(e){}
+  function showSuccessScreen(){
+    document.body.innerHTML = ''
+      + '<div style="min-height:100vh;display:flex;align-items:center;justify-content:center;'
+      + 'background:radial-gradient(1200px 600px at 20% -10%,#1e293b,transparent),'
+      + 'radial-gradient(900px 600px at 120% 10%,#1f2937,transparent),'
+      + '#0f172a;'
+      + 'font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;'
+      + 'color:#e5e7eb;">'
+      + '<div style="max-width:480px;padding:32px;border-radius:18px;background:#020617;'
+      + 'border:1px solid #1f2937;box-shadow:0 18px 40px rgba(0,0,0,0.7);text-align:center;">'
+      + '<div style="font-size:2.4rem;margin-bottom:8px;">📩</div>'
+      + '<h1 style="margin:0 0 12px 0;font-size:1.5rem;">Email inviata</h1>'
+      + '<p style="margin:0;font-size:1rem;color:#cbd5e1;">'
+      + 'Se non la trovi, controlla anche la cartella spam.'
+      + '</p>'
+      + '</div>'
+      + '</div>';
   }
 
   async function sendEmailResults(){
-    if (!msg) return;
-    msg.textContent = '';
+    msg.textContent='';
     msg.style.color = '#fca5a5';
 
     var nameEl = document.getElementById('nameInput');
     var emailEl = document.getElementById('emailInput');
     var consentResultsEl = document.getElementById('consentResults');
-    var consentMarketingEl = document.querySelector('input[name="consentMarketing"]:checked');
     var adultEl = document.getElementById('adultCheckbox');
 
-    var name = nameEl && nameEl.value ? nameEl.value.trim() : '';
-    var email = emailEl && emailEl.value ? emailEl.value.trim() : '';
-    var consentResults = consentResultsEl && consentResultsEl.checked;
-    var adult = adultEl && adultEl.checked;
+    var name = nameEl ? nameEl.value.trim() : '';
+    var email = emailEl ? emailEl.value.trim() : '';
+    var consentResults = consentResultsEl ? consentResultsEl.checked : false;
+    var adult = adultEl ? adultEl.checked : false;
+    var consentMarketingEl = document.querySelector('input[name=consentMarketing]:checked');
 
     var missing = markMissing();
-    if (missing){
-      msg.textContent = 'Compila tutte le domande: mancano ' + missing + ' risposta/e.';
-      focusMsg();
-      return;
-    }
+    if(missing){ msg.textContent = 'Compila tutte le domande: mancano '+missing+' risposta/e.'; return; }
 
-    if (!name){
-      msg.textContent = 'Inserisci il tuo nome.';
-      focusMsg();
-      return;
-    }
-    if (!email){
-      msg.textContent = 'Inserisci la tua e-mail.';
-      focusMsg();
-      return;
-    }
-    if (!validateEmail(email)){
-      msg.textContent = 'Inserisci un indirizzo e-mail valido.';
-      focusMsg();
-      return;
-    }
-    if (!consentResults){
-      msg.textContent = 'Spunta il consenso per l’invio del riepilogo.';
-      focusMsg();
-      return;
-    }
-    if (!consentMarketingEl){
-      msg.textContent = 'Indica se desideri ricevere contenuti futuri (Sì/No).';
-      focusMsg();
-      return;
-    }
-    if (!adult){
-      msg.textContent = 'Dichiara di essere maggiorenne per procedere.';
-      focusMsg();
-      return;
-    }
+    if(!name){ msg.textContent='Inserisci il tuo nome.'; return; }
+    if(!email){ msg.textContent='Inserisci la tua e-mail.'; return; }
+    if(!validateEmail(email)){ msg.textContent='Inserisci un indirizzo e-mail valido.'; return; }
+    if(!consentResults){ msg.textContent='Spunta il consenso per l’invio del riepilogo.'; return; }
+    if(!consentMarketingEl){ msg.textContent='Indica se desideri ricevere contenuti futuri (Sì/No).'; return; }
+    if(!adult){ msg.textContent='Dichiara di essere maggiorenne per procedere.'; return; }
 
-    var consentMarketing = consentMarketingEl.value === 'yes';
+    var consentMarketing = (consentMarketingEl.value === 'yes');
 
     var payload = {
       to: email,
@@ -429,92 +420,44 @@
       message: buildEmailSummary(),
       subscribe: !!consentMarketing,
       referenceWindow: 'ultime due settimane',
-      answers: getValues().map(function(v, i){
-        if (v == null) return null;
-        return ITEMS[i].reverse ? 6 - v : v;
-      }),
+      answers: getValues().map(function(v,i){ return v==null ? null : (ITEMS[i].reverse ? 6 - v : v); }),
       answers_raw: getValues(),
-      items: ITEMS.map(function(it){
-        return {text: it.text, reverse: !!it.reverse};
-      }),
+      items: ITEMS.map(function(it){ return {text: it.text, reverse: !!it.reverse}; }),
       name: name
     };
 
     try {
-      if (emailBtn) {
-        emailBtn.disabled = true;
-      }
-
       await fetch(GAS_ENDPOINT, {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: {'Content-Type': 'application/json'},
+        method:'POST',
+        mode:'no-cors',
+        headers:{'Content-Type':'application/json'},
         body: JSON.stringify(payload)
       });
-
-      // Mostra una pagina di conferma a schermo intero
-      document.body.innerHTML = `
-        <div style="
-          min-height:100vh;
-          display:flex;
-          align-items:center;
-          justify-content:center;
-          background:#0f172a;
-          font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-          color:#e5e7eb;
-          margin:0;
-        ">
-          <div style="
-            text-align:center;
-            padding:24px 20px;
-            border-radius:18px;
-            background:#020617;
-            border:1px solid #1f2937;
-            max-width:420px;
-            box-shadow:0 18px 40px rgba(0,0,0,0.45);
-          ">
-            <div style="font-size:2.8rem;margin-bottom:10px;">📩</div>
-            <div style="font-size:1.3rem;font-weight:600;margin-bottom:8px;">
-              Email inviata
-            </div>
-            <p style="margin:0 0 4px 0;font-size:0.98rem;">
-              Se non la trovi, controlla anche la cartella spam.
-            </p>
-          </div>
-        </div>
-      `;
+      showSuccessScreen();
     } catch (err) {
       console.error('ERRORE INVIO (rete):', err);
       msg.style.color = '#fca5a5';
       msg.textContent = 'Invio non riuscito. Controlla la connessione o riprova tra qualche minuto.';
-      focusMsg();
-      showToast('Errore durante l’invio.', 'error');
-      if (emailBtn) {
-        emailBtn.disabled = false;
-      }
+      showToast(msg.textContent, 'error');
     }
   }
 
   function persist(){
-    try {
+    try{
       localStorage.setItem(STORAGE_KEY, JSON.stringify(getValues()));
-    } catch(e){}
+    }catch(e){}
   }
 
   function restore(){
-    var raw;
-    try {
+    var raw = null;
+    try{
       raw = localStorage.getItem(STORAGE_KEY);
-    } catch(e){
-      return;
-    }
-    if (!raw) return;
+    }catch(e){ raw = null; }
+    if(!raw) return;
     try{
       var vals = JSON.parse(raw);
-      if (Array.isArray(vals) && vals.length === ITEMS.length){
-        setValues(vals);
-      }
-    } catch(e){}
+      if(Array.isArray(vals) && vals.length===ITEMS.length){ setValues(vals); }
+    }catch(_){ }
   }
 
   function render(){
@@ -522,35 +465,29 @@
       var card = document.createElement('fieldset');
       card.className = 'card';
       card.setAttribute('data-q', String(idx+1));
-
       var legend = document.createElement('legend');
       legend.className = 'q-title';
-      legend.textContent = (idx+1) + '. ' + item.text;
+      legend.textContent = (idx+1)+'. '+item.text;
       card.appendChild(legend);
 
       var scale = document.createElement('div');
       scale.className = 'scale';
-
       SCALE.forEach(function(opt){
         var label = document.createElement('label');
         label.className = 'opt';
-        label.setAttribute('for', 'q' + (idx+1) + '_' + opt.value);
-
+        label.setAttribute('for', 'q'+(idx+1)+'_'+opt.value);
         var input = document.createElement('input');
         input.type = 'radio';
-        input.name = 'q' + (idx+1);
-        input.id = 'q' + (idx+1) + '_' + opt.value;
-        input.value = String(opt.value);
-        input.setAttribute('aria-label', opt.value + ' - ' + opt.desc);
-
+        input.name = 'q'+(idx+1);
+        input.id = 'q'+(idx+1)+'_'+opt.value;
+        input.value = opt.value;
+        input.setAttribute('aria-label', opt.value+' - '+opt.desc);
         var num = document.createElement('div');
         num.className = 'num';
-        num.textContent = String(opt.label);
-
+        num.textContent = opt.label;
         var desc = document.createElement('div');
         desc.className = 'desc';
         desc.textContent = opt.desc;
-
         label.appendChild(input);
         label.appendChild(num);
         label.appendChild(desc);
@@ -558,45 +495,32 @@
 
         input.addEventListener('change', function(){
           card.classList.remove('missing');
-          var allOpts = scale.querySelectorAll('.opt');
-          allOpts.forEach(function(o){ o.classList.remove('selected'); });
+          var all = scale.querySelectorAll('.opt');
+          for(var j=0;j<all.length;j++){ all[j].classList.remove('selected'); }
           label.classList.add('selected');
           updateProgress();
           persist();
         });
       });
-
       card.appendChild(scale);
       form.appendChild(card);
     });
   }
 
-  if (emailBtn) {
-    emailBtn.addEventListener('click', function(){ sendEmailResults(); });
-  }
+  var emailBtn = document.getElementById('emailBtn');
+  if(emailBtn) emailBtn.addEventListener('click', function(){ sendEmailResults(); });
   var resetBtn = document.getElementById('resetBtn');
-  if (resetBtn) {
-    resetBtn.addEventListener('click', function(){
-      form.reset();
-      updateProgress();
-      var cards = document.querySelectorAll('.card');
-      cards.forEach(function(c){ c.classList.remove('missing'); });
-      var opts = document.querySelectorAll('.opt');
-      opts.forEach(function(o){ o.classList.remove('selected'); });
-      try { localStorage.removeItem(STORAGE_KEY); } catch(e){}
-      showToast('Risposte azzerate.', 'success');
-      if (emailBtn) {
-        emailBtn.disabled = false;
-      }
-      if (msg) {
-        msg.textContent = '';
-      }
-    });
-  }
+  if(resetBtn) resetBtn.addEventListener('click', function(){
+    form.reset(); updateProgress();
+    var cards = document.querySelectorAll('.card');
+    for(var i=0;i<cards.length;i++){ cards[i].classList.remove('missing'); }
+    var opts = document.querySelectorAll('.opt');
+    for(var k=0;k<opts.length;k++){ opts[k].classList.remove('selected'); }
+    try{ localStorage.removeItem(STORAGE_KEY); }catch(e){}
+    showToast('Risposte azzerate.', 'success');
+  });
   var printBtn = document.getElementById('printBtn');
-  if (printBtn) {
-    printBtn.addEventListener('click', function(){ window.print(); });
-  }
+  if(printBtn) printBtn.addEventListener('click', function(){ window.print(); });
 
   render();
   restore();

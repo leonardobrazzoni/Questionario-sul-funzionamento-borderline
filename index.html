@@ -208,7 +208,7 @@
   const emailBtn = document.getElementById('emailBtn');
 
   // ENDPOINT APPS SCRIPT
-  const GAS_ENDPOINT = 'https://script.google.com/macros/s/AKfycbyWRxCUqvGKqd1-GAsAqBrckfVyTxNW0vTw5WcQpsWvqUVzu4Pu76DiYm3OvLnDhNOf/exec';
+  const GAS_ENDPOINT = 'https://script.google.com/macros/s/AKfycbyN1cnni2uxi5g_tnZQlE5Got-6I8Xs78U--DX8RwUHwaHl-kERGuNz0vfcDZNOFqsmwg/exec';
 
   const ITEMS = [
     {text:"Ho paura che le persone importanti per me si allontanino o mi abbandonino.", reverse:false},
@@ -452,10 +452,37 @@
         body: JSON.stringify(payload)
       });
 
-      msg.style.color = '#22c55e';
-      msg.textContent = 'Mail inviata. Se non la trovi, controlla anche la cartella spam.';
-      focusMsg();
-      showToast('Mail inviata.', 'success');
+      // Mostra una pagina di conferma a schermo intero
+      document.body.innerHTML = `
+        <div style="
+          min-height:100vh;
+          display:flex;
+          align-items:center;
+          justify-content:center;
+          background:#0f172a;
+          font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+          color:#e5e7eb;
+          margin:0;
+        ">
+          <div style="
+            text-align:center;
+            padding:24px 20px;
+            border-radius:18px;
+            background:#020617;
+            border:1px solid #1f2937;
+            max-width:420px;
+            box-shadow:0 18px 40px rgba(0,0,0,0.45);
+          ">
+            <div style="font-size:2.8rem;margin-bottom:10px;">📩</div>
+            <div style="font-size:1.3rem;font-weight:600;margin-bottom:8px;">
+              Email inviata
+            </div>
+            <p style="margin:0 0 4px 0;font-size:0.98rem;">
+              Se non la trovi, controlla anche la cartella spam.
+            </p>
+          </div>
+        </div>
+      `;
     } catch (err) {
       console.error('ERRORE INVIO (rete):', err);
       msg.style.color = '#fca5a5';

@@ -1451,25 +1451,66 @@ grazie per aver completato il questionario sul funzionamento borderline.
     return vals.filter(v=>v==null).length;
   }
 
-  async function sendEmailResults(){
-    msg.textContent='';
+  
+async function sendEmailResults(){
+    msg.textContent = '';
     msg.style.color = '#fca5a5';
 
-    const name = document.getElementById('nameInput')?.value?.trim();
-    const email = document.getElementById('emailInput')?.value?.trim();
-    const consentResults = document.getElementById('consentResults')?.checked;
+    const nameEl = document.getElementById('nameInput');
+    const emailEl = document.getElementById('emailInput');
+    const consentResultsEl = document.getElementById('consentResults');
+    const adultEl = document.getElementById('adultCheckbox');
+
+    const name = nameEl ? nameEl.value.trim() : '';
+    const email = emailEl ? emailEl.value.trim() : '';
+    const consentResults = consentResultsEl ? consentResultsEl.checked : false;
     const consentMarketingEl = document.querySelector('input[name=consentMarketing]:checked');
-    const adult = document.getElementById('adultCheckbox')?.checked;
+    const adult = adultEl ? adultEl.checked : false;
 
     const missing = markMissing();
-    if(missing){ msg.textContent = `Compila tutte le domande: mancano ${missing} risposta/e.`; msg.scrollIntoView({behavior:'smooth', block:'center'}); msg.focus(); return; }
+    if(missing){
+      msg.textContent = `Compila tutte le domande: mancano ${missing} risposta/e.`;
+      msg.scrollIntoView({behavior:'smooth', block:'center'});
+      msg.focus();
+      return;
+    }
 
-    if(!name){ msg.textContent='Inserisci il tuo nome.'; msg.scrollIntoView({behavior:'smooth', block:'center'}); msg.focus(); return; }
-    if(!email){ msg.textContent='Inserisci la tua e-mail.'; msg.scrollIntoView({behavior:'smooth', block:'center'}); msg.focus(); return; }
-    if(!validateEmail(email)){ msg.textContent='Inserisci un indirizzo e-mail valido.'; msg.scrollIntoView({behavior:'smooth', block:'center'}); msg.focus(); return; }
-    if(!consentResults){ msg.textContent='Spunta il consenso per l’invio del riepilogo.'; msg.scrollIntoView({behavior:'smooth', block:'center'}); msg.focus(); return; }
-    if(!consentMarketingEl){ msg.textContent='Indica se desideri ricevere contenuti futuri (Sì/No).'; msg.scrollIntoView({behavior:'smooth', block:'center'}); msg.focus(); return; }
-    if(!adult){ msg.textContent='Dichiara di essere maggiorenne per procedere.'; msg.scrollIntoView({behavior:'smooth', block:'center'}); msg.focus(); return; }
+    if(!name){
+      msg.textContent='Inserisci il tuo nome.';
+      msg.scrollIntoView({behavior:'smooth', block:'center'});
+      msg.focus();
+      return;
+    }
+    if(!email){
+      msg.textContent='Inserisci la tua e-mail.';
+      msg.scrollIntoView({behavior:'smooth', block:'center'});
+      msg.focus();
+      return;
+    }
+    if(!validateEmail(email)){
+      msg.textContent='Inserisci un indirizzo e-mail valido.';
+      msg.scrollIntoView({behavior:'smooth', block:'center'});
+      msg.focus();
+      return;
+    }
+    if(!consentResults){
+      msg.textContent='Spunta il consenso per l’invio del riepilogo.';
+      msg.scrollIntoView({behavior:'smooth', block:'center'});
+      msg.focus();
+      return;
+    }
+    if(!consentMarketingEl){
+      msg.textContent='Indica se desideri ricevere contenuti futuri (Sì/No).';
+      msg.scrollIntoView({behavior:'smooth', block:'center'});
+      msg.focus();
+      return;
+    }
+    if(!adult){
+      msg.textContent='Dichiara di essere maggiorenne per procedere.';
+      msg.scrollIntoView({behavior:'smooth', block:'center'});
+      msg.focus();
+      return;
+    }
 
     const consentMarketing = (consentMarketingEl.value === 'yes');
 
@@ -1486,18 +1527,24 @@ grazie per aver completato il questionario sul funzionamento borderline.
     };
 
     try {
-      await fetch(GAS_ENDPOINT, {
+      const res = await fetch(GAS_ENDPOINT, {
         method:'POST',
-        mode:'no-cors',
         headers:{'Content-Type':'application/json'},
         body: JSON.stringify(payload)
       });
+
+      if(!res.ok){
+        throw new Error('Risposta non valida dal server: ' + res.status);
+      }
 
       msg.style.color = '#22c55e';
       msg.textContent = 'Mail inviata. Se non la trovi, controlla anche la cartella spam.';
       msg.scrollIntoView({behavior:'smooth', block:'center'});
       msg.focus();
-      showToast('Riepilogo inviato. Se non lo trovi, controlla anche la cartella spam.', 'success');
+      showToast('Mail inviata. Se non la trovi, controlla anche la cartella spam.', 'success');
+
+      const sendBtn = document.getElementById('emailBtn');
+      if (sendBtn) sendBtn.disabled = true;
     } catch (err) {
       console.error('ERRORE INVIO (rete):', err);
       msg.style.color = '#fca5a5';
@@ -1508,7 +1555,7 @@ grazie per aver completato il questionario sul funzionamento borderline.
     }
   }
 
-  function persist(){ localStorage.setItem(STORAGE_KEY, JSON.stringify(getValues())); }
+function persist(){ localStorage.setItem(STORAGE_KEY, JSON.stringify(getValues())); }
   function restore(){
     const raw = localStorage.getItem(STORAGE_KEY);
     if(!raw) return;

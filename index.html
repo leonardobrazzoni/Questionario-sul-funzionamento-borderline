@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="it">
 <head>
   <meta charset="utf-8" />
@@ -100,7 +100,7 @@
       <p>Questo questionario esplora <strong>sei aree</strong> del tuo funzionamento emotivo e relazionale:</p>
       <ul style="margin:0 0 10px 18px; padding:0; line-height:1.6">
         <li><strong>Paura dell’abbandono</strong></li>
-        <li><strong>Identità e direzione personale</strong></li>
+        <li><strong>Identità e obiettivi instabili</strong></li>
         <li><strong>Emozioni e sovraccarico emotivo</strong></li>
         <li><strong>Reattività e impulsività</strong></li>
         <li><strong>Presenza, vuoto e disconnessione</strong></li>
@@ -144,6 +144,12 @@
             <span style="font-size:0.9rem;color:#94a3b8">Nome <span style="color:#fca5a5">*</span></span>
             <input id="nameInput" type="text" placeholder="Il tuo nome" aria-label="Nome" required style="width:100%;padding:10px;border-radius:10px;border:1px solid var(--border);background:#0a0f1a;color:var(--text)" />
           </label>
+
+          <label style="display:block">
+            <span style="font-size:0.9rem;color:#94a3b8">Età <span style="color:#fca5a5">*</span></span>
+            <input id="ageInput" type="number" inputmode="numeric" min="18" max="99" placeholder="La tua età" aria-label="Età" required style="width:100%;padding:10px;border-radius:10px;border:1px solid var(--border);background:#0a0f1a;color:var(--text)" />
+          </label>
+
           <label style="display:block">
             <span style="font-size:0.9rem;color:#94a3b8">E-mail <span style="color:#fca5a5">*</span></span>
             <input id="emailInput" type="email" inputmode="email" autocomplete="email" placeholder="nome@esempio.it" aria-describedby="emailHelp" required style="width:100%;padding:10px;border-radius:10px;border:1px solid var(--border);background:#0a0f1a;color:#e5e7eb" />
@@ -191,7 +197,1448 @@
       </div>
     </section>
 
-    <form id="form" novalidate></form>
+    <form id="form" novalidate>
+<fieldset class="card" data-q="1">
+<legend class="q-title">1. Ho paura che le persone importanti per me si allontanino o mi abbandonino.</legend>
+<div class="scale">
+
+        <label class="opt" for="q1_1">
+          <input type="radio" name="q1" id="q1_1" value="1" aria-label="1 - Non succede mai">
+          <div class="num">1</div>
+          <div class="desc">Non succede mai</div>
+        </label>
+        
+
+        <label class="opt" for="q1_2">
+          <input type="radio" name="q1" id="q1_2" value="2" aria-label="2 - Raramente">
+          <div class="num">2</div>
+          <div class="desc">Raramente</div>
+        </label>
+        
+
+        <label class="opt" for="q1_3">
+          <input type="radio" name="q1" id="q1_3" value="3" aria-label="3 - A volte">
+          <div class="num">3</div>
+          <div class="desc">A volte</div>
+        </label>
+        
+
+        <label class="opt" for="q1_4">
+          <input type="radio" name="q1" id="q1_4" value="4" aria-label="4 - Spesso">
+          <div class="num">4</div>
+          <div class="desc">Spesso</div>
+        </label>
+        
+
+        <label class="opt" for="q1_5">
+          <input type="radio" name="q1" id="q1_5" value="5" aria-label="5 - Quasi sempre">
+          <div class="num">5</div>
+          <div class="desc">Quasi sempre</div>
+        </label>
+        
+</div>
+</fieldset>
+<fieldset class="card" data-q="2">
+<legend class="q-title">2. Passo dal sentirmi molto vicino a qualcuno al sentirmi improvvisamente distante o deluso.</legend>
+<div class="scale">
+
+        <label class="opt" for="q2_1">
+          <input type="radio" name="q2" id="q2_1" value="1" aria-label="1 - Non succede mai">
+          <div class="num">1</div>
+          <div class="desc">Non succede mai</div>
+        </label>
+        
+
+        <label class="opt" for="q2_2">
+          <input type="radio" name="q2" id="q2_2" value="2" aria-label="2 - Raramente">
+          <div class="num">2</div>
+          <div class="desc">Raramente</div>
+        </label>
+        
+
+        <label class="opt" for="q2_3">
+          <input type="radio" name="q2" id="q2_3" value="3" aria-label="3 - A volte">
+          <div class="num">3</div>
+          <div class="desc">A volte</div>
+        </label>
+        
+
+        <label class="opt" for="q2_4">
+          <input type="radio" name="q2" id="q2_4" value="4" aria-label="4 - Spesso">
+          <div class="num">4</div>
+          <div class="desc">Spesso</div>
+        </label>
+        
+
+        <label class="opt" for="q2_5">
+          <input type="radio" name="q2" id="q2_5" value="5" aria-label="5 - Quasi sempre">
+          <div class="num">5</div>
+          <div class="desc">Quasi sempre</div>
+        </label>
+        
+</div>
+</fieldset>
+<fieldset class="card" data-q="3">
+<legend class="q-title">3. Non so bene chi sono o cosa voglio davvero.</legend>
+<div class="scale">
+
+        <label class="opt" for="q3_1">
+          <input type="radio" name="q3" id="q3_1" value="1" aria-label="1 - Non succede mai">
+          <div class="num">1</div>
+          <div class="desc">Non succede mai</div>
+        </label>
+        
+
+        <label class="opt" for="q3_2">
+          <input type="radio" name="q3" id="q3_2" value="2" aria-label="2 - Raramente">
+          <div class="num">2</div>
+          <div class="desc">Raramente</div>
+        </label>
+        
+
+        <label class="opt" for="q3_3">
+          <input type="radio" name="q3" id="q3_3" value="3" aria-label="3 - A volte">
+          <div class="num">3</div>
+          <div class="desc">A volte</div>
+        </label>
+        
+
+        <label class="opt" for="q3_4">
+          <input type="radio" name="q3" id="q3_4" value="4" aria-label="4 - Spesso">
+          <div class="num">4</div>
+          <div class="desc">Spesso</div>
+        </label>
+        
+
+        <label class="opt" for="q3_5">
+          <input type="radio" name="q3" id="q3_5" value="5" aria-label="5 - Quasi sempre">
+          <div class="num">5</div>
+          <div class="desc">Quasi sempre</div>
+        </label>
+        
+</div>
+</fieldset>
+<fieldset class="card" data-q="4">
+<legend class="q-title">4. Agisco d’impulso senza pensare alle conseguenze (spese, cibo, sostanze, guida, sesso).</legend>
+<div class="scale">
+
+        <label class="opt" for="q4_1">
+          <input type="radio" name="q4" id="q4_1" value="1" aria-label="1 - Non succede mai">
+          <div class="num">1</div>
+          <div class="desc">Non succede mai</div>
+        </label>
+        
+
+        <label class="opt" for="q4_2">
+          <input type="radio" name="q4" id="q4_2" value="2" aria-label="2 - Raramente">
+          <div class="num">2</div>
+          <div class="desc">Raramente</div>
+        </label>
+        
+
+        <label class="opt" for="q4_3">
+          <input type="radio" name="q4" id="q4_3" value="3" aria-label="3 - A volte">
+          <div class="num">3</div>
+          <div class="desc">A volte</div>
+        </label>
+        
+
+        <label class="opt" for="q4_4">
+          <input type="radio" name="q4" id="q4_4" value="4" aria-label="4 - Spesso">
+          <div class="num">4</div>
+          <div class="desc">Spesso</div>
+        </label>
+        
+
+        <label class="opt" for="q4_5">
+          <input type="radio" name="q4" id="q4_5" value="5" aria-label="5 - Quasi sempre">
+          <div class="num">5</div>
+          <div class="desc">Quasi sempre</div>
+        </label>
+        
+</div>
+</fieldset>
+<fieldset class="card" data-q="5">
+<legend class="q-title">5. Riesco a fermarmi un attimo prima di reagire quando qualcosa mi fa arrabbiare.</legend>
+<div class="scale">
+
+        <label class="opt" for="q5_1">
+          <input type="radio" name="q5" id="q5_1" value="1" aria-label="1 - Non succede mai">
+          <div class="num">1</div>
+          <div class="desc">Non succede mai</div>
+        </label>
+        
+
+        <label class="opt" for="q5_2">
+          <input type="radio" name="q5" id="q5_2" value="2" aria-label="2 - Raramente">
+          <div class="num">2</div>
+          <div class="desc">Raramente</div>
+        </label>
+        
+
+        <label class="opt" for="q5_3">
+          <input type="radio" name="q5" id="q5_3" value="3" aria-label="3 - A volte">
+          <div class="num">3</div>
+          <div class="desc">A volte</div>
+        </label>
+        
+
+        <label class="opt" for="q5_4">
+          <input type="radio" name="q5" id="q5_4" value="4" aria-label="4 - Spesso">
+          <div class="num">4</div>
+          <div class="desc">Spesso</div>
+        </label>
+        
+
+        <label class="opt" for="q5_5">
+          <input type="radio" name="q5" id="q5_5" value="5" aria-label="5 - Quasi sempre">
+          <div class="num">5</div>
+          <div class="desc">Quasi sempre</div>
+        </label>
+        
+</div>
+</fieldset>
+<fieldset class="card" data-q="6">
+<legend class="q-title">6. Le mie emozioni cambiano rapidamente e sono molto intense.</legend>
+<div class="scale">
+
+        <label class="opt" for="q6_1">
+          <input type="radio" name="q6" id="q6_1" value="1" aria-label="1 - Non succede mai">
+          <div class="num">1</div>
+          <div class="desc">Non succede mai</div>
+        </label>
+        
+
+        <label class="opt" for="q6_2">
+          <input type="radio" name="q6" id="q6_2" value="2" aria-label="2 - Raramente">
+          <div class="num">2</div>
+          <div class="desc">Raramente</div>
+        </label>
+        
+
+        <label class="opt" for="q6_3">
+          <input type="radio" name="q6" id="q6_3" value="3" aria-label="3 - A volte">
+          <div class="num">3</div>
+          <div class="desc">A volte</div>
+        </label>
+        
+
+        <label class="opt" for="q6_4">
+          <input type="radio" name="q6" id="q6_4" value="4" aria-label="4 - Spesso">
+          <div class="num">4</div>
+          <div class="desc">Spesso</div>
+        </label>
+        
+
+        <label class="opt" for="q6_5">
+          <input type="radio" name="q6" id="q6_5" value="5" aria-label="5 - Quasi sempre">
+          <div class="num">5</div>
+          <div class="desc">Quasi sempre</div>
+        </label>
+        
+</div>
+</fieldset>
+<fieldset class="card" data-q="7">
+<legend class="q-title">7. Ho pensieri anticonservativi o metto in atto comportamenti autolesivi.</legend>
+<div class="scale">
+
+        <label class="opt" for="q7_1">
+          <input type="radio" name="q7" id="q7_1" value="1" aria-label="1 - Non succede mai">
+          <div class="num">1</div>
+          <div class="desc">Non succede mai</div>
+        </label>
+        
+
+        <label class="opt" for="q7_2">
+          <input type="radio" name="q7" id="q7_2" value="2" aria-label="2 - Raramente">
+          <div class="num">2</div>
+          <div class="desc">Raramente</div>
+        </label>
+        
+
+        <label class="opt" for="q7_3">
+          <input type="radio" name="q7" id="q7_3" value="3" aria-label="3 - A volte">
+          <div class="num">3</div>
+          <div class="desc">A volte</div>
+        </label>
+        
+
+        <label class="opt" for="q7_4">
+          <input type="radio" name="q7" id="q7_4" value="4" aria-label="4 - Spesso">
+          <div class="num">4</div>
+          <div class="desc">Spesso</div>
+        </label>
+        
+
+        <label class="opt" for="q7_5">
+          <input type="radio" name="q7" id="q7_5" value="5" aria-label="5 - Quasi sempre">
+          <div class="num">5</div>
+          <div class="desc">Quasi sempre</div>
+        </label>
+        
+</div>
+</fieldset>
+<fieldset class="card" data-q="8">
+<legend class="q-title">8. Sento un senso di vuoto o di mancanza di significato nella mia vita.</legend>
+<div class="scale">
+
+        <label class="opt" for="q8_1">
+          <input type="radio" name="q8" id="q8_1" value="1" aria-label="1 - Non succede mai">
+          <div class="num">1</div>
+          <div class="desc">Non succede mai</div>
+        </label>
+        
+
+        <label class="opt" for="q8_2">
+          <input type="radio" name="q8" id="q8_2" value="2" aria-label="2 - Raramente">
+          <div class="num">2</div>
+          <div class="desc">Raramente</div>
+        </label>
+        
+
+        <label class="opt" for="q8_3">
+          <input type="radio" name="q8" id="q8_3" value="3" aria-label="3 - A volte">
+          <div class="num">3</div>
+          <div class="desc">A volte</div>
+        </label>
+        
+
+        <label class="opt" for="q8_4">
+          <input type="radio" name="q8" id="q8_4" value="4" aria-label="4 - Spesso">
+          <div class="num">4</div>
+          <div class="desc">Spesso</div>
+        </label>
+        
+
+        <label class="opt" for="q8_5">
+          <input type="radio" name="q8" id="q8_5" value="5" aria-label="5 - Quasi sempre">
+          <div class="num">5</div>
+          <div class="desc">Quasi sempre</div>
+        </label>
+        
+</div>
+</fieldset>
+<fieldset class="card" data-q="9">
+<legend class="q-title">9. Anche quando cambio idea o umore, so chi sono e cosa voglio davvero.</legend>
+<div class="scale">
+
+        <label class="opt" for="q9_1">
+          <input type="radio" name="q9" id="q9_1" value="1" aria-label="1 - Non succede mai">
+          <div class="num">1</div>
+          <div class="desc">Non succede mai</div>
+        </label>
+        
+
+        <label class="opt" for="q9_2">
+          <input type="radio" name="q9" id="q9_2" value="2" aria-label="2 - Raramente">
+          <div class="num">2</div>
+          <div class="desc">Raramente</div>
+        </label>
+        
+
+        <label class="opt" for="q9_3">
+          <input type="radio" name="q9" id="q9_3" value="3" aria-label="3 - A volte">
+          <div class="num">3</div>
+          <div class="desc">A volte</div>
+        </label>
+        
+
+        <label class="opt" for="q9_4">
+          <input type="radio" name="q9" id="q9_4" value="4" aria-label="4 - Spesso">
+          <div class="num">4</div>
+          <div class="desc">Spesso</div>
+        </label>
+        
+
+        <label class="opt" for="q9_5">
+          <input type="radio" name="q9" id="q9_5" value="5" aria-label="5 - Quasi sempre">
+          <div class="num">5</div>
+          <div class="desc">Quasi sempre</div>
+        </label>
+        
+</div>
+</fieldset>
+<fieldset class="card" data-q="10">
+<legend class="q-title">10. Provo rabbia intensa e faccio fatica a controllarla.</legend>
+<div class="scale">
+
+        <label class="opt" for="q10_1">
+          <input type="radio" name="q10" id="q10_1" value="1" aria-label="1 - Non succede mai">
+          <div class="num">1</div>
+          <div class="desc">Non succede mai</div>
+        </label>
+        
+
+        <label class="opt" for="q10_2">
+          <input type="radio" name="q10" id="q10_2" value="2" aria-label="2 - Raramente">
+          <div class="num">2</div>
+          <div class="desc">Raramente</div>
+        </label>
+        
+
+        <label class="opt" for="q10_3">
+          <input type="radio" name="q10" id="q10_3" value="3" aria-label="3 - A volte">
+          <div class="num">3</div>
+          <div class="desc">A volte</div>
+        </label>
+        
+
+        <label class="opt" for="q10_4">
+          <input type="radio" name="q10" id="q10_4" value="4" aria-label="4 - Spesso">
+          <div class="num">4</div>
+          <div class="desc">Spesso</div>
+        </label>
+        
+
+        <label class="opt" for="q10_5">
+          <input type="radio" name="q10" id="q10_5" value="5" aria-label="5 - Quasi sempre">
+          <div class="num">5</div>
+          <div class="desc">Quasi sempre</div>
+        </label>
+        
+</div>
+</fieldset>
+<fieldset class="card" data-q="11">
+<legend class="q-title">11. Quando sono stressato/a mi sento distaccato/a da me stesso/a o dalla realtà.</legend>
+<div class="scale">
+
+        <label class="opt" for="q11_1">
+          <input type="radio" name="q11" id="q11_1" value="1" aria-label="1 - Non succede mai">
+          <div class="num">1</div>
+          <div class="desc">Non succede mai</div>
+        </label>
+        
+
+        <label class="opt" for="q11_2">
+          <input type="radio" name="q11" id="q11_2" value="2" aria-label="2 - Raramente">
+          <div class="num">2</div>
+          <div class="desc">Raramente</div>
+        </label>
+        
+
+        <label class="opt" for="q11_3">
+          <input type="radio" name="q11" id="q11_3" value="3" aria-label="3 - A volte">
+          <div class="num">3</div>
+          <div class="desc">A volte</div>
+        </label>
+        
+
+        <label class="opt" for="q11_4">
+          <input type="radio" name="q11" id="q11_4" value="4" aria-label="4 - Spesso">
+          <div class="num">4</div>
+          <div class="desc">Spesso</div>
+        </label>
+        
+
+        <label class="opt" for="q11_5">
+          <input type="radio" name="q11" id="q11_5" value="5" aria-label="5 - Quasi sempre">
+          <div class="num">5</div>
+          <div class="desc">Quasi sempre</div>
+        </label>
+        
+</div>
+</fieldset>
+<fieldset class="card" data-q="12">
+<legend class="q-title">12. Sotto stress riesco comunque a restare lucido e concentrato su quello che sto facendo.</legend>
+<div class="scale">
+
+        <label class="opt" for="q12_1">
+          <input type="radio" name="q12" id="q12_1" value="1" aria-label="1 - Non succede mai">
+          <div class="num">1</div>
+          <div class="desc">Non succede mai</div>
+        </label>
+        
+
+        <label class="opt" for="q12_2">
+          <input type="radio" name="q12" id="q12_2" value="2" aria-label="2 - Raramente">
+          <div class="num">2</div>
+          <div class="desc">Raramente</div>
+        </label>
+        
+
+        <label class="opt" for="q12_3">
+          <input type="radio" name="q12" id="q12_3" value="3" aria-label="3 - A volte">
+          <div class="num">3</div>
+          <div class="desc">A volte</div>
+        </label>
+        
+
+        <label class="opt" for="q12_4">
+          <input type="radio" name="q12" id="q12_4" value="4" aria-label="4 - Spesso">
+          <div class="num">4</div>
+          <div class="desc">Spesso</div>
+        </label>
+        
+
+        <label class="opt" for="q12_5">
+          <input type="radio" name="q12" id="q12_5" value="5" aria-label="5 - Quasi sempre">
+          <div class="num">5</div>
+          <div class="desc">Quasi sempre</div>
+        </label>
+        
+</div>
+</fieldset>
+<fieldset class="card" data-q="13">
+<legend class="q-title">13. Tendo a interpretare gli atteggiamenti degli altri come critici o ostili nei miei confronti.</legend>
+<div class="scale">
+
+        <label class="opt" for="q13_1">
+          <input type="radio" name="q13" id="q13_1" value="1" aria-label="1 - Non succede mai">
+          <div class="num">1</div>
+          <div class="desc">Non succede mai</div>
+        </label>
+        
+
+        <label class="opt" for="q13_2">
+          <input type="radio" name="q13" id="q13_2" value="2" aria-label="2 - Raramente">
+          <div class="num">2</div>
+          <div class="desc">Raramente</div>
+        </label>
+        
+
+        <label class="opt" for="q13_3">
+          <input type="radio" name="q13" id="q13_3" value="3" aria-label="3 - A volte">
+          <div class="num">3</div>
+          <div class="desc">A volte</div>
+        </label>
+        
+
+        <label class="opt" for="q13_4">
+          <input type="radio" name="q13" id="q13_4" value="4" aria-label="4 - Spesso">
+          <div class="num">4</div>
+          <div class="desc">Spesso</div>
+        </label>
+        
+
+        <label class="opt" for="q13_5">
+          <input type="radio" name="q13" id="q13_5" value="5" aria-label="5 - Quasi sempre">
+          <div class="num">5</div>
+          <div class="desc">Quasi sempre</div>
+        </label>
+        
+</div>
+</fieldset>
+<fieldset class="card" data-q="14">
+<legend class="q-title">14. Oscillo tra il desiderio di vicinanza e il bisogno improvviso di allontanarmi.</legend>
+<div class="scale">
+
+        <label class="opt" for="q14_1">
+          <input type="radio" name="q14" id="q14_1" value="1" aria-label="1 - Non succede mai">
+          <div class="num">1</div>
+          <div class="desc">Non succede mai</div>
+        </label>
+        
+
+        <label class="opt" for="q14_2">
+          <input type="radio" name="q14" id="q14_2" value="2" aria-label="2 - Raramente">
+          <div class="num">2</div>
+          <div class="desc">Raramente</div>
+        </label>
+        
+
+        <label class="opt" for="q14_3">
+          <input type="radio" name="q14" id="q14_3" value="3" aria-label="3 - A volte">
+          <div class="num">3</div>
+          <div class="desc">A volte</div>
+        </label>
+        
+
+        <label class="opt" for="q14_4">
+          <input type="radio" name="q14" id="q14_4" value="4" aria-label="4 - Spesso">
+          <div class="num">4</div>
+          <div class="desc">Spesso</div>
+        </label>
+        
+
+        <label class="opt" for="q14_5">
+          <input type="radio" name="q14" id="q14_5" value="5" aria-label="5 - Quasi sempre">
+          <div class="num">5</div>
+          <div class="desc">Quasi sempre</div>
+        </label>
+        
+</div>
+</fieldset>
+<fieldset class="card" data-q="15">
+<legend class="q-title">15. Di solito riesco a sentirmi tranquillo anche se una persona importante non si fa sentire per qualche ora.</legend>
+<div class="scale">
+
+        <label class="opt" for="q15_1">
+          <input type="radio" name="q15" id="q15_1" value="1" aria-label="1 - Non succede mai">
+          <div class="num">1</div>
+          <div class="desc">Non succede mai</div>
+        </label>
+        
+
+        <label class="opt" for="q15_2">
+          <input type="radio" name="q15" id="q15_2" value="2" aria-label="2 - Raramente">
+          <div class="num">2</div>
+          <div class="desc">Raramente</div>
+        </label>
+        
+
+        <label class="opt" for="q15_3">
+          <input type="radio" name="q15" id="q15_3" value="3" aria-label="3 - A volte">
+          <div class="num">3</div>
+          <div class="desc">A volte</div>
+        </label>
+        
+
+        <label class="opt" for="q15_4">
+          <input type="radio" name="q15" id="q15_4" value="4" aria-label="4 - Spesso">
+          <div class="num">4</div>
+          <div class="desc">Spesso</div>
+        </label>
+        
+
+        <label class="opt" for="q15_5">
+          <input type="radio" name="q15" id="q15_5" value="5" aria-label="5 - Quasi sempre">
+          <div class="num">5</div>
+          <div class="desc">Quasi sempre</div>
+        </label>
+        
+</div>
+</fieldset>
+<fieldset class="card" data-q="16">
+<legend class="q-title">16. Dopo un conflitto rischio di fare qualcosa che mi danneggia o peggiora la situazione.</legend>
+<div class="scale">
+
+        <label class="opt" for="q16_1">
+          <input type="radio" name="q16" id="q16_1" value="1" aria-label="1 - Non succede mai">
+          <div class="num">1</div>
+          <div class="desc">Non succede mai</div>
+        </label>
+        
+
+        <label class="opt" for="q16_2">
+          <input type="radio" name="q16" id="q16_2" value="2" aria-label="2 - Raramente">
+          <div class="num">2</div>
+          <div class="desc">Raramente</div>
+        </label>
+        
+
+        <label class="opt" for="q16_3">
+          <input type="radio" name="q16" id="q16_3" value="3" aria-label="3 - A volte">
+          <div class="num">3</div>
+          <div class="desc">A volte</div>
+        </label>
+        
+
+        <label class="opt" for="q16_4">
+          <input type="radio" name="q16" id="q16_4" value="4" aria-label="4 - Spesso">
+          <div class="num">4</div>
+          <div class="desc">Spesso</div>
+        </label>
+        
+
+        <label class="opt" for="q16_5">
+          <input type="radio" name="q16" id="q16_5" value="5" aria-label="5 - Quasi sempre">
+          <div class="num">5</div>
+          <div class="desc">Quasi sempre</div>
+        </label>
+        
+</div>
+</fieldset>
+<fieldset class="card" data-q="17">
+<legend class="q-title">17. In mezzo agli altri mi perdo in pensieri come “mi giudicano” o “mi rifiuteranno”.</legend>
+<div class="scale">
+
+        <label class="opt" for="q17_1">
+          <input type="radio" name="q17" id="q17_1" value="1" aria-label="1 - Non succede mai">
+          <div class="num">1</div>
+          <div class="desc">Non succede mai</div>
+        </label>
+        
+
+        <label class="opt" for="q17_2">
+          <input type="radio" name="q17" id="q17_2" value="2" aria-label="2 - Raramente">
+          <div class="num">2</div>
+          <div class="desc">Raramente</div>
+        </label>
+        
+
+        <label class="opt" for="q17_3">
+          <input type="radio" name="q17" id="q17_3" value="3" aria-label="3 - A volte">
+          <div class="num">3</div>
+          <div class="desc">A volte</div>
+        </label>
+        
+
+        <label class="opt" for="q17_4">
+          <input type="radio" name="q17" id="q17_4" value="4" aria-label="4 - Spesso">
+          <div class="num">4</div>
+          <div class="desc">Spesso</div>
+        </label>
+        
+
+        <label class="opt" for="q17_5">
+          <input type="radio" name="q17" id="q17_5" value="5" aria-label="5 - Quasi sempre">
+          <div class="num">5</div>
+          <div class="desc">Quasi sempre</div>
+        </label>
+        
+</div>
+</fieldset>
+<fieldset class="card" data-q="18">
+<legend class="q-title">18. Durante una discussione riesco a esprimere il mio punto di vista senza perdere il controllo.</legend>
+<div class="scale">
+
+        <label class="opt" for="q18_1">
+          <input type="radio" name="q18" id="q18_1" value="1" aria-label="1 - Non succede mai">
+          <div class="num">1</div>
+          <div class="desc">Non succede mai</div>
+        </label>
+        
+
+        <label class="opt" for="q18_2">
+          <input type="radio" name="q18" id="q18_2" value="2" aria-label="2 - Raramente">
+          <div class="num">2</div>
+          <div class="desc">Raramente</div>
+        </label>
+        
+
+        <label class="opt" for="q18_3">
+          <input type="radio" name="q18" id="q18_3" value="3" aria-label="3 - A volte">
+          <div class="num">3</div>
+          <div class="desc">A volte</div>
+        </label>
+        
+
+        <label class="opt" for="q18_4">
+          <input type="radio" name="q18" id="q18_4" value="4" aria-label="4 - Spesso">
+          <div class="num">4</div>
+          <div class="desc">Spesso</div>
+        </label>
+        
+
+        <label class="opt" for="q18_5">
+          <input type="radio" name="q18" id="q18_5" value="5" aria-label="5 - Quasi sempre">
+          <div class="num">5</div>
+          <div class="desc">Quasi sempre</div>
+        </label>
+        
+</div>
+</fieldset>
+<fieldset class="card" data-q="19">
+<legend class="q-title">19. Passo facilmente dall’idealizzare una persona al sentirla molto deludente.</legend>
+<div class="scale">
+
+        <label class="opt" for="q19_1">
+          <input type="radio" name="q19" id="q19_1" value="1" aria-label="1 - Non succede mai">
+          <div class="num">1</div>
+          <div class="desc">Non succede mai</div>
+        </label>
+        
+
+        <label class="opt" for="q19_2">
+          <input type="radio" name="q19" id="q19_2" value="2" aria-label="2 - Raramente">
+          <div class="num">2</div>
+          <div class="desc">Raramente</div>
+        </label>
+        
+
+        <label class="opt" for="q19_3">
+          <input type="radio" name="q19" id="q19_3" value="3" aria-label="3 - A volte">
+          <div class="num">3</div>
+          <div class="desc">A volte</div>
+        </label>
+        
+
+        <label class="opt" for="q19_4">
+          <input type="radio" name="q19" id="q19_4" value="4" aria-label="4 - Spesso">
+          <div class="num">4</div>
+          <div class="desc">Spesso</div>
+        </label>
+        
+
+        <label class="opt" for="q19_5">
+          <input type="radio" name="q19" id="q19_5" value="5" aria-label="5 - Quasi sempre">
+          <div class="num">5</div>
+          <div class="desc">Quasi sempre</div>
+        </label>
+        
+</div>
+</fieldset>
+<fieldset class="card" data-q="20">
+<legend class="q-title">20. Controllo messaggi, social o spostamenti degli altri per ridurre ansia o gelosia.</legend>
+<div class="scale">
+
+        <label class="opt" for="q20_1">
+          <input type="radio" name="q20" id="q20_1" value="1" aria-label="1 - Non succede mai">
+          <div class="num">1</div>
+          <div class="desc">Non succede mai</div>
+        </label>
+        
+
+        <label class="opt" for="q20_2">
+          <input type="radio" name="q20" id="q20_2" value="2" aria-label="2 - Raramente">
+          <div class="num">2</div>
+          <div class="desc">Raramente</div>
+        </label>
+        
+
+        <label class="opt" for="q20_3">
+          <input type="radio" name="q20" id="q20_3" value="3" aria-label="3 - A volte">
+          <div class="num">3</div>
+          <div class="desc">A volte</div>
+        </label>
+        
+
+        <label class="opt" for="q20_4">
+          <input type="radio" name="q20" id="q20_4" value="4" aria-label="4 - Spesso">
+          <div class="num">4</div>
+          <div class="desc">Spesso</div>
+        </label>
+        
+
+        <label class="opt" for="q20_5">
+          <input type="radio" name="q20" id="q20_5" value="5" aria-label="5 - Quasi sempre">
+          <div class="num">5</div>
+          <div class="desc">Quasi sempre</div>
+        </label>
+        
+</div>
+</fieldset>
+<fieldset class="card" data-q="21">
+<legend class="q-title">21. Provo vergogna che mi porta a sentirmi inadeguato/a o sbagliato/a.</legend>
+<div class="scale">
+
+        <label class="opt" for="q21_1">
+          <input type="radio" name="q21" id="q21_1" value="1" aria-label="1 - Non succede mai">
+          <div class="num">1</div>
+          <div class="desc">Non succede mai</div>
+        </label>
+        
+
+        <label class="opt" for="q21_2">
+          <input type="radio" name="q21" id="q21_2" value="2" aria-label="2 - Raramente">
+          <div class="num">2</div>
+          <div class="desc">Raramente</div>
+        </label>
+        
+
+        <label class="opt" for="q21_3">
+          <input type="radio" name="q21" id="q21_3" value="3" aria-label="3 - A volte">
+          <div class="num">3</div>
+          <div class="desc">A volte</div>
+        </label>
+        
+
+        <label class="opt" for="q21_4">
+          <input type="radio" name="q21" id="q21_4" value="4" aria-label="4 - Spesso">
+          <div class="num">4</div>
+          <div class="desc">Spesso</div>
+        </label>
+        
+
+        <label class="opt" for="q21_5">
+          <input type="radio" name="q21" id="q21_5" value="5" aria-label="5 - Quasi sempre">
+          <div class="num">5</div>
+          <div class="desc">Quasi sempre</div>
+        </label>
+        
+</div>
+</fieldset>
+<fieldset class="card" data-q="22">
+<legend class="q-title">22. Quando provo emozioni forti, riesco a capire cosa sto sentendo.</legend>
+<div class="scale">
+
+        <label class="opt" for="q22_1">
+          <input type="radio" name="q22" id="q22_1" value="1" aria-label="1 - Non succede mai">
+          <div class="num">1</div>
+          <div class="desc">Non succede mai</div>
+        </label>
+        
+
+        <label class="opt" for="q22_2">
+          <input type="radio" name="q22" id="q22_2" value="2" aria-label="2 - Raramente">
+          <div class="num">2</div>
+          <div class="desc">Raramente</div>
+        </label>
+        
+
+        <label class="opt" for="q22_3">
+          <input type="radio" name="q22" id="q22_3" value="3" aria-label="3 - A volte">
+          <div class="num">3</div>
+          <div class="desc">A volte</div>
+        </label>
+        
+
+        <label class="opt" for="q22_4">
+          <input type="radio" name="q22" id="q22_4" value="4" aria-label="4 - Spesso">
+          <div class="num">4</div>
+          <div class="desc">Spesso</div>
+        </label>
+        
+
+        <label class="opt" for="q22_5">
+          <input type="radio" name="q22" id="q22_5" value="5" aria-label="5 - Quasi sempre">
+          <div class="num">5</div>
+          <div class="desc">Quasi sempre</div>
+        </label>
+        
+</div>
+</fieldset>
+<fieldset class="card" data-q="23">
+<legend class="q-title">23. Il modo in cui mi vedo o ciò che voglio cambia facilmente a seconda del contesto e questo mi crea disagio.</legend>
+<div class="scale">
+
+        <label class="opt" for="q23_1">
+          <input type="radio" name="q23" id="q23_1" value="1" aria-label="1 - Non succede mai">
+          <div class="num">1</div>
+          <div class="desc">Non succede mai</div>
+        </label>
+        
+
+        <label class="opt" for="q23_2">
+          <input type="radio" name="q23" id="q23_2" value="2" aria-label="2 - Raramente">
+          <div class="num">2</div>
+          <div class="desc">Raramente</div>
+        </label>
+        
+
+        <label class="opt" for="q23_3">
+          <input type="radio" name="q23" id="q23_3" value="3" aria-label="3 - A volte">
+          <div class="num">3</div>
+          <div class="desc">A volte</div>
+        </label>
+        
+
+        <label class="opt" for="q23_4">
+          <input type="radio" name="q23" id="q23_4" value="4" aria-label="4 - Spesso">
+          <div class="num">4</div>
+          <div class="desc">Spesso</div>
+        </label>
+        
+
+        <label class="opt" for="q23_5">
+          <input type="radio" name="q23" id="q23_5" value="5" aria-label="5 - Quasi sempre">
+          <div class="num">5</div>
+          <div class="desc">Quasi sempre</div>
+        </label>
+        
+</div>
+</fieldset>
+<fieldset class="card" data-q="24">
+<legend class="q-title">24. Dopo momenti di vicinanza temo di essere stato/a “troppo” o di aver dato fastidio.</legend>
+<div class="scale">
+
+        <label class="opt" for="q24_1">
+          <input type="radio" name="q24" id="q24_1" value="1" aria-label="1 - Non succede mai">
+          <div class="num">1</div>
+          <div class="desc">Non succede mai</div>
+        </label>
+        
+
+        <label class="opt" for="q24_2">
+          <input type="radio" name="q24" id="q24_2" value="2" aria-label="2 - Raramente">
+          <div class="num">2</div>
+          <div class="desc">Raramente</div>
+        </label>
+        
+
+        <label class="opt" for="q24_3">
+          <input type="radio" name="q24" id="q24_3" value="3" aria-label="3 - A volte">
+          <div class="num">3</div>
+          <div class="desc">A volte</div>
+        </label>
+        
+
+        <label class="opt" for="q24_4">
+          <input type="radio" name="q24" id="q24_4" value="4" aria-label="4 - Spesso">
+          <div class="num">4</div>
+          <div class="desc">Spesso</div>
+        </label>
+        
+
+        <label class="opt" for="q24_5">
+          <input type="radio" name="q24" id="q24_5" value="5" aria-label="5 - Quasi sempre">
+          <div class="num">5</div>
+          <div class="desc">Quasi sempre</div>
+        </label>
+        
+</div>
+</fieldset>
+<fieldset class="card" data-q="25">
+<legend class="q-title">25. Se qualcuno non risponde o si allontana entro in allarme (paura, rabbia, gelosia).</legend>
+<div class="scale">
+
+        <label class="opt" for="q25_1">
+          <input type="radio" name="q25" id="q25_1" value="1" aria-label="1 - Non succede mai">
+          <div class="num">1</div>
+          <div class="desc">Non succede mai</div>
+        </label>
+        
+
+        <label class="opt" for="q25_2">
+          <input type="radio" name="q25" id="q25_2" value="2" aria-label="2 - Raramente">
+          <div class="num">2</div>
+          <div class="desc">Raramente</div>
+        </label>
+        
+
+        <label class="opt" for="q25_3">
+          <input type="radio" name="q25" id="q25_3" value="3" aria-label="3 - A volte">
+          <div class="num">3</div>
+          <div class="desc">A volte</div>
+        </label>
+        
+
+        <label class="opt" for="q25_4">
+          <input type="radio" name="q25" id="q25_4" value="4" aria-label="4 - Spesso">
+          <div class="num">4</div>
+          <div class="desc">Spesso</div>
+        </label>
+        
+
+        <label class="opt" for="q25_5">
+          <input type="radio" name="q25" id="q25_5" value="5" aria-label="5 - Quasi sempre">
+          <div class="num">5</div>
+          <div class="desc">Quasi sempre</div>
+        </label>
+        
+</div>
+</fieldset>
+<fieldset class="card" data-q="26">
+<legend class="q-title">26. Uso il cibo, assumo sostanze, mi ferisco, fuggo nel sonno (o altro) per spegnere emozioni che mi sembrano insopportabili.</legend>
+<div class="scale">
+
+        <label class="opt" for="q26_1">
+          <input type="radio" name="q26" id="q26_1" value="1" aria-label="1 - Non succede mai">
+          <div class="num">1</div>
+          <div class="desc">Non succede mai</div>
+        </label>
+        
+
+        <label class="opt" for="q26_2">
+          <input type="radio" name="q26" id="q26_2" value="2" aria-label="2 - Raramente">
+          <div class="num">2</div>
+          <div class="desc">Raramente</div>
+        </label>
+        
+
+        <label class="opt" for="q26_3">
+          <input type="radio" name="q26" id="q26_3" value="3" aria-label="3 - A volte">
+          <div class="num">3</div>
+          <div class="desc">A volte</div>
+        </label>
+        
+
+        <label class="opt" for="q26_4">
+          <input type="radio" name="q26" id="q26_4" value="4" aria-label="4 - Spesso">
+          <div class="num">4</div>
+          <div class="desc">Spesso</div>
+        </label>
+        
+
+        <label class="opt" for="q26_5">
+          <input type="radio" name="q26" id="q26_5" value="5" aria-label="5 - Quasi sempre">
+          <div class="num">5</div>
+          <div class="desc">Quasi sempre</div>
+        </label>
+        
+</div>
+</fieldset>
+<fieldset class="card" data-q="27">
+<legend class="q-title">27. Dopo periodi di forte autocontrollo finisco per perderlo all’improvviso.</legend>
+<div class="scale">
+
+        <label class="opt" for="q27_1">
+          <input type="radio" name="q27" id="q27_1" value="1" aria-label="1 - Non succede mai">
+          <div class="num">1</div>
+          <div class="desc">Non succede mai</div>
+        </label>
+        
+
+        <label class="opt" for="q27_2">
+          <input type="radio" name="q27" id="q27_2" value="2" aria-label="2 - Raramente">
+          <div class="num">2</div>
+          <div class="desc">Raramente</div>
+        </label>
+        
+
+        <label class="opt" for="q27_3">
+          <input type="radio" name="q27" id="q27_3" value="3" aria-label="3 - A volte">
+          <div class="num">3</div>
+          <div class="desc">A volte</div>
+        </label>
+        
+
+        <label class="opt" for="q27_4">
+          <input type="radio" name="q27" id="q27_4" value="4" aria-label="4 - Spesso">
+          <div class="num">4</div>
+          <div class="desc">Spesso</div>
+        </label>
+        
+
+        <label class="opt" for="q27_5">
+          <input type="radio" name="q27" id="q27_5" value="5" aria-label="5 - Quasi sempre">
+          <div class="num">5</div>
+          <div class="desc">Quasi sempre</div>
+        </label>
+        
+</div>
+</fieldset>
+<fieldset class="card" data-q="28">
+<legend class="q-title">28. Metto alla prova la relazione per capire se l’altra persona ci tiene davvero a me.</legend>
+<div class="scale">
+
+        <label class="opt" for="q28_1">
+          <input type="radio" name="q28" id="q28_1" value="1" aria-label="1 - Non succede mai">
+          <div class="num">1</div>
+          <div class="desc">Non succede mai</div>
+        </label>
+        
+
+        <label class="opt" for="q28_2">
+          <input type="radio" name="q28" id="q28_2" value="2" aria-label="2 - Raramente">
+          <div class="num">2</div>
+          <div class="desc">Raramente</div>
+        </label>
+        
+
+        <label class="opt" for="q28_3">
+          <input type="radio" name="q28" id="q28_3" value="3" aria-label="3 - A volte">
+          <div class="num">3</div>
+          <div class="desc">A volte</div>
+        </label>
+        
+
+        <label class="opt" for="q28_4">
+          <input type="radio" name="q28" id="q28_4" value="4" aria-label="4 - Spesso">
+          <div class="num">4</div>
+          <div class="desc">Spesso</div>
+        </label>
+        
+
+        <label class="opt" for="q28_5">
+          <input type="radio" name="q28" id="q28_5" value="5" aria-label="5 - Quasi sempre">
+          <div class="num">5</div>
+          <div class="desc">Quasi sempre</div>
+        </label>
+        
+</div>
+</fieldset>
+<fieldset class="card" data-q="29">
+<legend class="q-title">29. Dopo dei momenti di forte stress ho ricordi confusi o vuoti di memoria.</legend>
+<div class="scale">
+
+        <label class="opt" for="q29_1">
+          <input type="radio" name="q29" id="q29_1" value="1" aria-label="1 - Non succede mai">
+          <div class="num">1</div>
+          <div class="desc">Non succede mai</div>
+        </label>
+        
+
+        <label class="opt" for="q29_2">
+          <input type="radio" name="q29" id="q29_2" value="2" aria-label="2 - Raramente">
+          <div class="num">2</div>
+          <div class="desc">Raramente</div>
+        </label>
+        
+
+        <label class="opt" for="q29_3">
+          <input type="radio" name="q29" id="q29_3" value="3" aria-label="3 - A volte">
+          <div class="num">3</div>
+          <div class="desc">A volte</div>
+        </label>
+        
+
+        <label class="opt" for="q29_4">
+          <input type="radio" name="q29" id="q29_4" value="4" aria-label="4 - Spesso">
+          <div class="num">4</div>
+          <div class="desc">Spesso</div>
+        </label>
+        
+
+        <label class="opt" for="q29_5">
+          <input type="radio" name="q29" id="q29_5" value="5" aria-label="5 - Quasi sempre">
+          <div class="num">5</div>
+          <div class="desc">Quasi sempre</div>
+        </label>
+        
+</div>
+</fieldset>
+<fieldset class="card" data-q="30">
+<legend class="q-title">30. Durante i litigi alzo il tono o divento improvvisamente freddo/a e distante.</legend>
+<div class="scale">
+
+        <label class="opt" for="q30_1">
+          <input type="radio" name="q30" id="q30_1" value="1" aria-label="1 - Non succede mai">
+          <div class="num">1</div>
+          <div class="desc">Non succede mai</div>
+        </label>
+        
+
+        <label class="opt" for="q30_2">
+          <input type="radio" name="q30" id="q30_2" value="2" aria-label="2 - Raramente">
+          <div class="num">2</div>
+          <div class="desc">Raramente</div>
+        </label>
+        
+
+        <label class="opt" for="q30_3">
+          <input type="radio" name="q30" id="q30_3" value="3" aria-label="3 - A volte">
+          <div class="num">3</div>
+          <div class="desc">A volte</div>
+        </label>
+        
+
+        <label class="opt" for="q30_4">
+          <input type="radio" name="q30" id="q30_4" value="4" aria-label="4 - Spesso">
+          <div class="num">4</div>
+          <div class="desc">Spesso</div>
+        </label>
+        
+
+        <label class="opt" for="q30_5">
+          <input type="radio" name="q30" id="q30_5" value="5" aria-label="5 - Quasi sempre">
+          <div class="num">5</div>
+          <div class="desc">Quasi sempre</div>
+        </label>
+        
+</div>
+</fieldset>
+<fieldset class="card" data-q="31">
+<legend class="q-title">31. Mi è difficile trovare l'equilibrio tra il farmi rispettare e l'attaccare gli altri.</legend>
+<div class="scale">
+
+        <label class="opt" for="q31_1">
+          <input type="radio" name="q31" id="q31_1" value="1" aria-label="1 - Non succede mai">
+          <div class="num">1</div>
+          <div class="desc">Non succede mai</div>
+        </label>
+        
+
+        <label class="opt" for="q31_2">
+          <input type="radio" name="q31" id="q31_2" value="2" aria-label="2 - Raramente">
+          <div class="num">2</div>
+          <div class="desc">Raramente</div>
+        </label>
+        
+
+        <label class="opt" for="q31_3">
+          <input type="radio" name="q31" id="q31_3" value="3" aria-label="3 - A volte">
+          <div class="num">3</div>
+          <div class="desc">A volte</div>
+        </label>
+        
+
+        <label class="opt" for="q31_4">
+          <input type="radio" name="q31" id="q31_4" value="4" aria-label="4 - Spesso">
+          <div class="num">4</div>
+          <div class="desc">Spesso</div>
+        </label>
+        
+
+        <label class="opt" for="q31_5">
+          <input type="radio" name="q31" id="q31_5" value="5" aria-label="5 - Quasi sempre">
+          <div class="num">5</div>
+          <div class="desc">Quasi sempre</div>
+        </label>
+        
+</div>
+</fieldset>
+<fieldset class="card" data-q="32">
+<legend class="q-title">32. Piccoli segnali (uno sguardo, un ritardo) cambiano drasticamente come mi sento nella relazione.</legend>
+<div class="scale">
+
+        <label class="opt" for="q32_1">
+          <input type="radio" name="q32" id="q32_1" value="1" aria-label="1 - Non succede mai">
+          <div class="num">1</div>
+          <div class="desc">Non succede mai</div>
+        </label>
+        
+
+        <label class="opt" for="q32_2">
+          <input type="radio" name="q32" id="q32_2" value="2" aria-label="2 - Raramente">
+          <div class="num">2</div>
+          <div class="desc">Raramente</div>
+        </label>
+        
+
+        <label class="opt" for="q32_3">
+          <input type="radio" name="q32" id="q32_3" value="3" aria-label="3 - A volte">
+          <div class="num">3</div>
+          <div class="desc">A volte</div>
+        </label>
+        
+
+        <label class="opt" for="q32_4">
+          <input type="radio" name="q32" id="q32_4" value="4" aria-label="4 - Spesso">
+          <div class="num">4</div>
+          <div class="desc">Spesso</div>
+        </label>
+        
+
+        <label class="opt" for="q32_5">
+          <input type="radio" name="q32" id="q32_5" value="5" aria-label="5 - Quasi sempre">
+          <div class="num">5</div>
+          <div class="desc">Quasi sempre</div>
+        </label>
+        
+</div>
+</fieldset>
+<fieldset class="card" data-q="33">
+<legend class="q-title">33. Dopo una  lite mi sento in colpa e ho la sensazione  di aver rovinato il rapporto.</legend>
+<div class="scale">
+
+        <label class="opt" for="q33_1">
+          <input type="radio" name="q33" id="q33_1" value="1" aria-label="1 - Non succede mai">
+          <div class="num">1</div>
+          <div class="desc">Non succede mai</div>
+        </label>
+        
+
+        <label class="opt" for="q33_2">
+          <input type="radio" name="q33" id="q33_2" value="2" aria-label="2 - Raramente">
+          <div class="num">2</div>
+          <div class="desc">Raramente</div>
+        </label>
+        
+
+        <label class="opt" for="q33_3">
+          <input type="radio" name="q33" id="q33_3" value="3" aria-label="3 - A volte">
+          <div class="num">3</div>
+          <div class="desc">A volte</div>
+        </label>
+        
+
+        <label class="opt" for="q33_4">
+          <input type="radio" name="q33" id="q33_4" value="4" aria-label="4 - Spesso">
+          <div class="num">4</div>
+          <div class="desc">Spesso</div>
+        </label>
+        
+
+        <label class="opt" for="q33_5">
+          <input type="radio" name="q33" id="q33_5" value="5" aria-label="5 - Quasi sempre">
+          <div class="num">5</div>
+          <div class="desc">Quasi sempre</div>
+        </label>
+        
+</div>
+</fieldset>
+<fieldset class="card" data-q="34">
+<legend class="q-title">34. Quando non mi sento capito/a mi chiudo o interrompo i rapporti.</legend>
+<div class="scale">
+
+        <label class="opt" for="q34_1">
+          <input type="radio" name="q34" id="q34_1" value="1" aria-label="1 - Non succede mai">
+          <div class="num">1</div>
+          <div class="desc">Non succede mai</div>
+        </label>
+        
+
+        <label class="opt" for="q34_2">
+          <input type="radio" name="q34" id="q34_2" value="2" aria-label="2 - Raramente">
+          <div class="num">2</div>
+          <div class="desc">Raramente</div>
+        </label>
+        
+
+        <label class="opt" for="q34_3">
+          <input type="radio" name="q34" id="q34_3" value="3" aria-label="3 - A volte">
+          <div class="num">3</div>
+          <div class="desc">A volte</div>
+        </label>
+        
+
+        <label class="opt" for="q34_4">
+          <input type="radio" name="q34" id="q34_4" value="4" aria-label="4 - Spesso">
+          <div class="num">4</div>
+          <div class="desc">Spesso</div>
+        </label>
+        
+
+        <label class="opt" for="q34_5">
+          <input type="radio" name="q34" id="q34_5" value="5" aria-label="5 - Quasi sempre">
+          <div class="num">5</div>
+          <div class="desc">Quasi sempre</div>
+        </label>
+        
+</div>
+</fieldset>
+<fieldset class="card" data-q="35">
+<legend class="q-title">35. Mi è difficile restare nel presente: rimugino sul passato o sul futuro.</legend>
+<div class="scale">
+
+        <label class="opt" for="q35_1">
+          <input type="radio" name="q35" id="q35_1" value="1" aria-label="1 - Non succede mai">
+          <div class="num">1</div>
+          <div class="desc">Non succede mai</div>
+        </label>
+        
+
+        <label class="opt" for="q35_2">
+          <input type="radio" name="q35" id="q35_2" value="2" aria-label="2 - Raramente">
+          <div class="num">2</div>
+          <div class="desc">Raramente</div>
+        </label>
+        
+
+        <label class="opt" for="q35_3">
+          <input type="radio" name="q35" id="q35_3" value="3" aria-label="3 - A volte">
+          <div class="num">3</div>
+          <div class="desc">A volte</div>
+        </label>
+        
+
+        <label class="opt" for="q35_4">
+          <input type="radio" name="q35" id="q35_4" value="4" aria-label="4 - Spesso">
+          <div class="num">4</div>
+          <div class="desc">Spesso</div>
+        </label>
+        
+
+        <label class="opt" for="q35_5">
+          <input type="radio" name="q35" id="q35_5" value="5" aria-label="5 - Quasi sempre">
+          <div class="num">5</div>
+          <div class="desc">Quasi sempre</div>
+        </label>
+        
+</div>
+</fieldset>
+<fieldset class="card" data-q="36">
+<legend class="q-title">36. Mi sento una persona diversa a seconda dell’emozione che provo e questo mi crea disagio.</legend>
+<div class="scale">
+
+        <label class="opt" for="q36_1">
+          <input type="radio" name="q36" id="q36_1" value="1" aria-label="1 - Non succede mai">
+          <div class="num">1</div>
+          <div class="desc">Non succede mai</div>
+        </label>
+        
+
+        <label class="opt" for="q36_2">
+          <input type="radio" name="q36" id="q36_2" value="2" aria-label="2 - Raramente">
+          <div class="num">2</div>
+          <div class="desc">Raramente</div>
+        </label>
+        
+
+        <label class="opt" for="q36_3">
+          <input type="radio" name="q36" id="q36_3" value="3" aria-label="3 - A volte">
+          <div class="num">3</div>
+          <div class="desc">A volte</div>
+        </label>
+        
+
+        <label class="opt" for="q36_4">
+          <input type="radio" name="q36" id="q36_4" value="4" aria-label="4 - Spesso">
+          <div class="num">4</div>
+          <div class="desc">Spesso</div>
+        </label>
+        
+
+        <label class="opt" for="q36_5">
+          <input type="radio" name="q36" id="q36_5" value="5" aria-label="5 - Quasi sempre">
+          <div class="num">5</div>
+          <div class="desc">Quasi sempre</div>
+        </label>
+        
+</div>
+</fieldset>
+</form>
 
     <section class="actions">
       <button type="button" class="primary" id="emailBtn">Invia e ricevi il risultato via email</button>
@@ -217,47 +1664,46 @@
   var year = document.getElementById('year');
   if (year) year.textContent = new Date().getFullYear();
 
-  // ENDPOINT APPS SCRIPT (NUOVO)
-  var GAS_ENDPOINT = 'https://script.google.com/macros/s/AKfycbzkYHt4X2wlIdeOK2lzVWsKdvbRvdDcT-Rq96-V81_tT0SawbUQNK5t7q5z5oocZPaLVw/exec';
+  var GAS_ENDPOINT = 'https://script.google.com/macros/s/AKfycbwFjCnIRAj-cJKYuem_BTZMJn030JnLsiCfA9l6pAw7XjLTF_X4kGEbS3-PvHyZAPIMqA/exec';
 
   var ITEMS = [
-    {text:"Ho paura che le persone importanti per me si allontanino o mi abbandonino.", reverse:false},
-    {text:"Passo dal sentirmi molto vicino a qualcuno al sentirmi improvvisamente distante o deluso.", reverse:false},
-    {text:"Non so bene chi sono o cosa voglio davvero.", reverse:false},
-    {text:"Agisco d’impulso senza pensare alle conseguenze (spese, cibo, sostanze, guida, sesso).", reverse:false},
-    {text:"Riesco a fermarmi un attimo prima di reagire quando qualcosa mi fa arrabbiare.", reverse:true},
-    {text:"Le mie emozioni cambiano rapidamente e sono molto intense.", reverse:false},
-    {text:"Ho pensieri di farmi del male o metto in atto comportamenti autolesivi.", reverse:false},
-    {text:"Sento un senso di vuoto o di mancanza di significato nella mia vita.", reverse:false},
-    {text:"Anche quando cambio idea o umore, so chi sono e cosa voglio davvero.", reverse:true},
-    {text:"Provo rabbia intensa e faccio fatica a controllarla.", reverse:false},
-    {text:"Quando sono stressato/a mi sento distaccato/a da me stesso/a o dalla realtà.", reverse:false},
-    {text:"Sotto stress riesco comunque a restare lucido e concentrato su quello che sto facendo.", reverse:true},
-    {text:"Tendo a interpretare gli atteggiamenti degli altri come critici o ostili nei miei confronti.", reverse:false},
-    {text:"Oscillo tra desiderio di vicinanza e bisogno improvviso di allontanarmi.", reverse:false},
-    {text:"Di solito riesco a sentirmi tranquillo anche se una persona importante non si fa sentire per un po’.", reverse:true},
-    {text:"Dopo un conflitto rischio di fare qualcosa che mi danneggia o peggiora la situazione.", reverse:false},
-    {text:"In mezzo agli altri mi perdo in pensieri come “mi giudicano” o “mi rifiuteranno”.", reverse:false},
-    {text:"Durante una discussione riesco a esprimere cosa penso senza perdere il controllo.", reverse:true},
-    {text:"Passo facilmente dall’idealizzare una persona al sentirla molto deludente.", reverse:false},
-    {text:"Controllo messaggi, social o spostamenti degli altri per ridurre ansia o gelosia.", reverse:false},
-    {text:"Provo vergogna che mi porta a sentirmi inadeguato/a o sbagliato/a.", reverse:false},
-    {text:"Quando provo emozioni forti, riesco a capire cosa sto sentendo.", reverse:true},
-    {text:"Il modo in cui mi vedo o ciò che voglio cambia facilmente a seconda del contesto e questo mi crea disagio.", reverse:false},
-    {text:"Dopo momenti di vicinanza temo di essere stato/a “troppo” o di aver dato fastidio.", reverse:false},
-    {text:"Se qualcuno non risponde o si allontana entro in allarme (paura, rabbia, gelosia).", reverse:false},
-    {text:"Uso cibo, sostanze o attività per spegnere emozioni che mi sembrano insopportabili.", reverse:false},
-    {text:"Dopo periodi di forte autocontrollo finisco per perderlo all’improvviso.", reverse:false},
-    {text:"Metto alla prova la relazione per capire se l’altra persona ci tiene davvero a me.", reverse:false},
-    {text:"Dopo forte stress ho ricordi confusi o vuoti di memoria.", reverse:false},
-    {text:"Durante i litigi alzo il tono o divento improvvisamente freddo/a e distante.", reverse:false},
-    {text:"Mi è difficile trovare equilibrio tra farmi rispettare e andare incontro agli altri.", reverse:false},
-    {text:"Piccoli segnali (uno sguardo, un ritardo) cambiano drasticamente come mi sento nella relazione.", reverse:false},
-    {text:"Dopo una crisi o una lite provo molta colpa o paura di aver rovinato tutto.", reverse:false},
-    {text:"Quando non mi sento capito/a mi chiudo o interrompo i rapporti.", reverse:false},
-    {text:"Mi è difficile restare nel presente: rimugino sul passato o sul futuro.", reverse:false},
-    {text:"Mi sento una persona diversa a seconda dell’emozione che provo e questo mi crea disagio.", reverse:false}
-  ];
+  {text:"Ho paura che le persone importanti per me si allontanino o mi abbandonino.", reverse:false},
+  {text:"Passo dal sentirmi molto vicino a qualcuno al sentirmi improvvisamente distante o deluso.", reverse:false},
+  {text:"Non so bene chi sono o cosa voglio davvero.", reverse:false},
+  {text:"Agisco d’impulso senza pensare alle conseguenze (spese, cibo, sostanze, guida, sesso).", reverse:false},
+  {text:"Riesco a fermarmi un attimo prima di reagire quando qualcosa mi fa arrabbiare.", reverse:true},
+  {text:"Le mie emozioni cambiano rapidamente e sono molto intense.", reverse:false},
+  {text:"Ho pensieri anticonservativi o metto in atto comportamenti autolesivi.", reverse:false},
+  {text:"Sento un senso di vuoto o di mancanza di significato nella mia vita.", reverse:false},
+  {text:"Anche quando cambio idea o umore, so chi sono e cosa voglio davvero.", reverse:true},
+  {text:"Provo rabbia intensa e faccio fatica a controllarla.", reverse:false},
+  {text:"Quando sono stressato/a mi sento distaccato/a da me stesso/a o dalla realtà.", reverse:false},
+  {text:"Sotto stress riesco comunque a restare lucido e concentrato su quello che sto facendo.", reverse:true},
+  {text:"Tendo a interpretare gli atteggiamenti degli altri come critici o ostili nei miei confronti.", reverse:false},
+  {text:"Oscillo tra il desiderio di vicinanza e il bisogno improvviso di allontanarmi.", reverse:false},
+  {text:"Di solito riesco a sentirmi tranquillo anche se una persona importante non si fa sentire per qualche ora.", reverse:true},
+  {text:"Dopo un conflitto rischio di fare qualcosa che mi danneggia o peggiora la situazione.", reverse:false},
+  {text:"In mezzo agli altri mi perdo in pensieri come “mi giudicano” o “mi rifiuteranno”.", reverse:false},
+  {text:"Durante una discussione riesco a esprimere il mio punto di vista senza perdere il controllo.", reverse:true},
+  {text:"Passo facilmente dall’idealizzare una persona al sentirla molto deludente.", reverse:false},
+  {text:"Controllo messaggi, social o spostamenti degli altri per ridurre ansia o gelosia.", reverse:false},
+  {text:"Provo vergogna che mi porta a sentirmi inadeguato/a o sbagliato/a.", reverse:false},
+  {text:"Quando provo emozioni forti, riesco a capire cosa sto sentendo.", reverse:true},
+  {text:"Il modo in cui mi vedo o ciò che voglio cambia facilmente a seconda del contesto e questo mi crea disagio.", reverse:false},
+  {text:"Dopo momenti di vicinanza temo di essere stato/a “troppo” o di aver dato fastidio.", reverse:false},
+  {text:"Se qualcuno non risponde o si allontana entro in allarme (paura, rabbia, gelosia).", reverse:false},
+  {text:"Uso il cibo, assumo sostanze, mi ferisco, fuggo nel sonno (o altro) per spegnere emozioni che mi sembrano insopportabili.", reverse:false},
+  {text:"Dopo periodi di forte autocontrollo finisco per perderlo all’improvviso.", reverse:false},
+  {text:"Metto alla prova la relazione per capire se l’altra persona ci tiene davvero a me.", reverse:false},
+  {text:"Dopo dei momenti di forte stress ho ricordi confusi o vuoti di memoria.", reverse:false},
+  {text:"Durante i litigi alzo il tono o divento improvvisamente freddo/a e distante.", reverse:false},
+  {text:"Mi è difficile trovare l'equilibrio tra il farmi rispettare e l'attaccare gli altri.", reverse:false},
+  {text:"Piccoli segnali (uno sguardo, un ritardo) cambiano drasticamente come mi sento nella relazione.", reverse:false},
+  {text:"Dopo una  lite mi sento in colpa e ho la sensazione  di aver rovinato il rapporto.", reverse:false},
+  {text:"Quando non mi sento capito/a mi chiudo o interrompo i rapporti.", reverse:false},
+  {text:"Mi è difficile restare nel presente: rimugino sul passato o sul futuro.", reverse:false},
+  {text:"Mi sento una persona diversa a seconda dell’emozione che provo e questo mi crea disagio.", reverse:false},
+];
 
   var SCALE = [
     {value:1,label:'1',desc:'Non succede mai'},
@@ -323,8 +1769,7 @@
     var saluto = name ? ('Ciao '+name+',') : 'Ciao,';
     var intro = saluto+'\n\n'+
       'grazie per aver completato il questionario sul funzionamento borderline.\n'+
-      'Qui sotto trovi il tuo riepilogo personale, con una descrizione delle aree principali e alcune indicazioni pratiche '+
-      'per aiutarti a comprendere meglio i tuoi schemi relazionali ed emotivi.\n\n'+
+      'Qui sotto trovi il tuo riepilogo personale, con una descrizione delle aree principali e alcune indicazioni pratiche\n\n'+
       'Queste indicazioni non risolvono ma orientano. Se desideri iniziare il tuo percorso assieme a me, '+
       'puoi prenotare una seduta o scrivermi ai contatti in fondo a questa mail.\n\n'+
       'Un caro saluto,\n'+
@@ -392,11 +1837,13 @@
     msg.style.color = '#fca5a5';
 
     var nameEl = document.getElementById('nameInput');
+    var ageEl = document.getElementById('ageInput');
     var emailEl = document.getElementById('emailInput');
     var consentResultsEl = document.getElementById('consentResults');
     var adultEl = document.getElementById('adultCheckbox');
 
     var name = nameEl ? nameEl.value.trim() : '';
+    var age = ageEl ? ageEl.value.trim() : '';
     var email = emailEl ? emailEl.value.trim() : '';
     var consentResults = consentResultsEl ? consentResultsEl.checked : false;
     var adult = adultEl ? adultEl.checked : false;
@@ -406,6 +1853,8 @@
     if(missing){ msg.textContent = 'Compila tutte le domande: mancano '+missing+' risposta/e.'; return; }
 
     if(!name){ msg.textContent='Inserisci il tuo nome.'; return; }
+    if(!age){ msg.textContent='Inserisci la tua età.'; return; }
+    if(Number(age) < 18){ msg.textContent='Il questionario è riservato ai maggiorenni.'; return; }
     if(!email){ msg.textContent='Inserisci la tua e-mail.'; return; }
     if(!validateEmail(email)){ msg.textContent='Inserisci un indirizzo e-mail valido.'; return; }
     if(!consentResults){ msg.textContent='Spunta il consenso per l’invio del riepilogo.'; return; }
@@ -423,7 +1872,8 @@
       answers: getValues().map(function(v,i){ return v==null ? null : (ITEMS[i].reverse ? 6 - v : v); }),
       answers_raw: getValues(),
       items: ITEMS.map(function(it){ return {text: it.text, reverse: !!it.reverse}; }),
-      name: name
+      name: name,
+      age: age
     };
 
     try {
@@ -460,53 +1910,6 @@
     }catch(_){ }
   }
 
-  function render(){
-    ITEMS.forEach(function(item, idx){
-      var card = document.createElement('fieldset');
-      card.className = 'card';
-      card.setAttribute('data-q', String(idx+1));
-      var legend = document.createElement('legend');
-      legend.className = 'q-title';
-      legend.textContent = (idx+1)+'. '+item.text;
-      card.appendChild(legend);
-
-      var scale = document.createElement('div');
-      scale.className = 'scale';
-      SCALE.forEach(function(opt){
-        var label = document.createElement('label');
-        label.className = 'opt';
-        label.setAttribute('for', 'q'+(idx+1)+'_'+opt.value);
-        var input = document.createElement('input');
-        input.type = 'radio';
-        input.name = 'q'+(idx+1);
-        input.id = 'q'+(idx+1)+'_'+opt.value;
-        input.value = opt.value;
-        input.setAttribute('aria-label', opt.value+' - '+opt.desc);
-        var num = document.createElement('div');
-        num.className = 'num';
-        num.textContent = opt.label;
-        var desc = document.createElement('div');
-        desc.className = 'desc';
-        desc.textContent = opt.desc;
-        label.appendChild(input);
-        label.appendChild(num);
-        label.appendChild(desc);
-        scale.appendChild(label);
-
-        input.addEventListener('change', function(){
-          card.classList.remove('missing');
-          var all = scale.querySelectorAll('.opt');
-          for(var j=0;j<all.length;j++){ all[j].classList.remove('selected'); }
-          label.classList.add('selected');
-          updateProgress();
-          persist();
-        });
-      });
-      card.appendChild(scale);
-      form.appendChild(card);
-    });
-  }
-
   var emailBtn = document.getElementById('emailBtn');
   if(emailBtn) emailBtn.addEventListener('click', function(){ sendEmailResults(); });
   var resetBtn = document.getElementById('resetBtn');
@@ -522,7 +1925,6 @@
   var printBtn = document.getElementById('printBtn');
   if(printBtn) printBtn.addEventListener('click', function(){ window.print(); });
 
-  render();
   restore();
   updateProgress();
   </script>
